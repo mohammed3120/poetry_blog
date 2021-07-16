@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block title %}
-    Poetry
+    I read you
 {% endblock title %}
 
 {% block content %}
 
-<!--Start posts section-->
+ <!--Start posts section-->
      <div class="content">
       <div class="container">
         <div class="filter">
@@ -33,50 +33,12 @@
           </div>
         </div>
         <div class="row">
+        {% for post in posts  %}
           <div class="col-md-10 col-md-offset-1 viewed_post">
-            <h2 class="post_title"> Stand by me</h2> <span class="post_created_date">23/12/2020 Tus 6.00 pm</span> 
+            <h2 class="post_title">{{post.title}}</h2> <span class="post_created_date">{{post.created}}</span> 
             
             <p class="post_body">
-              People live..
-              People die..
-              People laugh..
-              People cry..
-              Some give up..
-              Some still try..
-              Some say hi..
-              While some say bye..
-              Others may forget you..
-              but never will I..
-              People live..
-              People die..
-              People laugh..
-              People cry..
-              Some give up..
-              Some still try..
-              Some say hi..
-              While some say bye..
-              Others may forget you..
-              but never will I..
-              People live..
-              People die..
-              People laugh..
-              People cry..
-              Some give up..
-              Some still try..
-              Some say hi..
-              While some say bye..
-              Others may forget you..
-              but never will I..
-              People live..
-              People die..
-              People laugh..
-              People cry..
-              Some give up..
-              Some still try..
-              Some say hi..
-              While some say bye..
-              Others may forget you..
-              but never will I..
+              {{post.text}}
             </p>
             <div class="post_statstics">
               <span class="likes_number">0 like</span><span class="comments_number">0 comments</span>
@@ -86,54 +48,44 @@
             
               <div class="panel-group" id="accordion" roles="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
-                  <div class="panel-heading" roles="tab" id="heading-one">
+                  <div class="panel-heading" roles="tab" id="heading-{{post.id}}">
                     <h4 class="panel-title">
                       <a  href="#"><i class="like_action fa fa-thumbs-up fa-2x"> Like</i></a>
-                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-one" aria-expanded="true" aria-controls="collapse-one" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> Comment</i></a>
+                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{post.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> Comment</i></a>
                      </a>
                     </h4>
                   </div>
-                  <div id="collapse-one" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="heading-one">
+                  <div id="collapse-{{post.id}}" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="heading-{{post.id}}">
                     <div class="panel-body">
                       <!--Start comment list and replies-->
+                      {% for comment in post.get_comments %}
                       <div class="panel-group accordion_comment" id="accordion-comment" roles="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
-                          <div class="panel-heading panel-heading-reply" roles="tab" id="comment-one">
+                          <div class="panel-heading panel-heading-reply" roles="tab" id="comment-{{comment.id}}-post-{{post.id}}"> 
                               <div class="comment">
-                                <span class="user_name">mohammed3120 </span>:
-                                <p class="comment_body">First comment it is nice poetry.... First comment it is nice poetry....First comment it is nice poetry....First comment it is nice poetry....First comment it is nice poetry....</p>
+                                <span class="user_name">{{comment.profile.user.username}} </span>:
+                                <p class="comment_body">{{comment.body}}</p>
                               </div>
                               
                             <div class="comment_replies">
                               <!--Start replies list-->
-                              <div class="panel-group accordion_comment_replies" id="accordion-comment-replies" roles="tablist" aria-multiselectable="true">
+                              <div class="panel-group accordion_comment_replies" id="accordion-{{post.id}}-comment-{{comment.id}}-replies" roles="tablist" aria-multiselectable="true">
                                 <div class="panel panel-default">
-                                  <div class="panel-heading panel-heading-reply" roles="tab" id="comment-replies">
+                                  <div class="panel-heading panel-heading-reply" roles="tab" id="post-{{post.id}}-comment-{{comment.id}}-replies">
                                     
                                     <h4 class="panel-title">
-                                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment-replies" href="#collapse-replies" aria-expanded="true" aria-controls="collapse-one" href="#"><span class="comment_replies_number">4 replies</span>
+                                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion-{{post.id}}-comment-{{comment.id}}-replies" href="#collapse-{{post.id}}-replies-{{comment.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><span class="comment_replies_number">4 replies</span>
                                       </a>
                                     </h4>
                                   </div>
-                                  <div id="collapse-replies" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="comment-replies">
+                                  <div id="collapse-{{post.id}}-replies-{{comment.id}}" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="post-{{post.id}}-comment-{{comment.id}}-replies">
                                     <div class="panel-body">
+                                    {% for reply in comment.get_replies %}
                                       <div class="reply">
-                                        <span class="user_name">Abo Zeid </span>:
-                                        <p class="reply_body">Thank you very mutch</p>
-                                      </div>
-                                      <div class="reply">
-                                        <span class="user_name">mohammed3120 </span>:
-                                        <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                      </div>
-                                      <div class="reply">
-                                        <span class="user_name">mohammed3120 </span>:
-                                        <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                      </div>
-                                      <div class="reply">
-                                        <span class="user_name">mohammed3120 </span>:
-                                        <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                      </div>
-                                      
+                                        <span class="user_name">{{reply.profile.user.username}}</span>:
+                                        <p class="reply_body">{{reply.body}}</p>
+                                      </div>  
+                                    {% endfor %}                                  
                                     </div>
                                   </div>
                                 </div>
@@ -141,11 +93,11 @@
                               <!--Start replies list-->
                             </div>
                             <h4 class="panel-title">
-                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment" href="#collapse-reply-one" aria-expanded="true" aria-controls="collapse-one" href="#"><i class="reply_action fa fa-reply"> reply</i></a>
+                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment" href="#collapse-{{post.id}}-{{comment.id}}-reply" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><i class="reply_action fa fa-reply"> reply</i></a>
                               </a>
                             </h4>
                           </div>
-                          <div id="collapse-reply-one" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="comment-one">
+                          <div id="collapse-{{post.id}}-{{comment.id}}-reply" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="comment-{{comment.id}}-post-{{post.id}}">
                             <div class="panel-body">
                                
                               <!--start reply form-->
@@ -157,6 +109,7 @@
                           </div>
                         </div>
                       </div>
+                      {% endfor %}
                       <!--End comment list and replies-->
                       <!--start comment form-->
                         <form action="#" method="POST" class="form-inline">
@@ -168,283 +121,12 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-10 col-md-offset-1 viewed_post">
-              <h2 class="post_title"> Stand by me</h2> <span class="post_created_date">23/12/2020 Tus 6.00 pm</span> 
-              
-              <p class="post_body">
-                People live..
-                People die..
-                People laugh..
-                People cry..
-                Some give up..
-                Some still try..
-                Some say hi..
-                While some say bye..
-                Others may forget you..
-                but never will I..
-                People live..
-                People die..
-                People laugh..
-                People cry..
-                Some give up..
-                Some still try..
-                Some say hi..
-                While some say bye..
-                Others may forget you..
-                but never will I..
-                People live..
-                People die..
-                People laugh..
-                People cry..
-                Some give up..
-                Some still try..
-                Some say hi..
-                While some say bye..
-                Others may forget you..
-                but never will I..
-                People live..
-                People die..
-                People laugh..
-                People cry..
-                Some give up..
-                Some still try..
-                Some say hi..
-                While some say bye..
-                Others may forget you..
-                but never will I..
-              </p>
-              <div class="post_statstics">
-                <span class="likes_number">0 like</span><span class="comments_number">0 comments</span>
-                
-              </div>
-              <div class="interactive">
-              
-                <div class="panel-group" id="accordion" roles="tablist" aria-multiselectable="true">
-                  <div class="panel panel-default">
-                    <div class="panel-heading" roles="tab" id="heading-two">
-                      <h4 class="panel-title">
-                        <a  href="#"><i class="like_action fa fa-thumbs-up fa-2x"> Like</i></a>
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-two" aria-expanded="true" aria-controls="collapse-two" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> Comment</i></a>
-                      </a>
-                      </h4>
-                    </div>
-                    <div id="collapse-two" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="heading-two">
-                      <div class="panel-body">
-                        <!--Start comment list and replies-->
-                        <div class="panel-group accordion_comment " id="accordion-comment" roles="tablist" aria-multiselectable="true">
-                          <div class="panel panel-default">
-                            <div class="panel-heading panel-heading-reply" roles="tab" id="comment-two">
-                                <div class="comment">
-                                  <span class="user_name">mohammed3120 </span>:
-                                  <p class="comment_body">First comment it is nice poetry.... First comment it is nice poetry....First comment it is nice poetry....First comment it is nice poetry....First comment it is nice poetry....</p>
-                                </div>
-                                
-                              <div class="comment_replies">
-                                <!--Start replies list-->
-                                <div class="panel-group accordion_comment_replies" id="accordion-comment-replies" roles="tablist" aria-multiselectable="true">
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading panel-heading-reply" roles="tab" id="comment-two-replies">
-                                      
-                                      <h4 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment-replies" href="#collapse-two-replies" aria-expanded="true" aria-controls="collapse-two" href="#"><span class="comment_replies_number">4 replies</span>
-                                        </a>
-                                      </h4>
-                                    </div>
-                                    <div id="collapse-two-replies" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="comment-two-replies">
-                                      <div class="panel-body">
-                                        <div class="reply">
-                                          <span class="user_name">Abo Zeid </span>:
-                                          <p class="reply_body">Thank you very mutch</p>
-                                        </div>
-                                        <div class="reply">
-                                          <span class="user_name">mohammed3120 </span>:
-                                          <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                        </div>
-                                        <div class="reply">
-                                          <span class="user_name">mohammed3120 </span>:
-                                          <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                        </div>
-                                        <div class="reply">
-                                          <span class="user_name">mohammed3120 </span>:
-                                          <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                        </div>
-                                        
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!--Start replies list-->
-                              </div>
-                              <h4 class="panel-title">
-                              <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment" href="#collapse-reply-two" aria-expanded="true" aria-controls="collapse-two" href="#"><i class="reply_action fa fa-reply"> reply</i></a>
-                                </a>
-                              </h4>
-                            </div>
-                            <div id="collapse-reply-two" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="comment-two">
-                              <div class="panel-body">
-                                
-                                <!--start reply form-->
-                                  <form action="#" method="POST" class="form-inline">
-                                    <input class="form-control" type="text" name="reply" placeholder="Write reply here.."><button class="btn btn-danger"></i>reply</button>
-                                  </form>
-                                <!--end reply form-->
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--End comment list and replies-->
-                        <!--start comment form-->
-                          <form action="#" method="POST" class="form-inline">
-                            <input class="form-control" type="text" name="comment" placeholder="Write comment here.."><button class="btn btn-danger"></i>comment</button>
-                          </form>
-                        <!--end comment form-->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="col-md-10 col-md-offset-1 viewed_post">
-            <h2 class="post_title"> Stand by me</h2> <span class="post_created_date">23/12/2020 Tus 6.00 pm</span> 
-            
-            <p class="post_body">
-              People live..
-              People die..
-              People laugh..
-              People cry..
-              Some give up..
-              Some still try..
-              Some say hi..
-              While some say bye..
-              Others may forget you..
-              but never will I..
-              People live..
-              People die..
-              People laugh..
-              People cry..
-              Some give up..
-              Some still try..
-              Some say hi..
-              While some say bye..
-              Others may forget you..
-              but never will I..
-              People live..
-              People die..
-              People laugh..
-              People cry..
-              Some give up..
-              Some still try..
-              Some say hi..
-              While some say bye..
-              Others may forget you..
-              but never will I..
-              People live..
-              People die..
-              People laugh..
-              People cry..
-              Some give up..
-              Some still try..
-              Some say hi..
-              While some say bye..
-              Others may forget you..
-              but never will I..
-            </p>
-            <div class="post_statstics">
-              <span class="likes_number">0 like</span><span class="comments_number">0 comments</span>
-              
-            </div>
-            <div class="interactive">
-            
-              <div class="panel-group" id="accordion" roles="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                  <div class="panel-heading" roles="tab" id="heading-three">
-                    <h4 class="panel-title">
-                      <a  href="#"><i class="like_action fa fa-thumbs-up fa-2x"> Like</i></a>
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-three" aria-expanded="true" aria-controls="collapse-three" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> Comment</i></a>
-                    </a>
-                    </h4>
-                  </div>
-                  <div id="collapse-three" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="heading-three">
-                    <div class="panel-body">
-                      <!--Start comment list and replies-->
-                      <div class="panel-group accordion_comment " id="accordion-comment" roles="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                          <div class="panel-heading panel-heading-reply" roles="tab" id="comment-three">
-                              <div class="comment">
-                                <span class="user_name">mohammed3120 </span>:
-                                <p class="comment_body">First comment it is nice poetry.... First comment it is nice poetry....First comment it is nice poetry....First comment it is nice poetry....First comment it is nice poetry....</p>
-                              </div>
-                              
-                            <div class="comment_replies">
-                              <!--Start replies list-->
-                              <div class="panel-group accordion_comment_replies" id="accordion-comment-replies" roles="tablist" aria-multiselectable="true">
-                                <div class="panel panel-default">
-                                  <div class="panel-heading panel-heading-reply" roles="tab" id="comment-three-replies">
-                                    
-                                    <h4 class="panel-title">
-                                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment-replies" href="#collapse-three-replies" aria-expanded="true" aria-controls="collapse-three" href="#"><span class="comment_replies_number">4 replies</span>
-                                      </a>
-                                    </h4>
-                                  </div>
-                                  <div id="collapse-three-replies" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="comment-three-replies">
-                                    <div class="panel-body">
-                                      <div class="reply">
-                                        <span class="user_name">Abo Zeid </span>:
-                                        <p class="reply_body">Thank you very mutch</p>
-                                      </div>
-                                      <div class="reply">
-                                        <span class="user_name">mohammed3120 </span>:
-                                        <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                      </div>
-                                      <div class="reply">
-                                        <span class="user_name">mohammed3120 </span>:
-                                        <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                      </div>
-                                      <div class="reply">
-                                        <span class="user_name">mohammed3120 </span>:
-                                        <p class="reply_body">reply1reply1reply1reply1reply1 reply1reply1reply1reply1reply1reply1reply1reply1 reply1reply1reply1</p>
-                                      </div>
-                                      
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!--Start replies list-->
-                            </div>
-                            <h4 class="panel-title">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment" href="#collapse-reply-three" aria-expanded="true" aria-controls="collapse-three" href="#"><i class="reply_action fa fa-reply"> reply</i></a>
-                              </a>
-                            </h4>
-                          </div>
-                          <div id="collapse-reply-three" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="comment-three">
-                            <div class="panel-body">
-                              
-                              <!--start reply form-->
-                                <form action="#" method="POST" class="form-inline">
-                                  <input class="form-control" type="text" name="reply" placeholder="Write reply here.."><button class="btn btn-danger"></i>reply</button>
-                                </form>
-                              <!--end reply form-->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!--End comment list and replies-->
-                      <!--start comment form-->
-                        <form action="#" method="POST" class="form-inline">
-                          <input class="form-control" type="text" name="comment" placeholder="Write comment here.."><button class="btn btn-danger"></i>comment</button>
-                        </form>
-                      <!--end comment form-->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </div> 
+        {% endfor %}         
         </div>      
       </div>         
      </div>
    
      <!--End posts section-->
-
+     
 {% endblock content %}

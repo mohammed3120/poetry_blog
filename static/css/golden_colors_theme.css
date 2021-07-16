@@ -1,0 +1,72 @@
+.navbar-inverse .navbar-brand .logo3{
+    color: #aaaa24
+  }
+
+  .navbar-inverse .navbar-right ul li .active{
+    background-color: #aaaa24;
+  }
+  .navbar-inverse .navbar-right ul li a:hover{
+    background-color: #aaaa24;;
+  }
+
+  
+  .color_box .gear{
+    color: #aaaa24;
+  }
+
+  .carousel-indicators .active {
+    background-color: #aaaa24
+  }
+
+  .content .viewed_post .post_body{
+    border: 3px solid #aaaa24;
+  }
+
+  .content .viewed_post .interactive .like_action{
+    color: #aaaa24;
+  }
+  .content .viewed_post .interactive .comment_action{
+    color: #aaaa24;
+  }
+
+  .content .viewed_post .accordion_comment .comment .user_name{
+    color: #aaaa24;
+  }
+
+  .content .viewed_post .accordion_comment_replies .comment_replies_number{
+    color: #aaaa24;
+  }
+
+  .content .viewed_post .accordion_comment_replies .reply .user_name{
+    color: #aaaa24;
+  }
+
+  .content .viewed_post .accordion_comment .reply_action{
+    color: #aaaa24;
+  }
+
+  .content .list_posts .row .col-xs-12{
+    border: 3px solid #aaaa24;
+  }
+  .content .viewed_post .interactive .btn{
+    background-color: #aaaa24;
+  }
+  .Statstics .h1 {color: #aaaa24 }
+
+  .footer h1{ color: #aaaa24; }
+
+  .about{
+    border: 5px solid #aaaa24;
+  }
+
+  @media (max-width:767px)
+{    /*start navbar section*/
+    
+      .navbar-inverse .navbar-right ul li .active,.navbar-inverse .navbar-collapse ul li a:hover{
+        background:none;
+        color: #aaaa24;
+      }
+      /*End navbar section*/
+}
+  
+  

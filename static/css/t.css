@@ -1,0 +1,343 @@
+body{margin-top: 64px;}
+
+/*start navbar section*/
+.navbar-inverse{
+  background-color:#333;
+  padding: 7px;
+  padding-bottom: 7px;
+  border: none;
+}
+.navbar-inverse .navbar-brand a{
+  text-decoration: none;
+}
+.navbar-inverse .navbar-brand .logo1{
+  color: #fff;
+  font-weight:bold;
+  font-size:36px;
+}
+.navbar-inverse .navbar-brand .logo2{
+  font-size: 30px;
+}
+.navbar-inverse .navbar-brand .logo3{
+  color: #E42524
+}
+.navbar-inverse .navbar-right ul li a{
+  margin-top: -10px;
+  margin-bottom: -10px;
+  line-height: 150%;
+}
+.navbar-inverse .navbar-right ul li a{
+  color: #fff;
+  font-size: 24px;
+}
+.navbar-inverse .navbar-right ul li .active{
+  background-color: #E42524;
+}
+.navbar-inverse .navbar-right ul li a:hover{
+  background-color: #E42524;;
+}
+/*End navbar section*/
+
+/*Start carousel section*/
+#myCarousel{
+  
+  background-color: rgba(27, 24, 24, 0.5);
+  min-height: 350px;
+}
+ .big_carousel{
+  background-image:url('../images/pexels-sheep-1846422.jpg');
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+  background-size:cover;
+  background-attachment: fixed ;  
+  min-height: 350px;
+}
+#myCarousel .carousel-inner {
+  width: auto;
+  min-height: 350px;
+}
+#myCarousel .carousel-inner .item h5{
+  color: #fff;
+  font-size: 36px;
+  margin-top: 30px;
+}
+#myCarousel .carousel-inner .item p{
+  color: #fff;
+  font-size: 18px;
+  margin-top: 40px;
+  overflow: hidden;
+  margin: 60px 30%;
+}
+
+.carousel-indicators > li {
+  width: 15px; 
+  height: 15px; 
+  background-color: #ddd 
+}
+
+.carousel-indicators .active {
+  width: 20px; 
+  height: 20px; 
+  background-color: #E42524
+}
+
+/*End carousel section*/
+
+/*Start content section*/
+.content{
+  background-color: #333;
+}
+.content .viewed_post {
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color:#333;
+  border: 10px solid #eee;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.content .viewed_post h2 {color: #fff }
+
+.content .viewed_post .post_created_date{
+  color: #fff;
+  float: right;
+  margin-top: -37px;
+}
+
+.content .viewed_post .post_body{
+  margin-top: 50px;
+  padding:20px;
+  background-color: #eee;
+  border: 3px solid #E42524;
+  line-height: 200%;
+  margin-top: 25px;
+}
+.content .viewed_post .post_statstics{
+  margin-bottom: 40px;
+}
+.content .viewed_post .post_statstics .likes_number{
+  color: #fff;
+  font-size: 18px;
+  line-height: 0px;
+  margin-top: 10px;
+  background-color: #eee;
+  float: left;
+}
+.content .viewed_post .post_statstics .comments_number{
+  color: #fff;
+  float: right;
+  font-size: 18px;
+  line-height: 0px;
+  margin-top: 10px;
+  background-color: #eee;
+}
+
+.content .viewed_post .interactive .like_action{
+  color: #E42524;
+  margin-bottom: 10px;
+}
+.content .viewed_post .interactive .comment_action{
+  float: right;
+  margin-left: 30%;
+  color: #E42524;
+  margin-bottom: 10px;
+}
+
+/*Start custom acordion*/
+.content .panel-default{background-color: #f5f5f5;}
+
+.content .viewed_post .interactive .panel-default {
+  border-style: none;
+}
+
+.content .viewed_post .interactive .panel-heading-reply {
+  padding-bottom: 40px;
+}
+/*Start custom acordion*/
+
+.content .viewed_post .accordion_comment .comment{
+  border: 1px outset #eee;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #333;
+  margin:10px
+}
+
+.content .viewed_post .accordion_comment .comment .user_name{
+  color: #E42524;
+  font-weight: bold;
+  text-indent: 10px;
+  padding: 5px ;
+  border: 1px outset #333;
+  border-radius: 15px;
+  background-color: #ddd;
+  margin-left: 5px;
+}
+.content .viewed_post .accordion_comment .comment .comment_body{
+  color: #fff;
+  display: inline;
+  line-height: 150%;
+}
+
+.content .viewed_post .accordion_comment_replies .comment_replies_number{
+  color: #E42524;
+  float: right;
+  font-size: 18px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.content .viewed_post .accordion_comment_replies .reply{
+  border: 1px outset #eee;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #333;
+  margin:10px
+}
+.content .viewed_post .accordion_comment_replies .reply .user_name{
+  color: #E42524;
+  font-weight: bold;
+  text-indent: 10px;
+  padding: 5px ;
+  border: 1px outset #333;
+  border-radius: 15px;
+  background-color: #ddd;
+  margin-left: 5px;
+}
+.content .viewed_post .accordion_comment_replies .reply .reply_body{
+  color: #fff;
+  display: inline;
+  line-height: 150%;
+}
+
+.content .viewed_post .accordion_comment .reply_action{
+  color: #E42524;
+  float: right;
+  margin-top: 20px;
+}
+
+/* start  comment and reply forms*/
+.content .viewed_post .interactive .form-control {border-radius: 0;width: 85% }
+
+.content .viewed_post .interactive .btn {
+   border-radius: 0;
+   margin-left:-5px;
+  }
+/* End  comment and reply forms*/
+
+
+/*Start posts list section*/
+.content .list_posts {
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color:#333;
+  border: 10px solid #eee;
+}
+.content .list_posts{
+  background-color: #333;
+  padding-bottom: 60px;
+  border: 10px solid #eee;
+}
+.content .list_posts .h1{
+  color: #fff;
+  
+}
+
+.content .list_posts .row .col-xs-12{
+  background-color: #eee;
+  margin-top: 10px;
+  height: 110px;
+  overflow: hidden;
+  border: 3px solid #E42524;
+}
+.content .list_posts .row .col-xs-12 p{
+  font-size: 16px;
+  padding:5px;
+}
+/*End posts list section*/
+
+/*End content section*/
+
+
+
+
+
+/* start  section Statstics*/
+.Statstics
+{
+    background-image:url('../images/pexels-andrew-neel-2312369.jpg');
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-attachment: fixed ;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    color: #999;
+}
+.Statstics .data
+{
+    background-color: rgba(2,2,2,0.7);
+    min-height: 300px;
+}
+.Statstics .h1 {margin-bottom: 30px;color: #E42524 }
+
+.Statstics .stats {margin: 30px }
+
+.Statstics .stats:hover {color: #ffffff }
+
+.Statstics p {margin-top: 20px; font-size: 50px }
+
+.Statstics span {margin-top: 0;font-size: 18px }
+.Statstics .glyphicon{font-size: 60px;}
+
+/* end  section Statstics*/
+
+/*Start footer section*/
+.footer{ background-color: #333; min-height: 100px;
+}
+
+.footer h1{ color: #E42524; margin-bottom: 40px }
+.footer a{
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+.footer a:hover{opacity: 1 }
+
+.footer p{color: #fff }
+
+/*End footer section*/
+
+
+
+/*Start about section*/
+.about{
+  background-color: #333;
+  min-height: 600px;
+  border: 5px solid #E42524;
+}
+.about .writer_img{
+  width: 100%;
+  height: 100%;
+  border-radius: 5%;
+}
+.about .h1{
+  color: #fff;
+  font-family: verdana,helvetica,arial,sans-serif;
+}
+.about .description{
+  color: #fff;
+  font-size: 18px;
+  line-height: 200%;
+}
+/*End about section*/
+

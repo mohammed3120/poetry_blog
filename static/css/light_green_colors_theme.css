@@ -1,0 +1,72 @@
+.navbar-inverse .navbar-brand .logo3{
+    color: #24e45f
+  }
+
+  .navbar-inverse .navbar-right ul li .active{
+    background-color: #24e45f;
+  }
+  .navbar-inverse .navbar-right ul li a:hover{
+    background-color: #24e45f;;
+  }
+
+  
+  .color_box .gear{
+    color: #24e45f;
+  }
+
+  .carousel-indicators .active {
+    background-color: #24e45f
+  }
+
+  .content .viewed_post .post_body{
+    border: 3px solid #24e45f;
+  }
+
+  .content .viewed_post .interactive .like_action{
+    color: #24e45f;
+  }
+  .content .viewed_post .interactive .comment_action{
+    color: #24e45f;
+  }
+
+  .content .viewed_post .accordion_comment .comment .user_name{
+    color: #24e45f;
+  }
+
+  .content .viewed_post .accordion_comment_replies .comment_replies_number{
+    color: #24e45f;
+  }
+
+  .content .viewed_post .accordion_comment_replies .reply .user_name{
+    color: #24e45f;
+  }
+
+  .content .viewed_post .accordion_comment .reply_action{
+    color: #24e45f;
+  }
+
+  .content .list_posts .row .col-xs-12{
+    border: 3px solid #24e45f;
+  }
+  .content .viewed_post .interactive .btn{
+    background-color: #24e45f;
+  }
+  .Statstics .h1 {color: #24e45f }
+
+  .footer h1{ color: #24e45f; }
+
+  .about{
+    border: 5px solid #24e45f;
+  }
+
+  @media (max-width:767px)
+{    /*start navbar section*/
+    
+      .navbar-inverse .navbar-right ul li .active,.navbar-inverse .navbar-collapse ul li a:hover{
+        background:none;
+        color: #24e45f;
+      }
+      /*End navbar section*/
+}
+  
+  

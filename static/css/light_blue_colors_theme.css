@@ -1,0 +1,72 @@
+.navbar-inverse .navbar-brand .logo3{
+    color: #2db4ca
+  }
+
+  .navbar-inverse .navbar-right ul li .active{
+    background-color: #2db4ca;
+  }
+  .navbar-inverse .navbar-right ul li a:hover{
+    background-color: #2db4ca;;
+  }
+
+  
+  .color_box .gear{
+    color: #2db4ca;
+  }
+
+  .carousel-indicators .active {
+    background-color: #2db4ca
+  }
+
+  .content .viewed_post .post_body{
+    border: 3px solid #2db4ca;
+  }
+
+  .content .viewed_post .interactive .like_action{
+    color: #2db4ca;
+  }
+  .content .viewed_post .interactive .comment_action{
+    color: #2db4ca;
+  }
+
+  .content .viewed_post .accordion_comment .comment .user_name{
+    color: #2db4ca;
+  }
+
+  .content .viewed_post .accordion_comment_replies .comment_replies_number{
+    color: #2db4ca;
+  }
+
+  .content .viewed_post .accordion_comment_replies .reply .user_name{
+    color: #2db4ca;
+  }
+
+  .content .viewed_post .accordion_comment .reply_action{
+    color: #2db4ca;
+  }
+
+  .content .list_posts .row .col-xs-12{
+    border: 3px solid #2db4ca;
+  }
+  .content .viewed_post .interactive .btn{
+    background-color:#2db4ca;
+  }
+  .Statstics .h1 {color: #2db4ca }
+
+  .footer h1{ color: #2db4ca; }
+
+  .about{
+    border: 5px solid #2db4ca;
+  }
+
+  @media (max-width:767px)
+{    /*start navbar section*/
+    
+      .navbar-inverse .navbar-right ul li .active,.navbar-inverse .navbar-collapse ul li a:hover{
+        background:none;
+        color: #2db4ca;
+      }
+      /*End navbar section*/
+}
+  
+  

@@ -1,0 +1,17 @@
+/*Start content section*/
+.content .filter h2{
+    color: #fff;
+}
+.content .filter ul{
+    
+}
+.content  .filter li{
+    color: #fff;
+    display: inline;
+    margin-left:10%;
+    font-size: 18px;
+}
+.content  .filter li input[type="checkbox"]{
+    width: 50px;
+}
+/*End content section*/

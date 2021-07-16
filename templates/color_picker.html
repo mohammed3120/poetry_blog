@@ -1,0 +1,28 @@
+{% load static %}
+<!--Start color picker section-->
+     <div class="color_box">
+        <div class="color_option text-center">
+          <div class="bg_color">
+            <ul class="list-unstyled">
+              <li data-bg="{% static 'css/default_color_bg.css' %}"></li>
+              <li data-bg="{% static 'css/purple_color_bg.css' %}"></li>
+            </ul>
+          </div>
+          <div class="colors">
+            <ul class="list-unstyled">
+              <li data-value="{% static 'css/default_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/green_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/golden_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/bold_brown_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/light_blue_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/black_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/light_green_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/oily_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/blue_colors_theme.css' %}"></li>
+              <li data-value="{% static 'css/brown_colors_theme.css' %}"></li>
+            </ul>
+          </div>
+        </div>
+        <i class="fa fa-gear fa-3x fa-spin gear"></i>
+     </div>
+     <!--End color picker section-->

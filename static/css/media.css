@@ -1,0 +1,94 @@
+@media (max-width:500px)
+{    /*start navbar section*/
+  .content .viewed_post .interactive .comment_action{
+    margin-top: -42px;
+  }
+}
+
+@media (max-width:501px) and (max-width:767px)
+{    /*start navbar section*/
+    .navbar-inverse .navbar-collapse{
+      overflow: hidden;
+     }
+    .navbar-inverse .navbar-right ul li a{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        line-height: 100%;
+      }
+      .navbar-inverse .navbar-right ul li .active{
+        background-color:#333;
+        color: #E42524;
+      }
+      .navbar-inverse .navbar-right ul li a:hover{
+        background-color:#333;
+        color: #E42524;
+        overflow: hidden;
+      }
+      /*End navbar section*/
+
+      /*start content section*/
+      
+      .content .viewed_post .interactive .comment{
+        float: right;
+        margin-left: 10%;
+      }
+      
+      .content .viewed_post .accordion_comment .reply_action{margin-right: 40px; margin-top: 9px;}
+      
+      .content .viewed_post .interactive .form-control {
+        border-radius: 0;
+        width: 300px;
+        display: inline-block;
+      }
+
+      .content .viewed_post .interactive .btn { 
+        border-radius: 0; 
+        margin-left:-5px;
+        margin-bottom: 2px;
+       }
+       .content .viewed_post .accordion_comment_replies{margin-top: 80px;}
+
+       .content .viewed_post .accordion_comment_replies .panel-default .panel-collapse{margin-top: 80px;}
+       
+       .content .viewed_post .interactive .form-control {border-radius: 0;width: 78% }
+       
+      /* end section content*/
+      
+      /* end section footer*/
+      
+      .footer .col-xs-3{
+        margin-bottom: 30px;
+      }
+      /* end section footer*/
+
+    
+}
+
+@media (min-width:768px) and (max-width:991px)
+{
+  
+
+   .navbar-inverse .navbar-right ul{
+    margin-bottom: 0px;
+    line-height: 100%;
+  }
+  .navbar-inverse .navbar-right{
+    text-align: center;
+  }
+  .navbar-inverse .navbar-right ul li a{
+    font-size: 18px;
+    line-height: 200%;    
+  }
+}
+
+@media (min-width:992px) and (max-width:1199px)
+{
+    
+}
+
+@media (min-width:1200px)
+{
+  
+
+}
+

@@ -1,0 +1,41 @@
+.navbar-inverse{
+    background-color:#333969;
+}
+
+.content{
+    background-color: #333969;
+  }
+
+  .content .viewed_post {
+    background-color:#333969;
+  }  
+
+  .content .viewed_post .accordion_comment .comment{
+    background-color: #333969
+  }
+
+  .content .viewed_post .accordion_comment .comment .user_name{
+    border: 1px outset #333969
+  }
+
+  .content .viewed_post .accordion_comment_replies .reply .user_name{
+    border: 1px outset #333969;  
+  }
+
+  .content .list_posts {
+    background-color:#333969;
+  }
+  .content .list_posts{
+    background-color: #333969;
+  }  
+
+  .footer{ background-color: #333969 }  
+
+  .about{
+    background-color: #333969
+  }
+
+  .content .viewed_post .accordion_comment_replies .reply{
+    background-color: #333969;
+  }  
+

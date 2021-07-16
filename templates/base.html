@@ -1,4 +1,9 @@
 {% load static %}
+{% url 'Poetries:home' as path_of_home %}
+{% url 'Poetries:poetry' as path_of_poetry %}
+{% url 'Poetries:p_reflections' as path_of_reflections %}
+{% url 'Poetries:stories' as path_of_real_stories %}
+{% url 'Poetries:i_read_you' as path_of_i_read_you %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,27 +33,27 @@
         <h1>Site map</h1>
         <div class="row">
           <div class="col-md-1 col-md-offset-2 col-xs-3">
-            <a href="index.html"><i class="fa fa-home fa-3x"></i>
+            <a href="{{path_of_home}}"><i class="fa fa-home fa-3x"></i>
               <br>Home</a>
           </div>
           <div class="col-md-1 col-xs-3">
-            <a href="poetry.html"><i class="fa fa-leaf fa-3x"></i>
+            <a href="{{path_of_poetry}}"><i class="fa fa-leaf fa-3x"></i>
               <br>Poetry</a>
           </div>
           <div class="col-md-1 col-xs-3">
-            <a href="reflections.html"><i class="fa fa-history fa-3x"></i>
+            <a href="{{path_of_reflections}}"><i class="fa fa-history fa-3x"></i>
               <br>Reflections</a>
           </div>
           <div class="col-md-1 col-xs-3">
-            <a href="real_stories.html"><i class="fa fa-eye fa-3x"></i>
+            <a href="{{path_of_real_stories}}"><i class="fa fa-eye fa-3x"></i>
               <br>Real stories</a>
           </div>
           <div class="col-md-1 col-xs-3">
-            <a href="i_read_you.html"><i class="fa fa-book fa-3x"></i>
+            <a href="{{path_of_i_read_you}}"><i class="fa fa-book fa-3x"></i>
               <br>I read you</a>
           </div>
           <div class="col-md-1 col-xs-3">
-            <a href="about.html"><i class="fa fa-user fa-3x"></i>
+            <a href=""><i class="fa fa-user fa-3x"></i>
               <br>About</a>
           </div>
           <div class="col-md-1 col-xs-3">

@@ -1,8 +1,18 @@
 from django.shortcuts import render
 from .models import Post,Comment,Like,Reply
+from profiles.models import Profile
+from django.db.models import Count
 # Create your views here.
 def home(request):
-    context ={}
+    maxLikesPosts = Post.objects.annotate(like_count=Count('like')).order_by('-like_count')   
+    maxLikesPost = maxLikesPosts[0]
+    latestPosts = Post.objects.order_by('-created')[:4]
+    posts_count = maxLikesPosts.count()
+    commnets_count = Comment.objects.count()
+    likes_count = Like.objects.count()
+    profiles_count = Profile.objects.count()
+    context ={'maxLikesPosts':maxLikesPosts[:4], 'maxLikesPost':maxLikesPost, 'latestPosts':latestPosts,
+    'posts_count':posts_count, 'commnets_count':commnets_count, 'likes_count': likes_count, 'profiles_count':profiles_count}
     return render(request, 'poetries\home.html',context)
 
 def poetry_view(request):

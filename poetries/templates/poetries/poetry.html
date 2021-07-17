@@ -6,7 +6,6 @@
 {% endblock title %}
 
 {% block content %}
-
  <!--Start posts section-->
      <div class="content">
       <div class="container">
@@ -41,7 +40,7 @@
               {{poetry.text}}
             </p>
             <div class="post_statstics">
-              <span class="likes_number">0 like</span><span class="comments_number">0 comments</span>
+              <span class="likes_number">{% if poetry.get_likes.count != 0 %}{{ poetry.get_likes.count}} Likes {% endif %}</span><span class="comments_number">{% if poetry.get_comments.count != 0 %}{{ poetry.get_comments.count}} comments{% endif %}</span>
               
             </div>
             <div class="interactive">
@@ -50,7 +49,7 @@
                 <div class="panel panel-default">
                   <div class="panel-heading" roles="tab" id="heading-{{poetry.id}}">
                     <h4 class="panel-title">
-                      <a  href="#"><i class="like_action fa fa-thumbs-up fa-2x"> Like</i></a>
+                      <a  href="#"><i class="like_action  fa fa-thumbs-up fa-2x"> {% if request.user.username in poetry.get_users %}Liked{% else %}Like{% endif %}</i></a>
                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{poetry.id}}" aria-expanded="true" aria-controls="collapse-{{poetry.id}}" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> Comment</i></a>
                      </a>
                     </h4>
@@ -74,7 +73,7 @@
                                   <div class="panel-heading panel-heading-reply" roles="tab" id="post-{{poetry.id}}-comment-{{comment.id}}-replies">
                                     
                                     <h4 class="panel-title">
-                                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion-{{poetry.id}}-comment-{{comment.id}}-replies" href="#collapse-{{poetry.id}}-replies-{{comment.id}}" aria-expanded="true" aria-controls="collapse-{{poetry.id}}-{{comment.id}}" href="#"><span class="comment_replies_number">4 replies</span>
+                                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion-{{poetry.id}}-comment-{{comment.id}}-replies" href="#collapse-{{poetry.id}}-replies-{{comment.id}}" aria-expanded="true" aria-controls="collapse-{{poetry.id}}-{{comment.id}}" href="#"><span class="comment_replies_number">{% if comment.get_replies.count != 0 %}{{comment.get_replies.count}} replies{% endif %}</span>
                                       </a>
                                     </h4>
                                   </div>

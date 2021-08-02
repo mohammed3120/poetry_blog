@@ -1,0 +1,135 @@
+ .viewed_object {
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 10px solid #eee;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #333;
+  }
+  
+ .viewed_object h2 {color: #fff }
+  
+ .viewed_object .object_created_date{
+    color: #fff;
+    float: right;
+    margin-top: -37px;
+  }
+  
+ .viewed_object .object_body{
+    margin-top: 50px;
+    padding:20px;
+    background-color: #eee;
+    line-height: 200%;
+    margin-top: 25px;
+  }
+ .viewed_object .object_statstics{
+    margin-bottom: 40px;
+  }
+ .viewed_object .object_statstics .likes_number{
+    color: #fff;
+    font-size: 18px;
+    line-height: 0px;
+    margin-top: 10px;
+    background-color: #eee;
+    float: left;
+  }
+ .viewed_object .object_statstics .comments_number{
+    color: #fff;
+    float: right;
+    font-size: 18px;
+    line-height: 0px;
+    margin-top: 10px;
+    background-color: #eee;
+  }
+  
+ .viewed_object .interactive .like_action{
+    margin-bottom: 10px;
+  }
+ .viewed_object .interactive .comment_action{
+    float: right;
+    margin-left: 30%;
+    margin-bottom: 10px;
+  }
+  
+  /*Start custom acordion*/
+ .panel-default{background-color: #f5f5f5;}
+  
+ .viewed_object .interactive .panel-default {
+    border-style: none;
+  }
+  
+ .viewed_object .interactive .panel-heading-reply {
+    padding-bottom: 40px;
+  }
+  /*Start custom acordion*/
+  
+ .viewed_object .accordion_comment .comment{
+    border: 1px outset #eee;
+    background-color: #333;
+    border-radius: 15px;
+    padding: 10px;
+    margin:10px
+  }
+  
+ .viewed_object .accordion_comment .comment .user_name{
+    font-weight: bold;
+    text-indent: 10px;
+    padding: 5px ;
+    border-radius: 15px;
+    background-color: #ddd;
+    margin-left: 5px;
+  }
+ .viewed_object .accordion_comment .comment .comment_body{
+    color: #fff;
+    display: inline;
+    line-height: 150%;
+  }
+  
+ .viewed_object .accordion_comment_replies .comment_replies_number{
+    float: right;
+    font-size: 18px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
+  
+ .viewed_object .accordion_comment_replies .reply{
+    border: 1px outset #eee;
+    background-color: #333;
+    border-radius: 15px;
+    padding: 10px;
+    margin:10px
+  }
+ .viewed_object .accordion_comment_replies .reply .user_name{
+    font-weight: bold;
+    text-indent: 10px;
+    padding: 5px ;
+    border-radius: 15px;
+    background-color: #ddd;
+    margin-left: 5px;
+  }
+ .viewed_object .accordion_comment_replies .reply .reply_body{
+    color: #fff;
+    display: inline;
+    line-height: 150%;
+  }
+  
+ .viewed_object .accordion_comment .reply_action{
+    float: right;
+    margin-top: 20px;
+  }
+  
+  /* start  comment and reply forms*/
+ .viewed_object .interactive .form-control {border-radius: 0;width: 85% }
+  
+ .viewed_object .interactive .btn {
+     border: none;
+     border-radius: 0;
+     margin-left:-5px;
+    }
+  /* End  comment and reply forms*/
+  
+  
+  
+  /*End content section*/
+  

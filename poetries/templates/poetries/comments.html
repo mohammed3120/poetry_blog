@@ -1,0 +1,24 @@
+<!--Start comment list and replies-->
+{% for comment in post.get_comments %}
+<div id ='acco-comment{{post.id}}'>
+  {% include 'poetries\one_comment.html' %}
+</div>
+{% endfor %}
+
+{% if post.get_comments.count == 0 %}
+{% if comment is not None %}
+<div id ='acco-comment{{post.id}}'>
+  {% include 'poetries\one_comment.html' %}
+</div>
+{% else %}
+<div id ='acco-comment{{post.id}}'>
+</div>
+{% endif %}
+{% endif %}
+<!--End comment list and replies-->
+<!--start comment form-->
+  <form  method="POST" class="form-inline comment-form" id="p_{{post.id}}">
+      {% csrf_token %}
+    <input id ="comment{{post.id}}" class="form-control" type="text" name="comment" placeholder="Write comment here.."><button type="submit" class="btn btn-danger"></i>comment</button>
+  </form>
+<!--end comment form-->

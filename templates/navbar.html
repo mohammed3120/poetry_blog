@@ -1,39 +1,33 @@
-{% load static %}
 {% url 'Poetries:home' as path_of_home %}
-{% url 'Poetries:poetry' as path_of_poetry %}
-{% url 'Poetries:p_reflections' as path_of_reflections %}
-{% url 'Poetries:stories' as path_of_real_stories %}
-{% url 'Poetries:i_read_you' as path_of_i_read_you %}
+{% url 'Poetries:posts' 'poetry' as path_of_poetry %}
+{% url 'Poetries:posts' 'reflection' as path_of_reflections %}
+{% url 'Poetries:posts' 'real_story' as path_of_real_stories %}
+{% url 'Poetries:posts' 'I_read_you' as path_of_i_read_you %}
 
 
 
+<!--Start navbar section-->
+<nav class="main-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <!-- Brand -->
+    <div class="navbar-brand logo">
+       <a  href="" class="logo1">P<span class="logo2">oe</span><span class="logo3">try</span></a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+    </button>
 
- <!--Start navbar section-->
-     <nav class="navbar navbar-inverse navbar-fixed-top">
-       <div class="container-fluid">
-         <!-- Brand -->
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <div class="navbar-brand">
-                <a  href="{{path_of_home}}" class="logo1">P<span class="logo2">oe</span><span class="logo3">try</span></a>
-              </div>
-         </div>
-
-         <div class="collapse navbar-collapse navbar-right"  id="menu">>
-           <ul class="list-unstyled nav navbar-nav">
-             <li class="hvr-wobble-top"> <a class="{% if request.path == path_of_home %}active{% endif %}" href="{{path_of_home}}">Home</a> </li>
-             <li class="hvr-wobble-top"> <a class="{% if request.path == path_of_poetry %}active{% endif %}" href="{{path_of_poetry}}">Poetry</a></li>
-             <li class="hvr-wobble-top"> <a class="{% if request.path == path_of_reflections %}active{% endif %}" href="{{path_of_reflections}}">Reflections</a></li>
-             <li class="hvr-wobble-top"> <a class="{% if request.path == path_of_real_stories %}active{% endif %}" href="{{path_of_real_stories}}">Real stories</a></li>
-             <li class="hvr-wobble-top"> <a class="{% if request.path == path_of_i_read_you %}active{% endif %}" href="{{path_of_i_read_you}}">I read you</a></li>
-             <li class="hvr-wobble-top"> <a href="">About</a></li>
-           </ul>
-         </div>
-       </div>
-     </nav>
-     <!--End navbar section-->
+  <div class="collapse navbar-collapse navbar-dark"  id="menu">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_home %}active{% endif %}" href="{{path_of_home}}">Home</a> </li>
+            <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_poetry %}active{% endif %}" href="{{path_of_poetry}}">Poetry</a></li>
+            <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_reflections %}active{% endif %}" href="{{path_of_reflections}}">Reflections</a></li>
+            <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_real_stories %}active{% endif %}" href="{{path_of_real_stories}}">Real stories</a></li>
+            <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_i_read_you %}active{% endif %}" href="{{path_of_i_read_you}}">I read you</a></li>
+            <li class="item nav-item hvr-wobble-top"> <a class ="nav-link" href="">About</a></li>
+            {% if request.user.is_authenticated %}
+            <li class="item nav-item hvr-wobble-top"> <a class ="nav-link" href="{% url 'poetries:logout' %}">Log out</a></li>
+            {% endif %}
+      </ul>
+  </div>
+</nav>
+  <!--End navbar section-->

@@ -1,33 +1,31 @@
 body{
-  margin-top: 64px;
   overflow: hidden;
 }
 
 /*start navbar section*/
-.navbar-inverse{
-  padding: 7px;
-  padding-bottom: 7px;
-  border: none;
+.main-nav{
+  padding-top: 0cm;
+  padding-bottom: 0cm;
 }
-.navbar-inverse .navbar-brand a{
+
+.main-nav a{
   text-decoration: none;
 }
-.navbar-inverse .navbar-brand .logo1{
+.main-nav .logo .logo1{
   color: #fff;
   font-weight:bold;
   font-size:36px;
 }
-.navbar-inverse .navbar-brand .logo2{
+.main-nav .logo .logo2{
   font-size: 30px;
 }
-.navbar-inverse .navbar-right ul li a{
-  margin-top: -10px;
-  margin-bottom: -10px;
-  line-height: 150%;
-}
-.navbar-inverse .navbar-right ul li a{
+ 
+.main-nav .nav-item .nav-link{
   color: #fff;
   font-size: 24px;
+  font-weight: 500;
+  padding-top: 13px;
+  padding-bottom: 15px;
 }
 
 /*End navbar section*/
@@ -37,6 +35,7 @@ body{
   position: fixed;
   width: 200px;
   height: auto;
+  top: 65px;
   left:0;
   right: auto;
   z-index:99999;
@@ -81,6 +80,7 @@ body{
   
   background-color: rgba(27, 24, 24, 0.5);
   min-height: 350px;
+  margin-top: 64px;
 }
  .big_carousel{
   background-image:url('../images/pexels-sheep-1846422.jpg');
@@ -97,12 +97,12 @@ body{
   width: auto;
   min-height: 350px;
 }
-#myCarousel .carousel-inner .item h5{
+#myCarousel .carousel-inner .carousel-item h5{
   color: #fff;
   font-size: 36px;
   margin-top: 30px;
 }
-#myCarousel .carousel-inner .item p{
+#myCarousel .carousel-inner .carousel-item p{
   color: #fff;
   font-size: 18px;
   margin-top: 40px;
@@ -113,7 +113,9 @@ body{
 .carousel-indicators > li {
   width: 15px; 
   height: 15px; 
-  background-color: #ddd 
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
 }
 
 .carousel-indicators .active {
@@ -365,7 +367,6 @@ body{
 /* Start  loading section*/
 .loading_page
 {
-    background-color: #444;
     position: absolute;
     left:0;
     top: 0;
@@ -435,7 +436,7 @@ body{
 .content .filter{
   color: #fff;
   font-size: 18px;
-  margin-top: 20px;
+  margin-top: 64px;
 }
 .content .filter div{
   margin-bottom: 15px;
@@ -448,10 +449,10 @@ body{
 /* Start section media*/
 @media (max-width:767px)
 {    /*start navbar section*/
-    .navbar-inverse .navbar-collapse{
+     .navbar-collapse{
       overflow: hidden;
      }
-    .navbar-inverse .navbar-right ul li a{
+     .navbar-right ul li a{
         margin-top: 0px;
         margin-bottom: 0px;
         line-height: 100%;
@@ -506,14 +507,14 @@ body{
 {
   
 
-   .navbar-inverse .navbar-right ul{
+    .navbar-right ul{
     margin-bottom: 0px;
     line-height: 100%;
   }
-  .navbar-inverse .navbar-right{
+   .navbar-right{
     text-align: center;
   }
-  .navbar-inverse .navbar-right ul li a{
+   .navbar-right ul li a{
     font-size: 18px;
     line-height: 200%;    
   }
@@ -537,6 +538,3 @@ body{
 }
 
 /*End section media*/
-
-
-

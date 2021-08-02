@@ -1,4 +1,4 @@
-.navbar-inverse{
+.navbar{
     background-color:#333;
 }
 
@@ -38,5 +38,8 @@
   .content .viewed_post .accordion_comment_replies .reply{
     background-color: #333;
   }  
-
+  .loading_page
+  {
+      background-color: #444;
+  }
  

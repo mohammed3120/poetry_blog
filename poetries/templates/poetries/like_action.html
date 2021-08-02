@@ -1,0 +1,5 @@
+ {% if likeData %}
+ {{likeData}}
+ {% else %}
+ {% if request.user.username in post.get_users %}Liked{% else %}Like{% endif %}
+ {% endif %}

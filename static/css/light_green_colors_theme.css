@@ -1,13 +1,14 @@
-.navbar-inverse .navbar-brand .logo3{
-    color: #24e45f
-  }
+.main-nav .logo3{
+  color: #24e45f;
+}
 
-  .navbar-inverse .navbar-right ul li .active{
-    background-color: #24e45f;
-  }
-  .navbar-inverse .navbar-right ul li a:hover{
-    background-color: #24e45f;;
-  }
+.main-nav .nav-item .active{
+  background-color: #24e45f;
+}
+.main-nav .nav-item .nav-link:hover{
+  color: #fff;
+  background-color: #24e45f;  
+}
 
   
   .color_box .gear{

@@ -22,6 +22,12 @@
               <li data-value="{% static 'css/brown_colors_theme.css' %}"></li>
             </ul>
           </div>
+          {% if request.user.is_staff %}
+          <div>
+            <a class="btn btn-info mb-3" href="{% url 'dashboard:dashboard_posts' 'poetry' %}">Dashboard</a>
+          </div>
+          {% endif %}
+          
         </div>
         <i class="fa fa-gear fa-3x fa-spin gear"></i>
      </div>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+{% load static %}
+{% url 'Poetries:home' as path_of_home %}
+{% url 'Poetries:posts' 'poetry' as path_of_poetry %}
+{% url 'Poetries:posts' 'reflection' as path_of_reflections %}
+{% url 'Poetries:posts' 'real_story' as path_of_real_stories %}
+{% url 'Poetries:posts' 'I_read_you' as path_of_i_read_you %}
+
+{% url 'dashboard:dashboard_posts' 'poetry'  as path_of_dashboard_poetries %}
+{% url 'dashboard:dashboard_posts' 'reflection' as path_of_dashboard_reflections %}
+{% url 'dashboard:dashboard_posts' 'real_story'  as path_of_dashboard_stories %}
+{% url 'dashboard:dashboard_posts' 'I_read_you' as path_of_dashboard_i_read_you %}
+{% url 'dashboard:dashboard_users'  as path_of_dashboard_users %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title> Dashboard  {% block title %}{% endblock title %}</title>
+
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/hover.css' %}">
+  
+  <style>
+    a:link {
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", sans-serif;
+    }
+
+    header {
+      position: fixed;
+      background: #333;
+      width: 100%;
+      height: 60px;
+
+      z-index: 1;
+    }
+
+    .left_area h3 {
+      color: #fff;
+      margin: 0px;
+      text-transform: uppercase;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    
+
+    .logout_btn {
+      padding: 5px;
+      background: #E42524;
+      text-decoration: none;
+      float: right;
+      margin-top: -60px;
+      margin-right: 40px;
+      border-radius: 2px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      transition: 0.5s;
+
+    }
+
+    .logout_btn:hover {
+      background: #E42524;
+    }
+
+    .sidebar {
+      background: #333;
+      margin-top: 60px;
+      padding-top: 30px;
+      position: fixed;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      transition: 0.5s;
+      transition-property: left;
+    }
+
+    .sidebar .profile_image {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar h4 {
+      color: #ccc;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: #fff;
+      display: block;
+      width: 100%;
+      line-height: 60px;
+      text-decoration: none;
+      padding-left: 40px;
+      box-sizing: border-box;
+      transition: 0.5s;
+
+    }
+
+    .sidebar a:hover {
+      background: #E42524;
+    }
+
+    .sidebar i {
+      padding-right: 10px;
+    }
+
+    label #sidebar_btn {
+      z-index: 1;
+      color: #fff;
+      position: fixed;
+      cursor: pointer;
+      left: 300px;
+      font-size: 20px;
+      margin: 5px 0;
+      transition: 0.5s;
+      transition-property: color;
+    }
+
+    label #sidebar_btn:hover {
+      color: #E42524;
+    }
+
+    #check:checked~.sidebar {
+      left: -190px;
+    }
+
+    #check:checked~.sidebar a span {
+      display: none;
+    }
+
+    #check:checked~.sidebar a {
+      font-size: 20px;
+      margin-left: 170px;
+      width: 80px;
+    }
+
+    .content {
+      margin-left: 250px;
+      background-position: center;
+      background-size: cover;
+      height: 100vh;
+      transition: 0.5s;
+    }
+
+    #check:checked~.content {
+      margin-left: 60px;
+    }
+
+    #check {
+      display: none;
+    }
+    hr{
+      color: #000;
+    }
+    /*Start footer section*/
+    .footer{min-height: 100px;
+    }
+
+    .footer h1{margin-bottom: 40px }
+    .footer a{
+      color: #000;
+      text-decoration: none;
+      opacity: 0.5;
+    }
+
+    .footer a:hover{opacity: 1 }
+
+    .footer p{color: #000 }
+  
+  .logo .logo1{
+  color: #fff;
+  font-weight:bold;
+  font-size:36px;
+}
+.logo .logo1 .logo2{
+  font-size: 30px;
+}
+.logo .logo3{
+  color: #E42524;
+}
+.active{
+  background-color: #E42524 ;
+}
+  </style>
+
+
+   
+  
+
+   {% block style %}
+   {% endblock style %}
+  
+</head>
+
+<body>
+
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    
+    
+    <div class="left_area">
+      <label class="logo" for="check">
+        <p class="logo1">P<span class="logo2">oe</span><span class="logo3">try</span></p>
+      </label>
+    </div>
+    <div class="right_area">
+      <li class="logout_btn hvr-wobble-top"> <a  href="{% url 'poetries:logout' %}">Log out</a>
+    </div>
+  </header>
+  <!--header area end-->
+  <!--sidebar start-->
+  <div class="sidebar">
+    <div class="text-center">
+ 
+      <img src="{{request.user.profile.avatar.url}}" class="profile_image" alt="">
+      <h4>{{request.user.username}}</h4>
+    </div>
+
+    <a class="{% if request.path == path_of_dashboard_poetries %}active{% endif %}" href="{{path_of_dashboard_poetries}}"><i class="fa fa-leaf"></i><span>Poetries</span></a>
+    <a class="{% if request.path == path_of_dashboard_reflections %}active{% endif %}" href="{{path_of_dashboard_reflections}}"><i class="fa fa-history"></i><span>Reflections</span></a>
+    <a class="{% if request.path == path_of_dashboard_stories %}active{% endif %}" href="{{path_of_dashboard_stories}}"><i class="fa fa-eye"></i><span>Real stories</span></a>
+    <a class="{% if request.path == path_of_dashboard_i_read_you %}active{% endif %}" href="{{path_of_dashboard_i_read_you}}"><i class="fa fa-book"></i><span>I read you</span></a>
+    <a class="{% if request.path == path_of_dashboard_users %}active{% endif %}" href="{{path_of_dashboard_users}}"><i class="fa fa-users"></i><span>Users</span></a>
+    <a  href=""><i class="fa fa-user"></i><span>Auther profile</span></a>
+
+
+  </div>
+  <!--sidebar end-->
+
+  <!--content start-->
+  <div class="content">
+    <br><br><br><br><br>
+    {% block content %}
+
+    {% endblock content %}
+
+
+    <br><br><br>
+    
+    <!--Start footer section-->
+    <div class="footer text-center">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <a href="{{path_of_home}}"><i class="fa fa-home fa-3x"></i>
+              <br>Home</a>
+          </div>
+          <div class="col">
+            <a href="{{path_of_poetry}}"><i class="fa fa-leaf fa-3x"></i>
+              <br>Poetry</a>
+          </div>
+          <div class="col">
+            <a href="{{path_of_reflections}}"><i class="fa fa-history fa-3x"></i>
+              <br>Reflections</a>
+          </div>
+          <div class="col">
+            <a href="{{path_of_real_stories}}"><i class="fa fa-eye fa-3x"></i>
+              <br>Real stories</a>
+          </div>
+          <div class="col">
+            <a href="{{path_of_i_read_you}}"><i class="fa fa-book fa-3x"></i>
+              <br>I read you</a>
+          </div>          
+        </div>
+        <hr>
+        <p>copy right &copy; is saved </p>
+      </div>
+    </div>
+    <!--end footer section-->
+  </div>
+  <!--content end-->
+  
+  <!--javascript and Jquery-->
+  <script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+  <script type="text/javascript"src="{% static 'js/bootstrap.min.js' %}"></script>
+ <!-- Custom js -->
+ {% block scripts %}
+ {% endblock scripts %}
+</body>
+
+</html>

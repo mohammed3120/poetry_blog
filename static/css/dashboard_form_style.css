@@ -1,0 +1,19 @@
+form{
+    background-color: #333;
+    margin-top: -30px;
+    padding-top: 30px;
+}
+
+form p{
+    color: #fff;
+}
+
+form p #id_title, form p #id_sentiment_type{
+    border: 3px solid #E42524;
+}
+
+
+form p #id_text{
+    width: 95%;
+    border: 3px solid #E42524;
+}

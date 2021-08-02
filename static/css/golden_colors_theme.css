@@ -1,11 +1,11 @@
-.navbar-inverse .navbar-brand .logo3{
+.main-nav .logo3{
     color: #aaaa24
   }
 
-  .navbar-inverse .navbar-right ul li .active{
+  .main-nav .nav-item .active{
     background-color: #aaaa24;
   }
-  .navbar-inverse .navbar-right ul li a:hover{
+  .main-nav .nav-item .nav-link:hover{
     background-color: #aaaa24;;
   }
 

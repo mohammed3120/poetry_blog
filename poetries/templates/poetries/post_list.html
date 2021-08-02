@@ -1,0 +1,33 @@
+{% for post in data  %}
+          <div class="col-12 viewed_post">
+            <h2 class="post_title">{{post.title}}</h2> <span class="post_created_date">{{post.created}}</span> 
+            
+            <p class="post_body">
+              {{post.text}}
+            </p>
+            <div class="post_statstics">
+              <span id = "likes_number{{post.id}}" class="likes_number">{{ post.get_likes.count}} Likes </span><span id ="comments_number{{post.id}}" class="comments_number">{{ post.get_comments.count}} comments</span>
+              
+            </div>
+            <div class="interactive">
+            
+              <div class="panel-group" id="accordion" roles="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading" roles="tab" id="heading-{{post.id}}">
+                    <h4 class="panel-title">
+                      <a ><i id="like_action_{{post.id}}" class="like_action   fa fa-thumbs-up fa-2x"> {% include 'poetries/like_action.html' %}</i></a>
+                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{post.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> Comment</i></a>
+                     </a>
+                    </h4>
+                  </div>
+                  <div id="collapse-{{post.id}}" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="heading-{{post.id}}">
+                    <div class="panel-body">
+                      {% include 'poetries\comments.html' %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+        {% endfor %}
+        

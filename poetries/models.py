@@ -6,8 +6,8 @@ from profiles.models import Profile
 POST_TYPE_CHOICES = (
     ('poetry', 'poetry'),
     ('reflection', 'reflection'),
-    ('real story', 'real story'),
-    ('I read you', 'I read you'),
+    ('real_story', 'real_story'),
+    ('I_read_you', 'I_read_you'),
 )
 SENTIMENT_TYPE_CHOICES = (
     ('happy','happy'),
@@ -16,6 +16,73 @@ SENTIMENT_TYPE_CHOICES = (
     ('action','action'),
     ('romance','romance'),
 )
+CHECKED= (
+    ('checked','checked'),
+    ('',''),
+)
+
+BG_COLORS =(
+    ('default_color_bg','default_color_bg'),
+    ('purple_color_bg', 'purple_color_bg'),
+)    
+THEME_COLORS = (
+    ('default_colors_theme','default_colors_theme'),
+    ('green_colors_theme','green_colors_theme'),
+    ('golden_colors_theme','golden_colors_theme'),
+    ('bold_brown_colors_theme','bold_brown_colors_theme'),
+    ('light_blue_colors_theme','light_blue_colors_theme'),
+    ('black_colors_theme','black_colors_theme'),
+    ('light_green_colors_theme','light_green_colors_theme'),
+    ('oily_colors_theme','oily_colors_theme'),
+    ('blue_colors_theme','blue_colors_theme'),
+    ('blue_colors_theme','blue_colors_theme'),
+)
+class Color(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    bg_color = models.CharField(
+        max_length= 50,
+        choices=BG_COLORS,
+        default='default_color_bg',
+    )
+    theme_color = models.CharField(
+        max_length= 50,
+        choices=THEME_COLORS,
+        default='default_colors_theme',
+    )
+
+ 
+class Sentiment(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    filterPostsType = models.CharField(
+        max_length= 20,
+        choices=POST_TYPE_CHOICES,
+        default='default_color_bg',
+    )
+    happy = models.CharField(max_length= 20,
+        choices=CHECKED,
+        default='',
+        blank = True,
+    )
+    sad = models.CharField(max_length= 20,
+        choices=CHECKED,
+        default='',
+        blank = True,
+    )
+    normal = models.CharField(max_length= 20,
+        choices=CHECKED,
+        default='',
+        blank = True,
+    )
+    action = models.CharField(max_length= 20,
+        choices=CHECKED,
+        default='',
+        blank = True,
+    )
+    romance = models.CharField(max_length= 20,
+        choices=CHECKED,
+        default='',
+        blank = True,
+    )
 class Post(models.Model):
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -30,7 +97,7 @@ class Post(models.Model):
         choices=SENTIMENT_TYPE_CHOICES,
         default='normal',
     )
-    created = models.DateTimeField(blank=True)
+    created = models.DateTimeField(auto_now_add=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
@@ -52,6 +119,7 @@ class Post(models.Model):
         for like in likes:
             users.append(like.profile.user.username)
         return users  
+
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)

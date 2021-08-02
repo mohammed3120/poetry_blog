@@ -2,27 +2,27 @@
 {% load static %}
 
 {% block title %}
-    Poetry
+    home
 {% endblock title %}
 
 {% block content %}
 
 <!--Start carousel section-->
-    <section class="carousel_max_likes_posts">
-       <div class="big_carousel text-center">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol>
+<section class="carousel_max_likes_posts">
+  <div class="big_carousel text-center">
+           <div id="myCarousel" class="carousel slide" data-ride="carousel">
+             <!-- Indicators -->
+             <ol class="carousel-indicators">
+               <li data-target="#myCarousel" class="active" data-slide-to="0"></li>
+               <li data-target="#myCarousel" data-slide-to="1"></li>
+               <li data-target="#myCarousel" data-slide-to="2"></li>
+               <li data-target="#myCarousel" data-slide-to="3"></li>
+              </ol>
 
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
                   {% for post in maxLikesPosts %}
-                    <div class="item {% if post.id == maxLikesPost.id %}active{% endif %}">
+                    <div class="carousel-item {% if post.id == maxLikesPost.id %}active{% endif %}">
                       <h5>{{post.title}} </h5>
                       <p >{{post.text}}</p>
                     </div>
@@ -36,98 +36,9 @@
     
      <!--Start posts section-->
      <div class="content">
-      <div class="container-fluid">
+      <div class="container">
          <div class="row">
-         {% for post in latestPosts %}
-          <div class="col-md-10 col-md-offset-1 viewed_post">
-            <h2 class="post_title"> {{post.title}}</h2> <span class="post_created_date">{{post.created}}</span> 
-            
-            <p class="post_body">
-              {{post.text}}
-            </p>
-            <div class="post_statstics">
-              <span class="likes_number">{% if post.get_likes.count != 0 %}{{ post.get_likes.count}} Likes {% endif %}</span><span class="comments_number">{% if post.get_comments.count != 0 %}{{ post.get_comments.count}} comments{% endif %}</span>
-              
-            </div>
-            <div class="interactive">
-            
-              <div class="panel-group" id="accordion" roles="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                  <div class="panel-heading" roles="tab" id="heading-{{post.id}}">
-                    <h4 class="panel-title">
-                      <a  href="#"><i class="like_action  fa fa-thumbs-up fa-2x"> {% if request.user.username in post.get_users %}Liked{% else %}Like{% endif %}</i></a>
-                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{post.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> Comment</i></a>
-                     </a>
-                    </h4>
-                  </div>
-                  <div id="collapse-{{post.id}}" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="heading-{{post.id}}">
-                    <div class="panel-body">
-                      <!--Start comment list and replies-->
-                      {% for comment in post.get_comments %}
-                      <div class="panel-group accordion_comment" id="accordion-comment" roles="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                          <div class="panel-heading panel-heading-reply" roles="tab" id="comment-{{comment.id}}-post-{{post.id}}"> 
-                              <div class="comment">
-                                <span class="user_name">{{comment.profile.user.username}} </span>:
-                                <p class="comment_body">{{comment.body}}</p>
-                              </div>
-                              
-                            <div class="comment_replies">
-                              <!--Start replies list-->
-                              <div class="panel-group accordion_comment_replies" id="accordion-{{post.id}}-comment-{{comment.id}}-replies" roles="tablist" aria-multiselectable="true">
-                                <div class="panel panel-default">
-                                  <div class="panel-heading panel-heading-reply" roles="tab" id="post-{{post.id}}-comment-{{comment.id}}-replies">
-                                    
-                                    <h4 class="panel-title">
-                                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion-{{post.id}}-comment-{{comment.id}}-replies" href="#collapse-{{post.id}}-replies-{{comment.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><span class="comment_replies_number">{% if comment.get_replies.count != 0 %}{{comment.get_replies.count}} replies{% endif %}</span>
-                                      </a>
-                                    </h4>
-                                  </div>
-                                  <div id="collapse-{{post.id}}-replies-{{comment.id}}" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="post-{{post.id}}-comment-{{comment.id}}-replies">
-                                    <div class="panel-body">
-                                    {% for reply in comment.get_replies %}
-                                      <div class="reply">
-                                        <span class="user_name">{{reply.profile.user.username}}</span>:
-                                        <p class="reply_body">{{reply.body}}</p>
-                                      </div>  
-                                    {% endfor %}                                  
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!--Start replies list-->
-                            </div>
-                            <h4 class="panel-title">
-                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment" href="#collapse-{{post.id}}-{{comment.id}}-reply" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><i class="reply_action fa fa-reply"> reply</i></a>
-                              </a>
-                            </h4>
-                          </div>
-                          <div id="collapse-{{post.id}}-{{comment.id}}-reply" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="comment-{{comment.id}}-post-{{post.id}}">
-                            <div class="panel-body">
-                               
-                              <!--start reply form-->
-                                <form action="#" method="POST" class="form-inline">
-                                  <input class="form-control" type="text" name="reply" placeholder="Write reply here.."><button class="btn btn-danger"></i>reply</button>
-                                </form>
-                              <!--end reply form-->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {% endfor %}
-                      <!--End comment list and replies-->
-                      <!--start comment form-->
-                        <form action="#" method="POST" class="form-inline">
-                          <input class="form-control" type="text" name="comment" placeholder="Write comment here.."><button class="btn btn-danger"></i>comment</button>
-                        </form>
-                      <!--end comment form-->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-         {% endfor %}
+              {% include 'poetries/post_list.html' %}   
         </div>    
       </div>
      </div>
@@ -173,3 +84,8 @@
     <!--end Statstics section-->
 
 {% endblock content %}
+{% block scripts %}
+<script src="{% static 'js/sentiments_filter.js' %}"></script>
+<!-- <script src="{% static 'js/likeToggle.js' %}"></script> -->
+
+{% endblock scripts %}

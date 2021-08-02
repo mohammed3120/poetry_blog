@@ -1,0 +1,50 @@
+{% url 'Poetries:home' as path_of_home %}
+{% url 'Poetries:posts' 'poetry' as path_of_poetry %}
+{% url 'Poetries:posts' 'reflection' as path_of_reflections %}
+{% url 'Poetries:posts' 'real_story' as path_of_real_stories %}
+{% url 'Poetries:posts' 'I_read_you' as path_of_i_read_you %}
+
+
+<!--Start footer section-->
+<div class="footer text-center">
+    <div class="container-fluid">
+      <h1>Site map</h1>
+      <div class="row">
+        <div class="col">
+          <a href="{{path_of_home}}"><i class="fa fa-home fa-3x"></i>
+            <br>Home</a>
+        </div>
+        <div class="col">
+          <a href="{{path_of_poetry}}"><i class="fa fa-leaf fa-3x"></i>
+            <br>Poetry</a>
+        </div>
+        <div class="col">
+          <a href="{{path_of_reflections}}"><i class="fa fa-history fa-3x"></i>
+            <br>Reflections</a>
+        </div>
+        <div class="col">
+          <a href="{{path_of_real_stories}}"><i class="fa fa-eye fa-3x"></i>
+            <br>Real stories</a>
+        </div>
+        <div class="col">
+          <a href="{{path_of_i_read_you}}"><i class="fa fa-book fa-3x"></i>
+            <br>I read you</a>
+        </div>
+        <div class="col">
+          <a href=""><i class="fa fa-user fa-3x"></i>
+            <br>About</a>
+        </div>
+        <div class="col">
+          <a href="#"><i class="fa fa-youtube fa-3x"></i>
+            <br>youtube</a>
+        </div>
+        <div class="col">
+          <a href="#"><i class="fa fa-facebook fa-3x"></i>
+            <br>facebook</a>
+        </div>
+      </div>
+      <hr>
+      <p>copy right &copy; is saved </p>
+    </div>
+  </div>
+  <!--end footer section-->

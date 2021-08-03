@@ -7,7 +7,8 @@ from .views import (dashboard_view,
                     update_post_view,
                     delete_post_view,
                     dashboard_filter_data_view,
-                    dashboard_filter_user_view)
+                    dashboard_filter_user_view,
+                    dashboard_profile_view)
 app_name = "admins"
 urlpatterns = [
    path('dashboard_posts/<post_type>',dashboard_posts_view, name='dashboard_posts'),
@@ -23,6 +24,9 @@ urlpatterns = [
    path('dashboard_filter_data/<post_type>',dashboard_filter_data_view, name='dashboard_filter_data'),
 
    path('dashboard_filter_user/',dashboard_filter_user_view, name='dashboard_filter_user'),
+
+   path('dashboard_profile/<pk>',dashboard_profile_view, name='dashboard_profile'),
+
 
 
 

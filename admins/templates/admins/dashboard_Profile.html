@@ -1,0 +1,38 @@
+{% extends 'dashboardBase.html' %}
+{% load static %}
+{% block style %}
+<style>
+    .profile_img{
+    width:100%;
+    border: 2px solid #333;
+}
+
+.bio{
+    background-color: #444;
+    color: #fff;
+}
+
+</style>
+{% endblock style %}
+
+{% block content %}
+<!--Start about section-->
+<section class="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="profile_img" src="{{object.avatar.url}}" alt="">
+        </div>
+        <div class="col-md-6">
+          <h2 class="h1">{{object.user.first_name}} &ThinSpace; {{object.user.last_name}}</h2>
+          <hr>
+          <p class="bio">
+              {{object.bio}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+   <!--End about section-->
+
+   {% endblock content %}

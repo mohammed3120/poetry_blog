@@ -86,6 +86,13 @@ def dashboard_filter_user_view(request):
     t=render_to_string('admins\dashboard_user_list.html',{'users':users})
     return JsonResponse({'users': t})
 
+#CRUD Post
+def dashboard_profile_view(request, pk):
+    user = User.objects.get(pk = pk)
+    profile = Profile.objects.get(user = user)
+    context = {'object': profile}
+    return render(request, 'admins\dashboard_Profile.html', context)
+
 
 
 

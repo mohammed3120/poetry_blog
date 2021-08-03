@@ -1,3 +1,89 @@
-{% for profile in profiles %}
-{{profile.user.username}}
-{% endfor %}
+{% extends 'dashboardBase.html' %}
+{% load static %}
+
+{% block title %}
+    | users
+{% endblock title %}
+   
+
+{% block style %}
+<style>
+  .row{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .create_post_btn{
+    height: 40px;
+    width: 100%;
+  }
+  .form-inline{
+    height: 40px;
+    width: 100%;
+  }
+  .form-inline .form-control{
+    width: 80%;
+  }
+  .form-inline .btn {
+    width: 20%;
+  }
+</style>
+
+{% endblock style %}
+
+{% block content %}
+
+
+
+<div class="row">
+  <div class="bg-light  col-8">
+    <form class="form-inline">
+      <input class="post_search form-control mr-sm-2"  type="search" data-post_type="{{post_type}}"  name="title" placeholder="Search" aria-label="Search" autocomplete="off">
+    </form>
+  </div>
+  <div class="col-4"><a  href ="" class="btn create_post_btn btn-primary">Create {{post_type}} Post</a>
+  </div>
+</div>
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User name</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>  
+      <th scope="col"></th>
+      <th scope="col"><a href="" class="btn btn-danger">Delete all</a></th>
+    </tr>
+  </thead>
+  
+  <tbody id = "dashboard_user_list">
+    {% for profile in profiles  %}
+    <tr>
+      <th scope="row">{{profile.id}}</th>
+      <td>{{profile.user.username}}</td>
+      <td>{{profile.user.first_name}}</td>
+      <td>{{profile.user.last_name}}</td>
+      <td>{{profile.user.email}}</td>
+      <td><a href="" class="btn btn-info">View</a></td>
+      <td><a href="" class="btn btn-primary">Edit</a></td>
+      <td><a href="" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<hr>
+<button type="button" class="btn btn-primary" id="report-btn" data-bs-toggle="modal" data-bs-target="#reportModal">Add report</button>
+
+{% endblock content %}
+
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/dashboard_filter.js' %}" defer></script>
+
+{% endblock scripts %}

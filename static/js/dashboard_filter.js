@@ -25,6 +25,23 @@ $(document).ready(function(){
         });
     });
 
+    $(".user_search").on("input", function(){
+        var _filterObj={'username':$(".user_search").val()};
+        
+        
+        $.ajax({
+            url:'/dashboard/dashboard_filter_user/',
+            data:_filterObj,
+            dataType:'json',
+            beforeSend:function(){
+                console.log("loding .............")
+            },
+            success:function(res){
+                $("#dashboard_user_list").html(res.users);
+            }
+        });
+    });
+
     
     
         

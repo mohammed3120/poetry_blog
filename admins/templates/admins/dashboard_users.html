@@ -36,15 +36,12 @@
 
 
 
-<div class="row">
-  <div class="bg-light  col-8">
+<div class="bg-light">
     <form class="form-inline">
-      <input class="post_search form-control mr-sm-2"  type="search" data-post_type="{{post_type}}"  name="title" placeholder="Search" aria-label="Search" autocomplete="off">
+      <input class="user_search form-control "  type="search"   name="username" placeholder="Search" aria-label="Search" autocomplete="off">
     </form>
   </div>
-  <div class="col-4"><a  href ="" class="btn create_post_btn btn-primary">Create {{post_type}} Post</a>
-  </div>
-</div>
+  <br>
 
 
 
@@ -57,6 +54,7 @@
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
+      <th scope="col">Is Admin</th>  
       <th scope="col"></th>  
       <th scope="col"></th>
       <th scope="col"><a href="" class="btn btn-danger">Delete all</a></th>
@@ -64,18 +62,7 @@
   </thead>
   
   <tbody id = "dashboard_user_list">
-    {% for profile in profiles  %}
-    <tr>
-      <th scope="row">{{profile.id}}</th>
-      <td>{{profile.user.username}}</td>
-      <td>{{profile.user.first_name}}</td>
-      <td>{{profile.user.last_name}}</td>
-      <td>{{profile.user.email}}</td>
-      <td><a href="" class="btn btn-info">View</a></td>
-      <td><a href="" class="btn btn-primary">Edit</a></td>
-      <td><a href="" class="btn btn-danger">Delete</a></td>
-    </tr>
-    {% endfor %}
+    {% include 'admins/dashboard_user_list.html' %}
   </tbody>
 </table>
 <hr>

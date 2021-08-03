@@ -6,6 +6,7 @@ from django.views.generic import DetailView
 from poetries.forms import PostForm
 from django.urls import reverse
 from django.template.loader import render_to_string
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -22,8 +23,8 @@ def dashboard_posts_view(request,post_type):
 
 
 def dashboard_users_view(request):
-    profiles = Profile.objects.all()
-    context ={'profiles':profiles}
+    users = User.objects.all()
+    context ={'users':users}
     return render(request,'admins\dashboard_users.html', context)
 #CRUD Post
 class PostDetailView(DetailView):
@@ -58,7 +59,6 @@ def update_post_view(request, pk):
 def delete_post_view(self, pk):
     post = Post.objects.get(pk = pk)
     post_type = post.post_type
-    print(post)
     post.delete()
     return HttpResponseRedirect(reverse('dashboard:dashboard_posts',args=(post_type,)))
 
@@ -68,9 +68,7 @@ def delete_post_view(self, pk):
 
 def dashboard_filter_data_view(request,post_type):
     sentiments = request.GET.getlist('sentiment[]')
-    print( "request", request.GET)
     title = request.GET['title']
-    print(title)
     posts = Post.objects.filter(post_type = post_type)
     if len(sentiments)>0:
         posts = posts.filter(sentiment_type__in = sentiments).distinct()
@@ -78,6 +76,16 @@ def dashboard_filter_data_view(request,post_type):
         posts = posts.filter(title__contains=title)
     t=render_to_string('admins\dashboard_post_list.html',{'data':posts})
     return JsonResponse({'data': t})
+
+def dashboard_filter_user_view(request):
+    username = request.GET['username']
+    users = User.objects.all()
+           
+    if username != "":
+        users = users.filter(username__contains = username).distinct()
+    t=render_to_string('admins\dashboard_user_list.html',{'users':users})
+    return JsonResponse({'users': t})
+
 
 
 

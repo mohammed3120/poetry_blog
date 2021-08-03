@@ -1,0 +1,15 @@
+{% load static %}
+
+{% for user in users  %}
+    <tr>
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.username}}</td>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.email}}</td>
+      <td> <img src=" {% if user.is_staff %} {% static 'images/icon-yes.svg' %}{% else %} {% static 'images/icon-no.svg' %} {% endif %}" alt="{{user.is_staff}}"> </td>
+      <td><a href="" class="btn btn-info">View</a></td>
+      <td><a href="" class="btn btn-primary">Edit</a></td>
+      <td><a href="" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}

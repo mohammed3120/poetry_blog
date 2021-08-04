@@ -1,8 +1,9 @@
 {% url 'Poetries:home' as path_of_home %}
 {% url 'Poetries:posts' 'poetry' as path_of_poetry %}
 {% url 'Poetries:posts' 'reflection' as path_of_reflections %}
-{% url 'Poetries:posts' 'real_story' as path_of_real_stories %}
+{% url 'Poetries:posts' 'real_story' as path_of_real_stories %} 
 {% url 'Poetries:posts' 'I_read_you' as path_of_i_read_you %}
+{% url 'Poetries:writer_profile' request.user.id  as path_of_writer_profile %}
 
 
 
@@ -23,7 +24,7 @@
             <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_reflections %}active{% endif %}" href="{{path_of_reflections}}">Reflections</a></li>
             <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_real_stories %}active{% endif %}" href="{{path_of_real_stories}}">Real stories</a></li>
             <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_i_read_you %}active{% endif %}" href="{{path_of_i_read_you}}">I read you</a></li>
-            <li class="item nav-item hvr-wobble-top"> <a class ="nav-link" href="">About</a></li>
+            <li class="item nav-item hvr-wobble-top"> <a class ="nav-link {% if request.path == path_of_writer_profile %}active{% endif %}" href="{{path_of_writer_profile}}">About</a></li>
             {% if request.user.is_authenticated %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

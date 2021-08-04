@@ -123,7 +123,7 @@ def dashboard_update_profile_view(request, pk):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('dashboard:dashboard_profile', args=(profile.id,)))
+            return HttpResponseRedirect(reverse('dashboard:dashboard_profile', args=(profile.user.id,)))
     return render(request, 'admins\dashboard_profile_edit.html', {'form': form})
 
 

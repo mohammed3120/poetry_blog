@@ -12,3 +12,6 @@ class Profile(models.Model):
     def __str__(self):
         return f"Profile of {self.user.username}"
     
+    def get_user_id(self):
+        return self.user.id
+    

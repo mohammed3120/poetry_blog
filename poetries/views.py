@@ -236,6 +236,19 @@ def update_profile_view(request, pk):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('poetries:profile_view', args=(profile.id,)))
+            return HttpResponseRedirect(reverse('poetries:profile_view', args=(profile.user.id,)))
     return render(request, 'poetries\profile_update.html', {'form': form, 'bg': bg, 'theme':theme})
+
+
+def writer_profile_view(request,pk):
+    super_user = User.objects.filter(is_staff = True)[0]
+    super_user_profile = Profile.objects.get(user = super_user)
+    user = User.objects.get(pk = pk)
+    profile = Profile.objects.get(user = user)
+    usercolors = Color.objects.get_or_create(profile = profile)[0]
+    
+    bg = usercolors.bg_color
+    theme = usercolors.theme_color
+    context = {'profile': super_user_profile, 'bg': bg, 'theme':theme}
+    return render(request, 'poetries\writer_profile.html', context)
 

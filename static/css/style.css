@@ -345,6 +345,7 @@ body{
 /*Start about section*/
 .about{
   min-height: 600px;
+  margin-top: 64px;
 }
 .about .writer_img{
   width: 100%;
@@ -360,7 +361,8 @@ body{
   font-size: 18px;
   line-height: 200%;
 }
-/*End about section*/
+/*End about section*/ 
+
 
 
 

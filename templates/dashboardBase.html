@@ -11,6 +11,7 @@
 {% url 'dashboard:dashboard_posts' 'real_story'  as path_of_dashboard_stories %}
 {% url 'dashboard:dashboard_posts' 'I_read_you' as path_of_dashboard_i_read_you %}
 {% url 'dashboard:dashboard_users'  as path_of_dashboard_users %}
+{% url 'dashboard:dashboard_profile' request.user.id as path_of_dashboard_author_profile %}
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
@@ -232,7 +233,7 @@
     <a class="{% if request.path == path_of_dashboard_stories %}active{% endif %}" href="{{path_of_dashboard_stories}}"><i class="fa fa-eye"></i><span>Real stories</span></a>
     <a class="{% if request.path == path_of_dashboard_i_read_you %}active{% endif %}" href="{{path_of_dashboard_i_read_you}}"><i class="fa fa-book"></i><span>I read you</span></a>
     <a class="{% if request.path == path_of_dashboard_users %}active{% endif %}" href="{{path_of_dashboard_users}}"><i class="fa fa-users"></i><span>Users</span></a>
-    <a  href=""><i class="fa fa-user"></i><span>Auther profile</span></a>
+    <a class="{% if request.path == path_of_dashboard_author_profile %}active{% endif %}" href="{{path_of_dashboard_author_profile}}"><i class="fa fa-user"></i><span>Auther profile</span></a>
 
 
   </div>

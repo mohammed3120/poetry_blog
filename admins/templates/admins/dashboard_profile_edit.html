@@ -1,0 +1,25 @@
+{% extends 'dashboardBase.html' %}
+{% load static %}
+
+{% block title %}
+    | Edit  profile
+{% endblock title %}
+   
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/dashboard_form_style.css' %}">
+{% endblock style %}
+
+{% block content %}
+    <form method ="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary text-center">Save</button>
+    </form>
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/myscript.js' %}"></script>
+{% endblock script %}

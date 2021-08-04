@@ -2,11 +2,13 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from poetries.models import Post
 from profiles.models import Profile
+from profiles.forms import ProfileForm
 from django.views.generic import DetailView
 from poetries.forms import PostForm
 from django.urls import reverse
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
+ 
 
 # Create your views here.
 
@@ -23,7 +25,7 @@ def dashboard_posts_view(request,post_type):
 
 
 def dashboard_users_view(request):
-    users = User.objects.all()
+    users = User.objects.filter(is_staff = False)
     context ={'users':users}
     return render(request,'admins\dashboard_users.html', context)
 #CRUD Post
@@ -56,11 +58,20 @@ def update_post_view(request, pk):
             return HttpResponseRedirect(reverse('dashboard:dashboard_posts', args=(post.post_type,)))
     return render(request, 'admins\dashboard_create.html', {'form': form})
 
-def delete_post_view(self, pk):
+def delete_post_view(request, pk):
     post = Post.objects.get(pk = pk)
     post_type = post.post_type
     post.delete()
     return HttpResponseRedirect(reverse('dashboard:dashboard_posts',args=(post_type,)))
+
+def delete_all_posts_view(request, post_type):
+    if request.user.is_staff:
+        posts = Post.objects.filter(post_type = post_type)
+        posts.delete()
+    return HttpResponseRedirect(reverse('dashboard:dashboard_posts',args=(post_type,)))
+
+
+
 
 
 
@@ -92,6 +103,29 @@ def dashboard_profile_view(request, pk):
     profile = Profile.objects.get(user = user)
     context = {'object': profile}
     return render(request, 'admins\dashboard_Profile.html', context)
+
+def delete_user_view(request, pk):
+    user = User.objects.get(pk = pk)
+    user.delete()
+    return HttpResponseRedirect(reverse('dashboard:dashboard_users'))
+
+def delete_all_users_view(request):
+    if request.user.is_staff:
+        users = User.objects.filter(is_staff = False)
+        users.delete()
+    return HttpResponseRedirect(reverse('dashboard:dashboard_users'))
+
+def dashboard_update_profile_view(request, pk):
+    profile = Profile.objects.get(pk = pk)
+    form = ProfileForm(instance = profile)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES , instance = profile )
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('dashboard:dashboard_profile', args=(profile.id,)))
+    return render(request, 'admins\dashboard_profile_edit.html', {'form': form})
+
 
 
 

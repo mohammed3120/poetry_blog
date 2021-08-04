@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{post_type}}
+{% endblock title %}
+{% block style %}
+<style>
+.update_profile{
+    margin-top: 64px;
+    
+}
+    
+
+.update_profile p{
+    color: #fff;
+}
+
+.update_profile p #id_text{
+    width: 95%;
+}
+
+.update_profile .btn
+{
+    width: 100%;
+}
+</style>
+{% endblock style %}
+
+{% block content %}
+    <div class="update_profile text-center">
+        <form method ="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                {{form.as_p}}
+            <button  type="submit" class="btn btn-primary text-center">Save</button>
+        </form>
+    </div>
+    
+{% endblock content %}
+
+

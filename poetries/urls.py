@@ -7,7 +7,9 @@ from .views import (signup_view,
                     likeTogle,
                     add_comment_view,
                     add_reply_view,
-                    change_colors)
+                    change_colors,
+                    profile_view,
+                    update_profile_view)
 app_name = "poetries"
 urlpatterns = [
 
@@ -28,6 +30,10 @@ urlpatterns = [
     path('add-reply/<pk>',add_reply_view, name='add_replyt'),
 
     path('change-color/<theme>',change_colors, name='change_colors'),
+
+    path('profile_view/<pk>',profile_view, name='profile_view'),
+
+    path('update_profile/<pk>',update_profile_view, name='update_profile'),
 
 
 

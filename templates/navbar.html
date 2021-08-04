@@ -25,7 +25,15 @@
             <li class="item nav-item hvr-wobble-top"> <a class="nav-link {% if request.path == path_of_i_read_you %}active{% endif %}" href="{{path_of_i_read_you}}">I read you</a></li>
             <li class="item nav-item hvr-wobble-top"> <a class ="nav-link" href="">About</a></li>
             {% if request.user.is_authenticated %}
-            <li class="item nav-item hvr-wobble-top"> <a class ="nav-link" href="{% url 'poetries:logout' %}">Log out</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{request.user.username}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item hvr-wobble-top" href="{% url 'poetries:profile_view' request.user.id %}">Profile</a>
+                <a class ="dropdown-item hvr-wobble-top" href="{% url 'poetries:logout' %}">Log out</a>
+              </div>
+            </li>
             {% endif %}
       </ul>
   </div>

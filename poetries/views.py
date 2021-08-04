@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Post,Comment,Like,Reply,Sentiment,Color
 from profiles.models import Profile
+from profiles.forms import ProfileForm
 from django.db.models import Count
 from django.template.loader import render_to_string
 from django.http import JsonResponse
@@ -10,6 +11,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+
 
 # Create your views here.
 def signup_view(request):
@@ -207,3 +211,31 @@ def change_colors(request,theme):
     
     return JsonResponse({})
     # profile = Profile.objects.get(user = request.user)
+
+#CRUD Post
+def profile_view(request, pk):
+    user = User.objects.get(pk = pk)
+    profile = Profile.objects.get(user = user)
+    usercolors = Color.objects.get_or_create(profile = profile)[0]
+    
+    bg = usercolors.bg_color
+    theme = usercolors.theme_color
+    context = {'profile': profile, 'bg': bg, 'theme':theme}
+    return render(request, 'poetries\profile.html', context)
+
+
+def update_profile_view(request, pk):
+    profile = Profile.objects.get(pk = pk)
+    usercolors = Color.objects.get_or_create(profile = profile)[0]
+    
+    bg = usercolors.bg_color
+    theme = usercolors.theme_color
+    form = ProfileForm(instance = profile)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST,request.FILES , instance = profile )
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('poetries:profile_view', args=(profile.id,)))
+    return render(request, 'poetries\profile_update.html', {'form': form, 'bg': bg, 'theme':theme})
+

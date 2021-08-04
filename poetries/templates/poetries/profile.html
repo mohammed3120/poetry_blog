@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{profile.user.username}}
+{% endblock title %}
+{% block style %}
+<style>
+ 
+
+
+</style>
+{% endblock style %}
+
+{% block content %}
+<!--Start about section-->
+<section class="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="writer_img" src="{{profile.avatar.url}}" alt="">
+        </div>
+        <div class="col-md-6">
+          <h2 class="h1">
+              {{profile.user.first_name}} &ThinSpace; {{profile.user.last_name}}
+            </h2>
+            <hr>
+          <p class="description">{{profile.bio}}</p>
+          
+        </div>
+            <a href="{% url 'poetries:update_profile' profile.id %}" class="btn btn-primary" style="width: 100%;">Edit</a>
+      </div>
+    </div>
+  </section>
+  
+   <!--End about section-->
+
+   {% endblock content %}
+
+

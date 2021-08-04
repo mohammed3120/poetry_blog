@@ -11,6 +11,9 @@
     background-color: #444;
     color: #fff;
 }
+.btn{
+  width: 100%;
+}
 
 </style>
 {% endblock style %}
@@ -31,6 +34,9 @@
           </p>
         </div>
       </div>
+      {% if object.user.is_staff %}
+      <a href="{% url 'dashboard:dashboard_update_profile' object.id %}" class="btn btn-primary">Edit</a>
+      {% endif %}
     </div>
   </section>
    <!--End about section-->

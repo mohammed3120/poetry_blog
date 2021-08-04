@@ -65,7 +65,7 @@
       <th scope="col">Comments number</th>
       <th scope="col"></th>  
       <th scope="col"></th>
-      <th scope="col"><a href="" class="btn btn-danger">Delete all</a></th>
+      <th scope="col"><a href="{% url 'dashboard:delete_all_posts' post_type %}" class="btn btn-danger">Delete all</a></th>
     </tr>
   </thead>
   
@@ -85,7 +85,6 @@
   </tbody>
 </table>
 <hr>
-<button type="button" class="btn btn-primary" id="report-btn" data-bs-toggle="modal" data-bs-target="#reportModal">Add report</button>
 
 {% endblock content %}
 

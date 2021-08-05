@@ -17,8 +17,6 @@ $(document).ready(function(){
             },
             success:function(res){
                 $('#post_list').html(res.data);
-                location.reload();
-                console.log("Loaded");
 
             }
         });      

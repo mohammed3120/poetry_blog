@@ -1,5 +1,15 @@
 {% for post in data  %}
           <div class="col-12 viewed_post">
+            {% if request.user.is_staff %}
+                <div id="divaa1">
+                  <p>.</p>
+                  <p>.</p>
+                  <p>.</p>
+                  <a class="editPost" href="" id="editPost{{post.id}}" >Edit</a>
+                  <a class="deletePost" href="" id="deletePost{{post.id}}" >Delete</a>
+                </div>          
+            {% endif %}
+     
             <h2 class="post_title">{{post.title}}</h2> <span class="post_created_date">{{post.created}}</span> 
             
             <p class="post_body">

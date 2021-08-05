@@ -3,6 +3,7 @@
 {% url 'Poetries:posts' 'reflection' as path_of_reflections %}
 {% url 'Poetries:posts' 'real_story' as path_of_real_stories %}
 {% url 'Poetries:posts' 'I_read_you' as path_of_i_read_you %}
+{% url 'Poetries:writer_profile' request.user.id  as path_of_writer_profile %}
 
 
 <!--Start footer section-->
@@ -31,7 +32,7 @@
             <br>I read you</a>
         </div>
         <div class="col">
-          <a href=""><i class="fa fa-user fa-3x"></i>
+          <a href="{{path_of_writer_profile}}"><i class="fa fa-user fa-3x"></i>
             <br>About</a>
         </div>
         <div class="col">

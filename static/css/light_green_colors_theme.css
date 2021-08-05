@@ -18,7 +18,12 @@
   .carousel-indicators .active {
     background-color: #24e45f
   }
-
+  .content .viewed_post #divaa1:hover > .editPost{
+    border:2.5px solid #24e45f;
+  }
+  .content .viewed_post #divaa1:hover > .deletePost{
+    border:2.5px solid #24e45f;
+  }
   .content .viewed_post .post_body{
     border: 3px solid #24e45f;
   }

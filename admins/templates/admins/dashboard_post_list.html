@@ -7,6 +7,6 @@
       <td>{{post.get_comments.count}}</td>
       <td><a href="{% url 'dashboard:dashboard_post'  post.id %}" class="btn btn-info">View</a></td>
       <td><a href="{% url 'dashboard:update_post'  post.id %}" class="btn btn-primary">Edit</a></td>
-      <td><a href="" class="btn btn-danger">Delete</a></td>
+      <td><a href="{% url 'dashboard:delete_post'  post.id %}" class="btn btn-danger">Delete</a></td>
     </tr>
     {% endfor %}

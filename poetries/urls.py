@@ -10,7 +10,9 @@ from .views import (signup_view,
                     change_colors,
                     profile_view,
                     update_profile_view,
-                    writer_profile_view)
+                    writer_profile_view,
+                    update_post_view,
+                    delete_post_view)
 app_name = "poetries"
 urlpatterns = [
 
@@ -37,6 +39,12 @@ urlpatterns = [
     path('update_profile/<pk>',update_profile_view, name='update_profile'),
 
     path('writer_profile/<pk>',writer_profile_view, name='writer_profile'),
+
+    path('update_post/<pk>',update_post_view, name='update_post'),
+
+   path('delete_post/<pk>',delete_post_view, name='delete_post'),
+
+
 
 
 

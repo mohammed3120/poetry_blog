@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Post,Comment,Like,Reply,Sentiment,Color
+from .forms import PostForm,CommentForm
 from profiles.models import Profile
 from profiles.forms import ProfileForm
 from django.db.models import Count
@@ -251,4 +252,28 @@ def writer_profile_view(request,pk):
     theme = usercolors.theme_color
     context = {'profile': super_user_profile, 'bg': bg, 'theme':theme}
     return render(request, 'poetries\writer_profile.html', context)
+
+
+def update_post_view(request, pk):
+    profile = Profile.objects.get(user = request.user)
+    usercolors = Color.objects.get_or_create(profile = profile)[0]
+    
+    bg = usercolors.bg_color
+    theme = usercolors.theme_color
+    post = Post.objects.get(pk = pk)
+    form = PostForm(instance = post)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance = post)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('poetries:posts', args=(post.post_type,)))
+    return render(request, 'poetries\edit_post.html', {'form': form,'bg':bg, 'theme':theme, 'post_type':post.post_type})
+
+
+def delete_post_view(request, pk):
+    post = Post.objects.get(pk = pk)
+    post_type = post.post_type
+    post.delete()
+    return HttpResponseRedirect(reverse('poetries:posts',args=(post_type,)))
 

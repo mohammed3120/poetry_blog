@@ -277,3 +277,19 @@ def delete_post_view(request, pk):
     post.delete()
     return HttpResponseRedirect(reverse('poetries:posts',args=(post_type,)))
 
+def update_comment_view(request, pk):
+    profile = Profile.objects.get(user = request.user)
+    usercolors = Color.objects.get_or_create(profile = profile)[0]
+    
+    bg = usercolors.bg_color
+    theme = usercolors.theme_color
+    comment = Comment.objects.get(pk = pk)
+    form = CommentForm(instance = comment)
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance = comment)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('poetries:posts', args=(comment.post.post_type,)))
+    return render(request, 'poetries\edit_comment.html', {'form': form,'bg':bg, 'theme':theme, 'post_type':comment.post.post_type})
+

@@ -17,10 +17,16 @@
   .carousel-indicators .active {
     background-color: #000000
   }
-  .content .viewed_post #divaa1:hover > .editPost{
+  .content .viewed_post .divaa1:hover > .editPost{
     border:2.5px solid #000000;
   }
-  .content .viewed_post #divaa1:hover > .deletePost{
+  .content .viewed_post .divaa1:hover > .deletePost{
+    border:2.5px solid #000000;
+  }
+  .content .viewed_post .commentdivaa1:hover > .editComment{
+    border:2.5px solid #000000;
+  }
+  .content .viewed_post .commentdivaa1:hover > .deleteComment{
     border:2.5px solid #000000;
   }
   .content .viewed_post .post_body{

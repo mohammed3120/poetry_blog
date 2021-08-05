@@ -9,11 +9,17 @@
   .content .viewed_post {
     background-color:#333;
   }   
-  .content .viewed_post #divaa1:hover > .editPost{
+  .content .viewed_post .divaa1:hover > .editPost{
     background:#333;
   }
-  .content .viewed_post #divaa1:hover > .deletePost{
+  .content .viewed_post .divaa1:hover > .deletePost{
     background:#333;
+  }
+  .content .viewed_post .commentdivaa1:hover > .editComment{
+    background-color: #333;
+  }
+  .content .viewed_post .commentdivaa1:hover > .deleteComment{
+    background-color: #333;
   }
   .content .viewed_post .accordion_comment .comment{
     background-color: #333

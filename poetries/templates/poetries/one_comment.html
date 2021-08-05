@@ -4,6 +4,13 @@
           <div class="comment">
             <span class="user_name">{{comment.profile.user.username}} </span>:
             <p class="comment_body">{{comment.body}}</p>
+            <div class="commentdivaa1">
+              <p>.</p>
+              <p>.</p>
+              <p>.</p>
+              <a class="editComment" href="{% url 'poetries:update_comment'  comment.id %}" id="editComment{{post.id}}" >Edit</a>
+              <a class="deleteComment"  id="deleteComment{{comment.id}}" >Delete</a>
+            </div>
           </div>
           
         <div class="comment_replies">

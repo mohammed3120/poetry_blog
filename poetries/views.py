@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Post,Comment,Like,Reply,Sentiment,Color
-from .forms import PostForm,CommentForm
+from .forms import PostForm,CommentForm,ReplyForm
 from profiles.models import Profile
 from profiles.forms import ProfileForm
 from django.db.models import Count
@@ -105,7 +105,13 @@ def posts_view(request,post_type):
     print(theme)
 
     sentiments = {'happy':sentimentss.happy, 'sad':sentimentss.sad, 'normal':sentimentss.normal, 'action':sentimentss.action, 'romance':sentimentss.romance}
-    context ={'data':posts, 'sentiments':sentiments, 'post_type': post_type,'userFilter':sentimentss, 'bg':bg, 'theme':theme}
+
+    context ={'data':posts,
+              'sentiments':sentiments, 
+              'post_type': post_type,
+              'userFilter':sentimentss, 
+              'bg':bg, 
+              'theme':theme}
     return render(request, 'poetries\posts.html',context)
 
 
@@ -255,6 +261,7 @@ def writer_profile_view(request,pk):
 
 
 def update_post_view(request, pk):
+    prevPath = request.META.get('HTTP_REFERER')
     profile = Profile.objects.get(user = request.user)
     usercolors = Color.objects.get_or_create(profile = profile)[0]
     
@@ -264,20 +271,23 @@ def update_post_view(request, pk):
     form = PostForm(instance = post)
     if request.method == 'POST':
         form = PostForm(request.POST, instance = post)
+        prev = request.POST['prevPath']
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('poetries:posts', args=(post.post_type,)))
-    return render(request, 'poetries\edit_post.html', {'form': form,'bg':bg, 'theme':theme, 'post_type':post.post_type})
+            return HttpResponseRedirect(prev)
+    return render(request, 'poetries\edit_post.html', {'form': form,'bg':bg, 'theme':theme,'prevPath':prevPath})
 
 
 def delete_post_view(request, pk):
+    prevPath = request.META.get('HTTP_REFERER')
     post = Post.objects.get(pk = pk)
     post_type = post.post_type
     post.delete()
-    return HttpResponseRedirect(reverse('poetries:posts',args=(post_type,)))
+    return HttpResponseRedirect(prevPath)
 
 def update_comment_view(request, pk):
+    prevPath = request.META.get('HTTP_REFERER')
     profile = Profile.objects.get(user = request.user)
     usercolors = Color.objects.get_or_create(profile = profile)[0]
     
@@ -287,9 +297,42 @@ def update_comment_view(request, pk):
     form = CommentForm(instance = comment)
     if request.method == 'POST':
         form = CommentForm(request.POST, instance = comment)
+        prev = request.POST['prevPath']
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('poetries:posts', args=(comment.post.post_type,)))
-    return render(request, 'poetries\edit_comment.html', {'form': form,'bg':bg, 'theme':theme, 'post_type':comment.post.post_type})
+            return HttpResponseRedirect(prev)
+    return render(request, 'poetries\edit_comment.html', {'form': form,'bg':bg, 'theme':theme,'prevPath':prevPath})
+
+def delete_comment_view(request, pk):
+    prevPath = request.META.get('HTTP_REFERER')
+    comment = Comment.objects.get(pk = pk)
+    post_type = comment.post.post_type
+    comment.delete()
+    return HttpResponseRedirect(prevPath)
+
+def update_reply_view(request, pk):
+    prevPath = request.META.get('HTTP_REFERER')
+    profile = Profile.objects.get(user = request.user)
+    usercolors = Color.objects.get_or_create(profile = profile)[0]
+    
+    bg = usercolors.bg_color
+    theme = usercolors.theme_color
+    reply = Reply.objects.get(pk = pk)
+    form = ReplyForm(instance = reply)
+    if request.method == 'POST':
+        form = ReplyForm(request.POST, instance = reply)
+        prev = request.POST['prevPath']
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(prev)
+    return render(request, 'poetries\edit_comment.html', {'form': form,'bg':bg, 'theme':theme, 'prevPath':prevPath})
+
+def delete_reply_view(request, pk):
+    prevPath = request.META.get('HTTP_REFERER')
+    reply = Reply.objects.get(pk = pk)
+    post_type = reply.comment.post.post_type
+    reply.delete()
+    return HttpResponseRedirect(prevPath)
 

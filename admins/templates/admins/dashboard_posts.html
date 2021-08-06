@@ -60,6 +60,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Title</th>
+      <th scope="col">Sentiment</th>  
       <th scope="col">Created date</th>
       <th scope="col">Likes number</th>
       <th scope="col">Comments number</th>
@@ -70,18 +71,7 @@
   </thead>
   
   <tbody id = "dashboard_post_list">
-    {% for post in posts  %}
-    <tr>
-      <th scope="row">{{post.id}}</th>
-      <td>{{post.title}}</td>
-      <td>{{post.created}}</td>
-      <td>{{post.get_likes.count}}</td>
-      <td>{{post.get_comments.count}}</td>
-      <td><a href="{% url 'dashboard:dashboard_post'  post.id %}" class="btn btn-info">View</a></td>
-      <td><a href="{% url 'dashboard:update_post'  post.id %}" class="btn btn-primary">Edit</a></td>
-      <td><a href="{% url 'dashboard:delete_post'  post.id %}" class="btn btn-danger">Delete</a></td>
-    </tr>
-    {% endfor %}
+    {% include 'admins/dashboard_post_list.html' %}
   </tbody>
 </table>
 <hr>

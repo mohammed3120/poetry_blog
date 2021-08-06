@@ -12,6 +12,36 @@
 
 {% block content %}
 <div class="col-12 viewed_post">
+  {% if request.user.is_staff %}
+    <!-- Modal -->
+      <div class="modal fade" id="postModal{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="postModalLabel{{post.id}}" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="postModalLabel{{post.id}}">Delete Post</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure to delete {{post.title }} post?
+            </div>
+            <div class="modal-footer">
+              <a type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+              <a type="button" class="btn btn-danger" href="{% url 'poetries:delete_post' post.id %}">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="divaa1">
+        <p>.</p>
+        <p>.</p>
+        <p>.</p>
+        <a class="editPost" href="{% url 'poetries:update_post'  post.id %}" id="editPost{{post.id}}" >Edit</a>
+        <a class="deletePost" data-toggle="modal" data-target="#postModal{{post.id}}" id="deletePost{{post.id}}" >Delete</a>
+      </div>          
+  {% endif %}
+
   <h2 class="post_title">{{post.title}}</h2> <span class="post_created_date">{{post.created}}</span> 
   
   <p class="post_body">
@@ -40,7 +70,7 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
 {% endblock content %}
 
 {% block script %}

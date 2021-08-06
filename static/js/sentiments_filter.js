@@ -107,8 +107,10 @@ $(document).ready(function(){
         var comment_id = fullId.split('_')[3];
         var reply_action = $('#post_'+post_id+'_comment_'+comment_id);
         var acco_reply = $('#post_'+post_id+'_comment_'+comment_id+'_acco_reply');
-        console.log(acco_reply);
-        console.log(reply_action.val());
+        var replies_number_id = $('#post_'+post_id+'_comment_'+comment_id+'_replies_number');
+        var replies_number = replies_number_id.text().split('')[0];
+        var _replies_number = parseInt(replies_number);
+        
         
         var _obj ={'reply':reply_action.val(),'csrfmiddlewaretoken':'{{ csrf_token }}'};
         $.ajax({
@@ -119,9 +121,10 @@ $(document).ready(function(){
                 console.log("loding .............")
             },
             success:function(res){
-                console.log("ccccccccccccccccccccc");
                 
                 acco_reply.append(res.reply);
+                _replies_number = _replies_number + 1;
+                replies_number_id.text(_replies_number + "\treplies  reply");
                 reply_action.val("");
                 
             }

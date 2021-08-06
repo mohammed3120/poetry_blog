@@ -19,7 +19,7 @@ def dashboard_view(request):
 def dashboard_posts_view(request,post_type):
     posts = Post.objects.filter(post_type = post_type)
     sentiments = ['happy', 'sad', 'normal', 'action', 'romance']
-    context ={'posts':posts, 'sentiments':sentiments, 'post_type': post_type}
+    context ={'data':posts, 'sentiments':sentiments, 'post_type': post_type}
     return render(request, 'admins\dashboard_posts.html',context)
 
 

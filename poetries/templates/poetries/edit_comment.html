@@ -594,9 +594,10 @@ input.checkbox:checked:after {
 				<form  method="post">
                     {% csrf_token %}
                     {{form.body}}
+                    <input style="display: none;" name="prevPath" value="{{prevPath}}">
                     <ul>
                         <li style="display: inline-block; width: 49%;"><input type="submit" value="Save"></li>
-                        <li style="display: inline-block; width: 49%;"><a type="button" class="btn btn-secondary cancel" href="{% url 'poetries:posts' post_type %}" >Cancel</a></li>
+                        <li style="display: inline-block; width: 49%;"><a type="button" class="btn btn-secondary cancel" href="{{prevPath}}" >Cancel</a></li>
                     </ul>
 					
                     

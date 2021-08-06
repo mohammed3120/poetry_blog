@@ -555,6 +555,7 @@ input.checkbox:checked:after {
   input[type="submit"], .cancel {
     margin: 1.5em 0;
     font-size: .85em;
+    padding: 10px;
   }
   
 
@@ -592,9 +593,7 @@ input.checkbox:checked:after {
 			<div class="agileits-top">
 				<form  method="post">
                     {% csrf_token %}
-                    {{form.title}}
-                    {{form.text}}
-                    {{form.sentiment_type}}
+                    {{form.body}}
                     <input style="display: none;" name="prevPath" value="{{prevPath}}">
                     <ul>
                         <li style="display: inline-block; width: 49%;"><input type="submit" value="Save"></li>
@@ -609,12 +608,9 @@ input.checkbox:checked:after {
 	<!-- //main -->
     <script>
         var form_fields = document.getElementsByTagName('input');
-        form_fields[1].placeholder ="Title";
-        form_fields[2].placeholder ="Post body";
-        
-        for(var field in form_fields){
-            form_fields[field].className ='form-control';
-        }
+        form_fields[1].placeholder ="Reply body";
+        form_fields[1].className ='form-control';
+    
     </script>
 </body>
 </html>

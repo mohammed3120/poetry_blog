@@ -23,10 +23,10 @@
   .content .viewed_post .divaa1:hover > .deletePost{
     border:2.5px solid #aaaa24;
   }
-  .content .viewed_post .commentdivaa1:hover > .editComment{
+  .content .viewed_post .commentdivaa1:hover > .editComment, .content .viewed_post .replytdivaa1:hover > .editReply{
     border:2.5px solid #aaaa24;
   }
-  .content .viewed_post .commentdivaa1:hover > .deleteComment{
+  .content .viewed_post .commentdivaa1:hover > .deleteComment, .content .viewed_post .replytdivaa1:hover > .deleteReply{
     border:2.5px solid #aaaa24;
   }
   .content .viewed_post .post_body{

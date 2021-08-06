@@ -15,10 +15,10 @@
   .content .viewed_post .divaa1:hover > .deletePost{
     background:#333;
   }
-  .content .viewed_post .commentdivaa1:hover > .editComment{
+  .content .viewed_post .commentdivaa1:hover > .editComment, .content .viewed_post .replytdivaa1:hover > .editReply{
     background-color: #333;
   }
-  .content .viewed_post .commentdivaa1:hover > .deleteComment{
+  .content .viewed_post .commentdivaa1:hover > .deleteComment, .content .viewed_post .replytdivaa1:hover > .deleteReply{
     background-color: #333;
   }
   .content .viewed_post .accordion_comment .comment{

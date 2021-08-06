@@ -13,7 +13,10 @@ from .views import (signup_view,
                     writer_profile_view,
                     update_post_view,
                     delete_post_view,
-                    update_comment_view)
+                    update_comment_view,
+                    delete_comment_view,
+                    update_reply_view,
+                    delete_reply_view)
 app_name = "poetries"
 urlpatterns = [
 
@@ -46,6 +49,15 @@ urlpatterns = [
    path('delete_post/<pk>',delete_post_view, name='delete_post'),
 
     path('update_comment/<pk>',update_comment_view, name='update_comment'),
+
+   path('delete_comment/<pk>',delete_comment_view, name='delete_comment'),
+
+    path('update_reply/<pk>',update_reply_view, name='update_reply'),
+
+   path('delete_reply/<pk>',delete_reply_view, name='delete_reply'),
+
+
+
 
 
 

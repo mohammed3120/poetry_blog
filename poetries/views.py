@@ -117,7 +117,6 @@ def posts_view(request,post_type):
 
 
 @login_required(login_url='poetries:login')
-@csrf_exempt
 def filter_data(request,post_type):
     sentiments = request.GET.getlist('sentiment[]')
     profile = Profile.objects.get(user = request.user)
@@ -149,7 +148,6 @@ def filter_data(request,post_type):
     t=render_to_string('poetries\post_list.html',{'data':posts})
     return JsonResponse({'data': t})
 
-@csrf_exempt
 def likeTogle(request,pk):
     print("pk",pk)
     liked = request.GET['liked']
@@ -176,7 +174,6 @@ def likeTogle(request,pk):
 
 
 #CRUD Comment
-@csrf_exempt
 def add_comment_view(request, pk):
     post = Post.objects.get(pk = pk)
     profile = Profile.objects.get(user=request.user)
@@ -190,7 +187,6 @@ def add_comment_view(request, pk):
         return JsonResponse({})
 
 #CRUD Reply
-@csrf_exempt
 def add_reply_view(request, pk):
     comment = Comment.objects.get(pk = pk)
     profile = Profile.objects.get(user=request.user)

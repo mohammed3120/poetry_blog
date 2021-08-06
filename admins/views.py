@@ -29,10 +29,6 @@ def dashboard_users_view(request):
     context ={'users':users}
     return render(request,'admins\dashboard_users.html', context)
 #CRUD Post
-class PostDetailView(DetailView):
-    model = Post
-    template_name = "admins\dashboard_Post.html"
-
 def create_post_view(request, post_type):
     form = PostForm(request.POST or None)
     if request.method == 'POST':

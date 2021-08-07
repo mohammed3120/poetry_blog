@@ -31,7 +31,16 @@
     <div class="update_profile text-center">
         <form method ="post" enctype="multipart/form-data">
             {% csrf_token %}
-                {{form.as_p}}
+            <label for="username">Username:</label>
+            <input type="text" name="username" maxlength="150" placeholder="username" value="{{user.username}}"><br>
+            <label for="first_name">First name:</label>
+            <input type="text" name="first_name" maxlength="150" placeholder="first_name" value="{{user.first_name}}"><br>
+            <label for="last_name">Last name:</label>
+            <input type="text" name="last_name" maxlength="150" placeholder="last_name" value="{{user.last_name}}"><br>
+            {{form.bio.label}}
+            {{form.bio}}<br>
+            {{form.avatar.label}}
+            {{form.avatar}}<br>
             <button  type="submit" class="btn btn-primary text-center">Save</button>
         </form>
     </div>

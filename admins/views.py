@@ -113,14 +113,22 @@ def delete_all_users_view(request):
 
 def dashboard_update_profile_view(request, pk):
     profile = Profile.objects.get(pk = pk)
+    user = User.objects.get(profile = profile)
     form = ProfileForm(instance = profile)
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES , instance = profile )
+        username = request.POST['username']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
         # check whether it's valid:
         if form.is_valid():
+            user.username = username
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
             form.save()
             return HttpResponseRedirect(reverse('dashboard:dashboard_profile', args=(profile.user.id,)))
-    return render(request, 'admins\dashboard_profile_edit.html', {'form': form})
+    return render(request, 'admins\dashboard_profile_edit.html', {'form': form,'user':user})
 
 
 

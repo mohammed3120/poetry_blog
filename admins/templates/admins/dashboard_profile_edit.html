@@ -13,7 +13,11 @@
 {% block content %}
     <form method ="post" enctype="multipart/form-data">
     {% csrf_token %}
-        {{form.as_p}}
+        <input type="text" name="username" maxlength="150" placeholder="username" value="{{user.username}}"><br>
+        <input type="text" name="first_name" maxlength="150" placeholder="first_name" value="{{user.first_name}}"><br>
+        <input type="text" name="last_name" maxlength="150" placeholder="last_name" value="{{user.last_name}}"><br>
+        {{form.bio}}<br>
+        {{form.avatar}}<br>
         <button type="submit" class="btn btn-primary text-center">Save</button>
     </form>
 {% endblock content %}

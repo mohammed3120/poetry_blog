@@ -64,7 +64,7 @@ $(document).ready(function(){
         });
     });
 
-    $(".comment-form").on('submit', function(event){comments_number
+    $(".comment-form").on('submit', function(event){
         event.preventDefault();
         var post_id = $(this).attr('id').split('_')[1];
         var commet_action = $('#comment'+post_id);
@@ -92,12 +92,10 @@ $(document).ready(function(){
                 _comments_number = _comments_number + 1;
                 comments_number_id.text(_comments_number + "\tcomments");
                 commet_action.val("");
+                acco_comment.load('#acco-comment'+post_id);
                 
             }
-        });
-        
-
-        
+        });    
     });
 
     $(".reply-form").on('submit', function(event){
@@ -111,7 +109,7 @@ $(document).ready(function(){
         var replies_number = replies_number_id.text().split('')[0];
         var _replies_number = parseInt(replies_number);
         
-        
+
         var _obj ={'reply':reply_action.val(),'csrfmiddlewaretoken':'{{ csrf_token }}'};
         $.ajax({
             url:'/add-reply/'+comment_id,
@@ -128,9 +126,7 @@ $(document).ready(function(){
                 reply_action.val("");
                 
             }
-        });
-        
-
+        });      
         
     });
 

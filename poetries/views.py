@@ -229,6 +229,7 @@ def profile_view(request, pk):
 
 def update_profile_view(request, pk):
     profile = Profile.objects.get(pk = pk)
+    user = User.objects.get(profile = profile)
     usercolors = Color.objects.get_or_create(profile = profile)[0]
     
     bg = usercolors.bg_color
@@ -236,8 +237,15 @@ def update_profile_view(request, pk):
     form = ProfileForm(instance = profile)
     if request.method == 'POST':
         form = ProfileForm(request.POST,request.FILES , instance = profile )
+        username = request.POST['username']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
         # check whether it's valid:
         if form.is_valid():
+            user.username = username
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
             form.save()
             return HttpResponseRedirect(reverse('poetries:profile_view', args=(profile.user.id,)))
     return render(request, 'poetries\profile_update.html', {'form': form, 'bg': bg, 'theme':theme})

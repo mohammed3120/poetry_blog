@@ -41,7 +41,10 @@ def login_view(request):
             user = authenticate(request, username = username, password = password)
             if user is not None:
                 login(request,user)
-                return redirect('poetries:home')
+                if user.is_staff:
+                    return redirect(reverse('dashboard:dashboard_posts',  args=('poetry',)))
+                else:
+                    return redirect('poetries:home')
             else:
                 # messages.info(request,'User name or password is incorect !!')
                 print(user)
@@ -52,12 +55,21 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('poetries:login')
+
 @login_required(login_url='poetries:login')
 def home(request):
-    maxLikesPosts = Post.objects.annotate(like_count=Count('like')).order_by('-like_count')   
-    maxLikesPost = maxLikesPosts[0]
-    latestPosts = Post.objects.order_by('-created')[:4]
-    posts_count = maxLikesPosts.count()
+    maxLikesPosts = Post.objects.annotate(like_count=Count('like')).order_by('-like_count')  
+    if  maxLikesPosts.count() > 0:
+        maxLikesPost = maxLikesPosts[0]
+    else:
+        maxLikesPost = None
+    posts_count = Post.objects.all().count()
+    if posts_count ==0:
+        latestPosts = Post.objects.all()
+    elif posts_count >= 4:
+        latestPosts = Post.objects.order_by('-created')[:4]
+    else:
+        latestPosts = Post.objects.order_by('-created')[:posts_count]
     commnets_count = Comment.objects.count()
     likes_count = Like.objects.count()
     profiles_count = Profile.objects.count()
@@ -67,8 +79,6 @@ def home(request):
     
     bg = usercolors.bg_color
     theme = usercolors.theme_color
-    print(bg)
-    print(theme)
     #context
     context ={'maxLikesPosts':maxLikesPosts[:4], 'maxLikesPost':maxLikesPost, 'data':latestPosts,
     'posts_count':posts_count, 'commnets_count':commnets_count,

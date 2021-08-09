@@ -1,5 +1,5 @@
+{% load i18n %}
 <!--Start comment list and replies-->
-
 <div id ='acco-comment{{post.id}}'>
   {% for comment in post.get_comments %}
   <div class="panel-group accordion_comment" id="accordion-comment" roles="tablist" aria-multiselectable="true">
@@ -14,9 +14,9 @@
               <p>.</p>
               <p>.</p>
               {% if request.user.username == comment.profile.user.username %}
-              <a class="editComment" href="{% url 'poetries:update_comment'  comment.id %}" id="editComment{{post.id}}" >Edit</a>
+              <a class="editComment" href="{% url 'poetries:update_comment'  comment.id %}" id="editComment{{post.id}}" >{% trans "Edit" %}</a>
               {% endif %}              
-              <a class="deleteComment" href="{% url 'poetries:delete_comment'  comment.id %}"  id="deleteComment{{comment.id}}" >Delete</a>
+              <a class="deleteComment" href="{% url 'poetries:delete_comment'  comment.id %}"  id="deleteComment{{comment.id}}" >{% trans "Delete" %}</a>
             </div>
             {% endif %}
           </div>
@@ -28,7 +28,7 @@
               <div class="panel-heading panel-heading-reply" roles="tab" id="post-{{post.id}}-comment-{{comment.id}}-replies">
                 
                 <h4 class="panel-title">
-                  <a class="collapsed" data-toggle="collapse" data-parent="#accordion-{{post.id}}-comment-{{comment.id}}-replies" href="#collapse-{{post.id}}-replies-{{comment.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><span id="post_{{post.id}}_comment_{{comment.id}}_replies_number" class="comment_replies_number">{{comment.get_replies.count}}&nbsp;replies &nbsp;<i class="reply_action fa fa-reply">reply</i></span>
+                  <a class="collapsed" data-toggle="collapse" data-parent="#accordion-{{post.id}}-comment-{{comment.id}}-replies" href="#collapse-{{post.id}}-replies-{{comment.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><span id="post_{{post.id}}_comment_{{comment.id}}_replies_number" class="comment_replies_number">{{comment.get_replies.count}}&nbsp;{% trans "replies" %} &nbsp;<i class="reply_action fa fa-reply">{% trans "reply" %}</i></span>
                   </a>
                 </h4>
               </div>
@@ -45,9 +45,9 @@
                           <p>.</p>
                           <p>.</p>
                           {% if request.user.username == reply.profile.user.username %}
-                          <a class="editReply" href="{% url 'poetries:update_reply'  reply.id %}" id="editReply{{reply.id}}" >Edit</a>
+                          <a class="editReply" href="{% url 'poetries:update_reply'  reply.id %}" id="editReply{{reply.id}}" >{% trans "Edit" %}</a>
                           {% endif %}
-                          <a class="deleteReply" href="{% url 'poetries:delete_reply'  reply.id %}"  id="deleteReply{{reply.id}}" >Delete</a>
+                          <a class="deleteReply" href="{% url 'poetries:delete_reply'  reply.id %}"  id="deleteReply{{reply.id}}" >{% trans "Delete" %}</a>
                         </div>
                       {% endif %}
                   </div>  
@@ -66,9 +66,9 @@
                         <p>.</p>
                         <p>.</p>
                         {% if request.user.username == reply.profile.user.username %}
-                        <a class="editReply" href="{% url 'poetries:update_reply'  reply.id %}" id="editReply{{reply.id}}" >Edit</a>
+                        <a class="editReply" href="{% url 'poetries:update_reply'  reply.id %}" id="editReply{{reply.id}}" >{% trans "Edit" %}</a>
                         {% endif %}
-                        <a class="deleteReply" href="{% url 'poetries:delete_reply'  reply.id %}"  id="deleteReply{{reply.id}}" >Delete</a>
+                        <a class="deleteReply" href="{% url 'poetries:delete_reply'  reply.id %}"  id="deleteReply{{reply.id}}" >{% trans "Delete" %}</a>
                       </div>
                     {% endif %}
                   </div>
@@ -80,7 +80,7 @@
                   <!--start reply form-->
                   <form  method="POST" class="form-inline reply-form" id="p_{{post.id}}_c_{{comment.id}}">
                     {% csrf_token %}
-                    <input id ="post_{{post.id}}_comment_{{comment.id}}" class="form-control" type="text" name="reply" placeholder="Write reply here.."><button type ="submit" class="btn btn-danger"></i>reply</button>
+                    <input id ="post_{{post.id}}_comment_{{comment.id}}" class="form-control" type="text" name="reply" placeholder="Write reply here.."><button type ="submit" class="btn btn-danger"></i>{% trans "reply" %}</button>
                   </form>
                 <!--end reply form-->
                                                  

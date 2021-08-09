@@ -1,6 +1,6 @@
 {% extends 'dashboardBase.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}
     | Create post
 {% endblock title %}
@@ -14,7 +14,7 @@
     <form method ="post">
     {% csrf_token %}
         {{form.as_p}}
-        <button type="submit" class="btn btn-primary text-center">Save</button>
+        <button type="submit" class="btn btn-primary text-center">{% trans "Save" %}</button>
         </form>
 {% endblock content %}
 

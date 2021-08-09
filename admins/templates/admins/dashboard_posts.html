@@ -1,6 +1,6 @@
 {% extends 'dashboardBase.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}
     | {{post_type}}
 {% endblock title %}
@@ -39,10 +39,10 @@
 <div class="row">
   <div class="bg-light  col-8">
     <form class="form-inline">
-      <input class="post_search form-control mr-sm-2"  type="search" data-post_type="{{post_type}}"  name="title" placeholder="Search" aria-label="Search" autocomplete="off">
+      <input class="post_search form-control mr-sm-2"  type="search" data-post_type="{{post_type}}"  name="title" placeholder="{% trans "Search" %}" aria-label="Search" autocomplete="off">
     </form>
   </div>
-  <div class="col-4"><a  href ="{% url 'dashboard:create_post' post_type %}" class="btn create_post_btn btn-primary">Create {{post_type}} Post</a>
+  <div class="col-4"><a  href ="{% url 'dashboard:create_post' post_type %}" class="btn create_post_btn btn-primary">{% trans "Create" %} {% trans "Post" %}</a>
   </div>
 </div>
 <div class="row">
@@ -59,13 +59,13 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Sentiment</th>  
-      <th scope="col">Created date</th>
-      <th scope="col">Likes number</th>
-      <th scope="col">Comments number</th>
+      <th scope="col"> {% trans "Title" %} </th>
+      <th scope="col">{% trans "Sentiment" %}</th>  
+      <th scope="col">{% trans "Created date" %}</th>
+      <th scope="col">{% trans "Likes number" %}</th>
+      <th scope="col">{% trans "Comments number" %}</th>
       <th scope="col"></th>
-      <th scope="col"><a href="{% url 'dashboard:delete_all_posts' post_type %}" class="btn btn-danger">Delete all</a></th>
+      <th scope="col"><a href="{% url 'dashboard:delete_all_posts' post_type %}" class="btn btn-danger">{% trans "Delete all" %}</a></th>
     </tr>
   </thead>
   

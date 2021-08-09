@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,7 +12,11 @@
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/hover.css'%}">
+    {% if LANGUAGE_CODE == 'en' %}
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    {% elif LANGUAGE_CODE == 'ar' %}
+    <link rel="stylesheet" href="{% static 'css/style_ar.css'%}">
+    {% endif %}
     <link rel="stylesheet" href="../static/css/{{bg}}.css">
     <link rel="stylesheet" href="../static/css/{{theme}}.css">
     {% block style %}

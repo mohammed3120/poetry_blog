@@ -5,7 +5,9 @@
 .content{
     background-color: #333969;
   }
-
+  .main-nav .nav-item .language_form .language_btn{
+    background-color:#333969;
+  }
   .content .viewed_post {
     background-color:#333969;
   }  

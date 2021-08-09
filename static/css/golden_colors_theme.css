@@ -8,7 +8,10 @@
   .main-nav .nav-item .nav-link:hover{
     background-color: #aaaa24;;
   }
-
+  .main-nav .nav-item .language_form .language_btn:hover{
+    color: #fff;
+    background-color: #aaaa24; 
+  }
   
   .color_box .gear{
     color: #aaaa24;

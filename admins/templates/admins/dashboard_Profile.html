@@ -1,5 +1,6 @@
 {% extends 'dashboardBase.html' %}
 {% load static %}
+{% load i18n %}
 {% block style %}
 <style>
     .profile_img{
@@ -35,7 +36,7 @@
         </div>
       </div>
       {% if object.user.is_staff %}
-      <a href="{% url 'dashboard:dashboard_update_profile' object.id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url 'dashboard:dashboard_update_profile' object.id %}" class="btn btn-primary">{% trans "Edit" %}</a>
       {% endif %}
     </div>
   </section>

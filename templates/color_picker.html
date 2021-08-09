@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!--Start color picker section-->
      <div class="color_box">
         <div class="color_option text-center">
@@ -24,7 +25,7 @@
           </div>
           {% if request.user.is_staff %}
           <div>
-            <a class="btn btn-info mb-3" href="{% url 'dashboard:dashboard_posts' 'poetry' %}">Dashboard</a>
+            <a class="btn btn-info mb-3" href="{% url 'dashboard:dashboard_posts' 'poetry' %}">{% trans "Dashboard" %}</a>
           </div>
           {% endif %}
           

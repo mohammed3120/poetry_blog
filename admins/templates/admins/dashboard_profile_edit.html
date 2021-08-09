@@ -1,8 +1,8 @@
 {% extends 'dashboardBase.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}
-    | Edit  profile
+    | {% trans "Profile update" %}
 {% endblock title %}
    
 
@@ -13,12 +13,12 @@
 {% block content %}
     <form method ="post" enctype="multipart/form-data">
     {% csrf_token %}
-        <input type="text" name="username" maxlength="150" placeholder="username" value="{{user.username}}"><br>
-        <input type="text" name="first_name" maxlength="150" placeholder="first_name" value="{{user.first_name}}"><br>
-        <input type="text" name="last_name" maxlength="150" placeholder="last_name" value="{{user.last_name}}"><br>
+        <input type="text" name="username" maxlength="150" placeholder="{% trans "username" %}" value="{{user.username}}"><br>
+        <input type="text" name="first_name" maxlength="150" placeholder="{% trans "First name" %}" value="{{user.first_name}}"><br>
+        <input type="text" name="last_name" maxlength="150" placeholder="{% trans "Last name" %}" value="{{user.last_name}}"><br>
         {{form.bio}}<br>
         {{form.avatar}}<br>
-        <button type="submit" class="btn btn-primary text-center">Save</button>
+        <button type="submit" class="btn btn-primary text-center">{% trans "Save" %}</button>
     </form>
 {% endblock content %}
 

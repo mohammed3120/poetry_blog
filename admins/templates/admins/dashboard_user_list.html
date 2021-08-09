@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load i18n %}
 {% for user in users  %}
     <tr>
       <th scope="row">{{user.id}}</th>
@@ -7,7 +7,7 @@
       <td>{{user.first_name}}</td>
       <td>{{user.last_name}}</td>
       <td>{{user.email}}</td>
-      <td><a href="{% url 'dashboard:dashboard_profile'  user.id %}" class="btn btn-primary">Profile</a></td>
-      <td><a href="{% url 'dashboard:delete_user' user.id %}" class="btn btn-danger">Delete</a></td>
+      <td><a href="{% url 'dashboard:dashboard_profile'  user.id %}" class="btn btn-primary">{% trans "Profile" %}</a></td>
+      <td><a href="{% url 'dashboard:delete_user' user.id %}" class="btn btn-danger">{% trans "Delete" %}</a></td>
     </tr>
     {% endfor %}

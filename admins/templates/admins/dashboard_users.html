@@ -1,8 +1,8 @@
 {% extends 'dashboardBase.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}
-    | users
+    | {% trans "users" %}
 {% endblock title %}
    
 
@@ -38,7 +38,7 @@
 
 <div class="bg-light">
     <form class="form-inline">
-      <input class="user_search form-control "  type="search"   name="username" placeholder="Search" aria-label="Search" autocomplete="off">
+      <input class="user_search form-control "  type="search"   name="username" placeholder="{% trans "Search" %}" aria-label="Search" autocomplete="off">
     </form>
   </div>
   <br>
@@ -50,12 +50,12 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">User name</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
+      <th scope="col">{% trans "Username" %}</th>
+      <th scope="col">{% trans "First name" %}</th>
+      <th scope="col">{% trans "Last name" %}</th>
+      <th scope="col">{% trans "Email" %}</th>
       <th scope="col"></th>
-      <th scope="col"><a href="{% url 'dashboard:delete_all_users' %}" class="btn btn-danger">Delete all</a></th>
+      <th scope="col"><a href="{% url 'dashboard:delete_all_users' %}" class="btn btn-danger">{% trans "Delete all" %}</a></th>
     </tr>
   </thead>
   

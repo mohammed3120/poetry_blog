@@ -1,0 +1,284 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-09 09:28+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\admins\templates\admins\dashboard_Profile.html:39
+#: .\admins\templates\admins\dashboard_post_list.html:10
+#: .\poetries\templates\poetries\comments.html:17
+#: .\poetries\templates\poetries\comments.html:48
+#: .\poetries\templates\poetries\comments.html:69
+#: .\poetries\templates\poetries\one_comment.html:12
+#: .\poetries\templates\poetries\one_comment.html:41
+#: .\poetries\templates\poetries\one_comment.html:62
+#: .\poetries\templates\poetries\one_reply.html:9
+#: .\poetries\templates\poetries\post_list.html:29
+#: .\poetries\templates\poetries\profile.html:31
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\admins\templates\admins\dashboard_create.html:17
+#: .\admins\templates\admins\dashboard_profile_edit.html:21
+#: .\poetries\templates\poetries\edit_comment.html:594
+#: .\poetries\templates\poetries\edit_post.html:595
+#: .\poetries\templates\poetries\edit_reply.html:594
+#: .\poetries\templates\poetries\profile_update.html:44
+msgid "Save"
+msgstr "حفظ"
+
+#: .\admins\templates\admins\dashboard_post_list.html:11
+#: .\admins\templates\admins\dashboard_user_list.html:11
+#: .\poetries\templates\poetries\comments.html:19
+#: .\poetries\templates\poetries\comments.html:50
+#: .\poetries\templates\poetries\comments.html:71
+#: .\poetries\templates\poetries\one_comment.html:13
+#: .\poetries\templates\poetries\one_comment.html:43
+#: .\poetries\templates\poetries\one_comment.html:64
+#: .\poetries\templates\poetries\one_reply.html:10
+#: .\poetries\templates\poetries\post_list.html:20
+#: .\poetries\templates\poetries\post_list.html:30
+msgid "Delete"
+msgstr "حذف"
+
+#: .\admins\templates\admins\dashboard_posts.html:42
+#: .\admins\templates\admins\dashboard_users.html:41
+msgid "Search"
+msgstr "بحث"
+
+#: .\admins\templates\admins\dashboard_posts.html:45
+msgid "Create"
+msgstr "كتابة"
+
+#: .\admins\templates\admins\dashboard_posts.html:45
+msgid "Post"
+msgstr "منشور"
+
+#: .\admins\templates\admins\dashboard_posts.html:62
+#: .\poetries\templates\poetries\edit_post.html:607
+msgid "Title"
+msgstr "العنوان"
+
+#: .\admins\templates\admins\dashboard_posts.html:63
+msgid "Sentiment"
+msgstr "الشعور"
+
+#: .\admins\templates\admins\dashboard_posts.html:64
+msgid "Created date"
+msgstr "تاريخ الإنشاء"
+
+#: .\admins\templates\admins\dashboard_posts.html:65
+msgid "Likes number"
+msgstr "عدد الإعجابات"
+
+#: .\admins\templates\admins\dashboard_posts.html:66
+msgid "Comments number"
+msgstr "عدد التعليقات"
+
+#: .\admins\templates\admins\dashboard_posts.html:68
+#: .\admins\templates\admins\dashboard_users.html:58
+msgid "Delete all"
+msgstr "حذف الكل"
+
+#: .\admins\templates\admins\dashboard_profile_edit.html:5
+#: .\poetries\templates\poetries\profile_update.html:5
+msgid "Profile update"
+msgstr " تعديل الملف الشخصي "
+
+#: .\admins\templates\admins\dashboard_profile_edit.html:16
+#, fuzzy
+#| msgid "Username"
+msgid "username"
+msgstr "اسم المستخدم"
+
+#: .\admins\templates\admins\dashboard_profile_edit.html:17
+#: .\admins\templates\admins\dashboard_users.html:54
+#: .\poetries\templates\poetries\profile_update.html:36
+msgid "First name"
+msgstr "الاسم"
+
+#: .\admins\templates\admins\dashboard_profile_edit.html:18
+#: .\admins\templates\admins\dashboard_users.html:55
+#: .\poetries\templates\poetries\profile_update.html:38
+msgid "Last name"
+msgstr "الكنية"
+
+#: .\admins\templates\admins\dashboard_user_list.html:10
+#: .\templates\navbar.html:34
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: .\admins\templates\admins\dashboard_users.html:5
+#, fuzzy
+#| msgid "Users"
+msgid "users"
+msgstr "المستخدمين"
+
+#: .\admins\templates\admins\dashboard_users.html:53
+#: .\poetries\templates\poetries\profile_update.html:34
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: .\admins\templates\admins\dashboard_users.html:56
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: .\poetries\templates\poetries\comments.html:31
+#: .\poetries\templates\poetries\one_comment.html:24
+msgid "replies"
+msgstr "رد"
+
+#: .\poetries\templates\poetries\comments.html:31
+#: .\poetries\templates\poetries\comments.html:83
+#: .\poetries\templates\poetries\one_comment.html:24
+#: .\poetries\templates\poetries\one_comment.html:76
+msgid "reply"
+msgstr "رد"
+
+#: .\poetries\templates\poetries\edit_comment.html:12
+msgid "Comment Edit"
+msgstr "تعديل التعليق"
+
+#: .\poetries\templates\poetries\edit_comment.html:595
+#: .\poetries\templates\poetries\edit_post.html:596
+#: .\poetries\templates\poetries\edit_reply.html:595
+#: .\poetries\templates\poetries\post_list.html:19
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: .\poetries\templates\poetries\edit_comment.html:606
+msgid "Comment body"
+msgstr "نص التعليق"
+
+#: .\poetries\templates\poetries\edit_post.html:12
+msgid "Post Edit"
+msgstr "تعديل المنشور"
+
+#: .\poetries\templates\poetries\edit_post.html:608
+msgid "Post body"
+msgstr "نص المنشور"
+
+#: .\poetries\templates\poetries\edit_reply.html:12
+msgid "Reply Edit"
+msgstr "تعديل الرد"
+
+#: .\poetries\templates\poetries\edit_reply.html:606
+msgid "Reply body"
+msgstr "نص الرد"
+
+#: .\poetries\templates\poetries\home.html:5 .\templates\dashboardBase.html:85
+#: .\templates\footer.html:17 .\templates\navbar.html:22
+msgid "Home"
+msgstr "الرئيسية"
+
+#: .\poetries\templates\poetries\home.html:50
+msgid "Our statstics"
+msgstr "الأحصائيات"
+
+#: .\poetries\templates\poetries\home.html:56 .\templates\dashboardBase.html:62
+msgid "Users"
+msgstr "المستخدمين"
+
+#: .\poetries\templates\poetries\home.html:63
+#: .\poetries\templates\poetries\post_list.html:40
+msgid "comments"
+msgstr "التعليقات"
+
+#: .\poetries\templates\poetries\home.html:70
+msgid "likes"
+msgstr "الإعجابات"
+
+#: .\poetries\templates\poetries\home.html:77
+msgid "postes"
+msgstr "المنشورات"
+
+#: .\poetries\templates\poetries\like_action.html:5
+msgid "Liked"
+msgstr "تم الإعجاب"
+
+#: .\poetries\templates\poetries\like_action.html:5
+msgid "Like"
+msgstr "إعجاب"
+
+#: .\poetries\templates\poetries\post_list.html:10
+msgid "Delete Post"
+msgstr "خذف التعليق"
+
+#: .\poetries\templates\poetries\post_list.html:16
+msgid "Are you sure to delete post?"
+msgstr "هل تريد حذف هذا المنشور؟"
+
+#: .\poetries\templates\poetries\post_list.html:40
+msgid "Likes"
+msgstr "الإعجابات"
+
+#: .\poetries\templates\poetries\post_list.html:50
+msgid "Comment"
+msgstr "تعليق"
+
+#: .\templates\color_picker.html:28 .\templates\dashboardBase.html:19
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: .\templates\dashboardBase.html:46 .\templates\navbar.html:35
+msgid "Log out"
+msgstr "تسجيل خروج"
+
+#: .\templates\dashboardBase.html:58
+msgid "Poetries"
+msgstr "شعر"
+
+#: .\templates\dashboardBase.html:59 .\templates\dashboardBase.html:93
+#: .\templates\footer.html:25 .\templates\navbar.html:24
+msgid "Reflections"
+msgstr "خواطر"
+
+#: .\templates\dashboardBase.html:60 .\templates\dashboardBase.html:97
+#: .\templates\footer.html:29 .\templates\navbar.html:25
+msgid "Real stories"
+msgstr "قصص واقعية"
+
+#: .\templates\dashboardBase.html:61 .\templates\dashboardBase.html:101
+#: .\templates\footer.html:33 .\templates\navbar.html:26
+msgid "I read you"
+msgstr "قرأت لكم"
+
+#: .\templates\dashboardBase.html:63
+msgid "Auther profile"
+msgstr "الملف الشخصي"
+
+#: .\templates\dashboardBase.html:89 .\templates\footer.html:21
+#: .\templates\navbar.html:23
+msgid "Poetry"
+msgstr "شعر"
+
+#: .\templates\dashboardBase.html:105 .\templates\footer.html:49
+msgid "copy right"
+msgstr "حقوق النشر"
+
+#: .\templates\dashboardBase.html:105 .\templates\footer.html:49
+msgid "is saved"
+msgstr "محفوظة"
+
+#: .\templates\footer.html:13
+msgid "Site map"
+msgstr "خريطة الموقع"
+
+#: .\templates\footer.html:37 .\templates\navbar.html:27
+msgid "About"
+msgstr "حول الكاتب"

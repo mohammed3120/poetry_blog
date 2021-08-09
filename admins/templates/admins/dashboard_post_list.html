@@ -1,3 +1,4 @@
+{% load i18n %}
 {% for post in data  %}
     <tr>
       <th scope="row">{{post.id}}</th>
@@ -6,7 +7,7 @@
       <td>{{post.created}}</td>
       <td>{{post.get_likes.count}}</td>
       <td>{{post.get_comments.count}}</td>
-      <td><a href="{% url 'dashboard:update_post'  post.id %}" class="btn btn-primary">Edit</a></td>
-      <td><a href="{% url 'dashboard:delete_post'  post.id %}" class="btn btn-danger">Delete</a></td>
+      <td><a href="{% url 'dashboard:update_post'  post.id %}" class="btn btn-primary">{% trans "Edit" %}</a></td>
+      <td><a href="{% url 'dashboard:delete_post'  post.id %}" class="btn btn-danger">{% trans "Delete" %}</a></td>
     </tr>
     {% endfor %}

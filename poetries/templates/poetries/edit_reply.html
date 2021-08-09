@@ -5,10 +5,11 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
-<title>SignUp</title>
+<title>{% trans "Reply Edit" %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -590,8 +591,8 @@ input.checkbox:checked:after {
                     {{form.body}}
                     <input style="display: none;" name="prevPath" value="{{prevPath}}">
                     <ul>
-                        <li style="display: inline-block; width: 49%;"><input type="submit" value="Save"></li>
-                        <li style="display: inline-block; width: 49%;"><a type="button" class="btn btn-secondary cancel" href="{{prevPath}}" >Cancel</a></li>
+                        <li style="display: inline-block; width: 49%;"><input type="submit" value="{% trans "Save" %}"></li>
+                        <li style="display: inline-block; width: 49%;"><a type="button" class="btn btn-secondary cancel" href="{{prevPath}}" >{% trans "Cancel" %}</a></li>
                     </ul>
 					
                     
@@ -602,7 +603,7 @@ input.checkbox:checked:after {
 	<!-- //main -->
     <script>
         var form_fields = document.getElementsByTagName('input');
-        form_fields[1].placeholder ="Reply body";
+        form_fields[1].placeholder ="{% trans "Reply body" %}";
         form_fields[1].className ='form-control';
     
     </script>

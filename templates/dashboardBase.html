@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 {% url 'Poetries:home' as path_of_home %}
 {% url 'Poetries:posts' 'poetry' as path_of_poetry %}
 {% url 'Poetries:posts' 'reflection' as path_of_reflections %}
@@ -15,192 +16,18 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title> Dashboard  {% block title %}{% endblock title %}</title>
+  <title> {% trans "Dashboard" %}  {% block title %}{% endblock title %}</title>
 
   <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
    <link rel="stylesheet" href="{% static 'css/hover.css' %}">
-  
-  <style>
-    a:link {
-      text-decoration: none;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Roboto", sans-serif;
-    }
-
-    header {
-      position: fixed;
-      background: #333;
-      width: 100%;
-      height: 60px;
-
-      z-index: 1;
-    }
-
-    .left_area h3 {
-      color: #fff;
-      margin: 0px;
-      text-transform: uppercase;
-      font-size: 22px;
-      font-weight: 900;
-    }
-
-    
-
-    .logout_btn {
-      padding: 5px;
-      background: #E42524;
-      text-decoration: none;
-      float: right;
-      margin-top: -60px;
-      margin-right: 40px;
-      border-radius: 2px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #fff;
-      transition: 0.5s;
-
-    }
-
-    .logout_btn:hover {
-      background: #E42524;
-    }
-
-    .sidebar {
-      background: #333;
-      margin-top: 60px;
-      padding-top: 30px;
-      position: fixed;
-      left: 0;
-      width: 250px;
-      height: 100%;
-      transition: 0.5s;
-      transition-property: left;
-    }
-
-    .sidebar .profile_image {
-      width: 100px;
-      height: 100px;
-      border-radius: 100px;
-      margin-bottom: 10px;
-    }
-
-    .sidebar h4 {
-      color: #ccc;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-
-    .sidebar a {
-      color: #fff;
-      display: block;
-      width: 100%;
-      line-height: 60px;
-      text-decoration: none;
-      padding-left: 40px;
-      box-sizing: border-box;
-      transition: 0.5s;
-
-    }
-
-    .sidebar a:hover {
-      background: #E42524;
-    }
-
-    .sidebar i {
-      padding-right: 10px;
-    }
-
-    label #sidebar_btn {
-      z-index: 1;
-      color: #fff;
-      position: fixed;
-      cursor: pointer;
-      left: 300px;
-      font-size: 20px;
-      margin: 5px 0;
-      transition: 0.5s;
-      transition-property: color;
-    }
-
-    label #sidebar_btn:hover {
-      color: #E42524;
-    }
-
-    #check:checked~.sidebar {
-      left: -190px;
-    }
-
-    #check:checked~.sidebar a span {
-      display: none;
-    }
-
-    #check:checked~.sidebar a {
-      font-size: 20px;
-      margin-left: 170px;
-      width: 80px;
-    }
-
-    .content {
-      margin-left: 250px;
-      background-position: center;
-      background-size: cover;
-      height: 100vh;
-      transition: 0.5s;
-    }
-
-    #check:checked~.content {
-      margin-left: 60px;
-    }
-
-    #check {
-      display: none;
-    }
-    hr{
-      color: #000;
-    }
-    /*Start footer section*/
-    .footer{min-height: 100px;
-    }
-
-    .footer h1{margin-bottom: 40px }
-    .footer a{
-      color: #000;
-      text-decoration: none;
-      opacity: 0.5;
-    }
-
-    .footer a:hover{opacity: 1 }
-
-    .footer p{color: #000 }
-  
-  .logo .logo1{
-  color: #fff;
-  font-weight:bold;
-  font-size:36px;
-}
-.logo .logo1 .logo2{
-  font-size: 30px;
-}
-.logo .logo3{
-  color: #E42524;
-}
-.active{
-  background-color: #E42524 ;
-}
-  </style>
-
-
-   
-  
-
+   {% if LANGUAGE_CODE == 'en' %}
+    <link rel="stylesheet" href="{% static 'css/dashboard_style.css' %}"> 
+    {% elif LANGUAGE_CODE == 'ar' %}
+    <link rel="stylesheet" href="{% static 'css/dashboard_style_ar.css' %}">
+    {% endif %}
    {% block style %}
-   {% endblock style %}
-  
+   {% endblock style %} 
 </head>
 
 <body>
@@ -216,7 +43,7 @@
       </label>
     </div>
     <div class="right_area">
-      <li class="logout_btn hvr-wobble-top"> <a  href="{% url 'poetries:logout' %}">Log out</a>
+      <li class="logout_btn hvr-wobble-top"> <a  href="{% url 'poetries:logout' %}">{% trans "Log out" %}</a>
     </div>
   </header>
   <!--header area end-->
@@ -228,12 +55,12 @@
       <h4>{{request.user.username}}</h4>
     </div>
 
-    <a class="{% if request.path == path_of_dashboard_poetries %}active{% endif %}" href="{{path_of_dashboard_poetries}}"><i class="fa fa-leaf"></i><span>Poetries</span></a>
-    <a class="{% if request.path == path_of_dashboard_reflections %}active{% endif %}" href="{{path_of_dashboard_reflections}}"><i class="fa fa-history"></i><span>Reflections</span></a>
-    <a class="{% if request.path == path_of_dashboard_stories %}active{% endif %}" href="{{path_of_dashboard_stories}}"><i class="fa fa-eye"></i><span>Real stories</span></a>
-    <a class="{% if request.path == path_of_dashboard_i_read_you %}active{% endif %}" href="{{path_of_dashboard_i_read_you}}"><i class="fa fa-book"></i><span>I read you</span></a>
-    <a class="{% if request.path == path_of_dashboard_users %}active{% endif %}" href="{{path_of_dashboard_users}}"><i class="fa fa-users"></i><span>Users</span></a>
-    <a class="{% if request.path == path_of_dashboard_author_profile %}active{% endif %}" href="{{path_of_dashboard_author_profile}}"><i class="fa fa-user"></i><span>Auther profile</span></a>
+    <a class="{% if request.path == path_of_dashboard_poetries %}active{% endif %}" href="{{path_of_dashboard_poetries}}"><i class="fa fa-leaf"></i><span>{% trans "Poetries" %}</span></a>
+    <a class="{% if request.path == path_of_dashboard_reflections %}active{% endif %}" href="{{path_of_dashboard_reflections}}"><i class="fa fa-history"></i><span>{% trans "Reflections" %}</span></a>
+    <a class="{% if request.path == path_of_dashboard_stories %}active{% endif %}" href="{{path_of_dashboard_stories}}"><i class="fa fa-eye"></i><span>{% trans "Real stories" %}</span></a>
+    <a class="{% if request.path == path_of_dashboard_i_read_you %}active{% endif %}" href="{{path_of_dashboard_i_read_you}}"><i class="fa fa-book"></i><span>{% trans "I read you" %}</span></a>
+    <a class="{% if request.path == path_of_dashboard_users %}active{% endif %}" href="{{path_of_dashboard_users}}"><i class="fa fa-users"></i><span>{% trans "Users" %}</span></a>
+    <a class="{% if request.path == path_of_dashboard_author_profile %}active{% endif %}" href="{{path_of_dashboard_author_profile}}"><i class="fa fa-user"></i><span>{% trans "Auther profile" %}</span></a>
 
 
   </div>
@@ -255,27 +82,27 @@
         <div class="row">
           <div class="col">
             <a href="{{path_of_home}}"><i class="fa fa-home fa-3x"></i>
-              <br>Home</a>
+              <br>{% trans "Home" %}</a>
           </div>
           <div class="col">
             <a href="{{path_of_poetry}}"><i class="fa fa-leaf fa-3x"></i>
-              <br>Poetry</a>
+              <br>{% trans "Poetry" %}</a>
           </div>
           <div class="col">
             <a href="{{path_of_reflections}}"><i class="fa fa-history fa-3x"></i>
-              <br>Reflections</a>
+              <br>{% trans "Reflections" %}</a>
           </div>
           <div class="col">
             <a href="{{path_of_real_stories}}"><i class="fa fa-eye fa-3x"></i>
-              <br>Real stories</a>
+              <br>{% trans "Real stories" %}</a>
           </div>
           <div class="col">
             <a href="{{path_of_i_read_you}}"><i class="fa fa-book fa-3x"></i>
-              <br>I read you</a>
+              <br>{% trans "I read you" %}</a>
           </div>          
         </div>
         <hr>
-        <p>copy right &copy; is saved </p>
+        <p>{% trans "copy right" %} &copy; {% trans "is saved" %} </p>
       </div>
     </div>
     <!--end footer section-->

@@ -9,7 +9,10 @@
   color: #fff;
   background-color: #2d1d1d;  
 }
-
+.main-nav .nav-item .language_form .language_btn:hover{
+  color: #fff;
+  background-color: #2d1d1d; 
+}
   
   .color_box .gear{
     color: #2d1d1d;

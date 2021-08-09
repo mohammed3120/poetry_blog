@@ -1,3 +1,4 @@
+{% load i18n %}
 {% for post in data  %}
           <div class="col-12 viewed_post">
             {% if request.user.is_staff %}
@@ -6,17 +7,17 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="postModalLabel{{post.id}}">Delete Post</h5>
+                        <h5 class="modal-title" id="postModalLabel{{post.id}}">{% trans "Delete Post" %}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        Are you sure to delete {{post.title }} post?
+                        {% trans "Are you sure to delete post?" %}
                       </div>
                       <div class="modal-footer">
-                        <a type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                        <a type="button" class="btn btn-danger" href="{% url 'poetries:delete_post' post.id %}">Delete</a>
+                        <a type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Cancel" %}</a>
+                        <a type="button" class="btn btn-danger" href="{% url 'poetries:delete_post' post.id %}">{% trans "Delete" %}</a>
                       </div>
                     </div>
                   </div>
@@ -25,8 +26,8 @@
                   <p>.</p>
                   <p>.</p>
                   <p>.</p>
-                  <a class="editPost" href="{% url 'poetries:update_post'  post.id %}" id="editPost{{post.id}}" >Edit</a>
-                  <a class="deletePost" data-toggle="modal" data-target="#postModal{{post.id}}" id="deletePost{{post.id}}" >Delete</a>
+                  <a class="editPost" href="{% url 'poetries:update_post'  post.id %}" id="editPost{{post.id}}" >{% trans "Edit" %}</a>
+                  <a class="deletePost" data-toggle="modal" data-target="#postModal{{post.id}}" id="deletePost{{post.id}}" >{% trans "Delete" %}</a>
                 </div>          
             {% endif %}
      
@@ -36,7 +37,7 @@
               {{post.text}}
             </p>
             <div class="post_statstics">
-              <span id = "likes_number{{post.id}}" class="likes_number">{{ post.get_likes.count}} Likes </span><span id ="comments_number{{post.id}}" class="comments_number">{{ post.get_comments.count}} comments</span>
+              <span id = "likes_number{{post.id}}" class="likes_number">{{ post.get_likes.count}} {% trans "Likes" %} </span><span id ="comments_number{{post.id}}" class="comments_number">{{ post.get_comments.count}} {% trans "comments" %}</span>
               
             </div>
             <div class="interactive">
@@ -46,7 +47,7 @@
                   <div class="panel-heading" roles="tab" id="heading-{{post.id}}">
                     <h4 class="panel-title">
                       <a ><i id="like_action_{{post.id}}" class="like_action   fa fa-thumbs-up fa-2x"> {% include 'poetries/like_action.html' %}</i></a>
-                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{post.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> Comment</i></a>
+                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{post.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> {% trans "Comment" %}</i></a>
                      </a>
                     </h4>
                   </div>

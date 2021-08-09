@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}
-    home
+    {% trans "Home" %}
 {% endblock title %}
 
 {% block content %}
@@ -47,34 +47,34 @@
     <section class="Statstics text-center">
       <div class="data">
         <div class="container-fluid">
-          <h2 class="h1">Our statstics</h2 >
+          <h2 class="h1">{% trans "Our statstics" %}</h2 >
             <div class="row">
               <div class="col-md-3 col-sm-6">
                 <div class="stats">
                   <i class="fa fa-users fa-5x"></i>
                   <p>{{profiles_count}}</p>
-                  <span>users</span>
+                  <span>{% trans "Users" %}</span>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="stats">
                   <i class="fa fa-comments fa-5x"></i>
                   <p>{{commnets_count}}</p>
-                  <span>comments</span>
+                  <span>{% trans "comments" %}</span>
                 </div>
               </div>
                <div class="col-md-3 col-sm-6">
                 <div class="stats">
                   <i class="fa fa-thumbs-up fa-5x "></i>
                   <p>{{likes_count}}</p>
-                  <span>likes</span>
+                  <span>{% trans "likes" %}</span>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="stats">
                  <i class="fa fa-leaf fa-5x"></i>
                   <p>{{posts_count}}</p>
-                  <span>postes</span>
+                  <span>{% trans "postes" %}</span>
                 </div>
               </div>
             </div>

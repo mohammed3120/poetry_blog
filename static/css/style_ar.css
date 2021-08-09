@@ -1,5 +1,6 @@
 body{
   overflow: hidden;
+  direction: rtl;
 }
 
 /*start navbar section*/
@@ -7,12 +8,23 @@ body{
   padding-top: 0cm;
   padding-bottom: 0cm;
 }
+.main-nav #menu{
+  direction: rtl;
+  float: left;
+  margin-left: 0px;
+}
+
 .main-nav #menu ul{
-  margin-left: auto;
+  margin-left: 0px;
+  margin-right: auto;
 }
-.main-nav a{
+.main-nav a, .main-nav .nav-item .dropdown-menu .dropdown-item{
   text-decoration: none;
+  float: right;
+  text-align: right;
 }
+
+
 .main-nav .logo .logo1{
   color: #fff;
   font-weight:bold;
@@ -38,6 +50,7 @@ body{
 .main-nav .nav-item .language_form .language_btn{
   color: #fff;
 }
+
 /*End navbar section*/
 
 /* Start  color box section*/
@@ -46,16 +59,19 @@ body{
   width: 200px;
   height: auto;
   top: 65px;
-  left:0;
-  right: auto;
+  right:0;
+  left: auto;
   z-index:99999;
 }
 .color_box .color_option{
   width: 150px;
   height: auto;
   background-color: #ddd;
-  float: left;
+  float: right;
   display: none;
+}
+.color_box .gear{
+  float: right;
 }
 .color_box .color_option .bg_color{
   width: 100%;
@@ -71,8 +87,7 @@ body{
 }
 
 .color_box .colors{
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-right: -30px;
 }
 .color_box .colors ul li {
   width: 20px;
@@ -146,19 +161,20 @@ body{
   border-radius: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
+  text-align: right;
 }
 
 .content .viewed_post h2 {color: #fff;}
 
 .content .viewed_post .post_created_date{
   color: #fff;
-  float: right;
+  float: left;
   margin-top: -37px;
 }
 .divaa1{
   position:absolute;
   width: 30px;
-  left:10px;
+  right:10px;
   transition:.6s;
 }
 .divaa1 p{
@@ -221,7 +237,7 @@ body{
   position:absolute;
   margin-top: -40px;
   width: 20px;
-  left:45px;
+  right:45px;
   transition:.6s;
 }
 .commentdivaa1 p ,.replytdivaa1 p{
@@ -314,11 +330,11 @@ body{
   line-height: 0px;
   margin-top: 10px;
   background-color: #eee;
-  float: left;
+  float: right;
 }
 .content .viewed_post .post_statstics .comments_number{
   color: #fff;
-  float: right;
+  float: left;
   font-size: 18px;
   line-height: 0px;
   margin-top: 10px;
@@ -329,8 +345,7 @@ body{
   margin-bottom: 10px;
 }
 .content .viewed_post .interactive .comment_action{
-  float: right;
-  margin-left: 30%;
+  float: left;
   margin-bottom: 10px;
 }
 
@@ -359,7 +374,8 @@ body{
   padding: 5px ;
   border-radius: 15px;
   background-color: #ddd;
-  margin-left: 5px;
+  float: right;
+  margin-right: 5px;
 }
 .content .viewed_post .accordion_comment .comment .comment_body{
   color: #fff;
@@ -368,7 +384,7 @@ body{
 }
 
 .content .viewed_post .accordion_comment_replies .comment_replies_number{
-  float: right;
+  float: left;
   font-size: 18px;
   margin-top: 12px;
   margin-bottom: 20px;
@@ -386,7 +402,9 @@ body{
   padding: 5px ;
   border-radius: 15px;
   background-color: #ddd;
-  margin-left: 5px;
+  float: right;
+  margin-right: 5px;
+  padding-bottom: 5px;
 }
 .content .viewed_post .accordion_comment_replies .reply .reply_body{
   color: #fff;
@@ -395,7 +413,7 @@ body{
 }
 
 .content .viewed_post .accordion_comment .reply_action{
-  float: right;
+  float: left;
   margin-top: 20px;
 }
 
@@ -410,32 +428,7 @@ body{
 /* End  comment and reply forms*/
 
 
-/*Start posts list section*/
-.content .list_posts {
-  padding-left: 30px;
-  padding-right: 30px;
-  border: 10px solid #eee;
-}
-.content .list_posts{
-  padding-bottom: 60px;
-  border: 10px solid #eee;
-}
-.content .list_posts .h1{
-  color: #fff;
-  
-}
 
-.content .list_posts .row .col-xs-12{
-  background-color: #eee;
-  margin-top: 10px;
-  height: 110px;
-  overflow: hidden;
-}
-.content .list_posts .row .col-xs-12 p{
-  font-size: 16px;
-  padding:5px;
-}
-/*End posts list section*/
 
 /*End content section*/
 

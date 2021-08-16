@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-14 16:23+0300\n"
+"POT-Creation-Date: 2021-08-16 16:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,11 @@ msgstr ""
 #: .\admins\templates\admins\dashboard_Profile.html:39
 #: .\admins\templates\admins\dashboard_post_list.html:10
 #: .\poetries\templates\poetries\comments.html:17
-#: .\poetries\templates\poetries\comments.html:48
-#: .\poetries\templates\poetries\comments.html:69
+#: .\poetries\templates\poetries\comments.html:47
+#: .\poetries\templates\poetries\comments.html:68
 #: .\poetries\templates\poetries\one_comment.html:12
-#: .\poetries\templates\poetries\one_comment.html:41
-#: .\poetries\templates\poetries\one_comment.html:62
+#: .\poetries\templates\poetries\one_comment.html:40
+#: .\poetries\templates\poetries\one_comment.html:61
 #: .\poetries\templates\poetries\one_reply.html:9
 #: .\poetries\templates\poetries\post_list.html:29
 #: .\poetries\templates\poetries\profile.html:31
@@ -45,11 +45,11 @@ msgstr "حفظ"
 #: .\admins\templates\admins\dashboard_post_list.html:11
 #: .\admins\templates\admins\dashboard_user_list.html:11
 #: .\poetries\templates\poetries\comments.html:19
-#: .\poetries\templates\poetries\comments.html:50
-#: .\poetries\templates\poetries\comments.html:71
+#: .\poetries\templates\poetries\comments.html:49
+#: .\poetries\templates\poetries\comments.html:70
 #: .\poetries\templates\poetries\one_comment.html:13
-#: .\poetries\templates\poetries\one_comment.html:43
-#: .\poetries\templates\poetries\one_comment.html:64
+#: .\poetries\templates\poetries\one_comment.html:42
+#: .\poetries\templates\poetries\one_comment.html:63
 #: .\poetries\templates\poetries\one_reply.html:10
 #: .\poetries\templates\poetries\post_list.html:20
 #: .\poetries\templates\poetries\post_list.html:30
@@ -138,17 +138,30 @@ msgstr "اسم المستخدم"
 msgid "Email"
 msgstr "البريد الالكتروني"
 
-#: .\poetries\templates\poetries\comments.html:31
-#: .\poetries\templates\poetries\one_comment.html:24
+#: .\poetries\templates\poetries\comments.html:30
+#: .\poetries\templates\poetries\one_comment.html:23
 msgid "replies"
 msgstr "رد"
 
-#: .\poetries\templates\poetries\comments.html:31
-#: .\poetries\templates\poetries\comments.html:83
-#: .\poetries\templates\poetries\one_comment.html:24
-#: .\poetries\templates\poetries\one_comment.html:76
+#: .\poetries\templates\poetries\comments.html:30
+#: .\poetries\templates\poetries\comments.html:81
+#: .\poetries\templates\poetries\one_comment.html:23
+#: .\poetries\templates\poetries\one_comment.html:74
 msgid "reply"
 msgstr "رد"
+
+#: .\poetries\templates\poetries\comments.html:81
+#: .\poetries\templates\poetries\one_comment.html:74
+msgid "Write reply here.."
+msgstr "اكتب رداً هنا"
+
+#: .\poetries\templates\poetries\comments.html:102
+msgid "Write comment here.."
+msgstr "اكتب تعليقاً هنا"
+
+#: .\poetries\templates\poetries\comments.html:102
+msgid "comment"
+msgstr "تعليق"
 
 #: .\poetries\templates\poetries\edit_comment.html:12
 msgid "Comment Edit"
@@ -230,6 +243,10 @@ msgstr "الإعجابات"
 #: .\poetries\templates\poetries\post_list.html:50
 msgid "Comment"
 msgstr "تعليق"
+
+#: .\poetries\templates\poetries\posts.html:16
+msgid "Filter by:"
+msgstr "فرز حسب"
 
 #: .\templates\color_picker.html:28 .\templates\dashboardBase.html:19
 msgid "Dashboard"

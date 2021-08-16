@@ -1,6 +1,6 @@
-body{
+/* body{
   overflow: hidden;
-}
+} */
 
 /*start navbar section*/
 .main-nav{
@@ -521,7 +521,7 @@ body{
 
 
 /* Start  loading section*/
-.loading_page
+/* .loading_page
 {
     position: absolute;
     left:0;
@@ -585,7 +585,7 @@ body{
   } 100%, 0% {
     transform: scale(1.0); 
   } 
-}
+} */
   /* end  loading section*/
 
   /*Start Filter section*/

@@ -22,7 +22,6 @@
           </div>
           
         <div class="comment_replies">
-          <!--Start replies list-->
           <div class="panel-group accordion_comment_replies" id="accordion-{{post.id}}-comment-{{comment.id}}-replies" roles="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
               <div class="panel-heading panel-heading-reply" roles="tab" id="post-{{post.id}}-comment-{{comment.id}}-replies">
@@ -77,23 +76,17 @@
                   </div>
                   {% endif %}
                   {% endif %}
-                  <!--start reply form-->
                   <form  method="POST" class="form-inline reply-form" id="p_{{post.id}}_c_{{comment.id}}">
                     {% csrf_token %}
-                    <input id ="post_{{post.id}}_comment_{{comment.id}}" class="form-control" type="text" name="reply" placeholder="Write reply here.."><button type ="submit" class="btn btn-danger"></i>{% trans "reply" %}</button>
+                    <input id ="post_{{post.id}}_comment_{{comment.id}}" class="form-control" type="text" name="reply" placeholder="{% trans 'Write reply here..' %}"><button type ="submit" class="btn btn-danger"></i>{% trans "reply" %}</button>
                   </form>
-                <!--end reply form-->
                                                  
                 </div>
               </div>
             </div>
           </div>
-          <!--Start replies list-->
         </div>
-        <!-- <h4 class="panel-title">
-         <a class="collapsed" data-toggle="collapse" data-parent="#accordion-comment" href="#collapse-{{post.id}}-{{comment.id}}-reply" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><i class="reply_action fa fa-reply"> reply</i></a>
-          </a>
-        </h4> -->
+       
       </div>
       
     </div>
@@ -106,6 +99,6 @@
 <!--start comment form-->
   <form  method="POST" class="form-inline comment-form" id="p_{{post.id}}">
       {% csrf_token %}
-    <input id ="comment{{post.id}}" class="form-control" type="text" name="comment" placeholder="Write comment here.."><button type="submit" class="btn btn-danger"></i>comment</button>
+    <input id ="comment{{post.id}}" class="form-control" type="text" name="comment" placeholder="{% trans 'Write comment here..' %}"><button type="submit" class="btn btn-danger"></i>{% trans 'comment' %}</button>
   </form>
 <!--end comment form-->

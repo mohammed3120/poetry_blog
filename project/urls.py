@@ -24,6 +24,7 @@ urlpatterns = [
 ]
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
+
     path('', include('poetries.urls',namespace='Poetries')),
     path('profile/', include('profiles.urls', namespace="profiles")),
     path('dashboard/', include('admins.urls',namespace='dashboard')),

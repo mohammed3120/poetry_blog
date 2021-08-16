@@ -46,11 +46,19 @@
   </div>
 </div>
 <div class="row">
-    {% for sentiment in sentiments %}
-    <div class="col-md-2 col-xs-4">
-      <input class="filter-checkbox"  data-filter="sentiment" value="{{sentiment}}" type="checkbox" />{{sentiment}} 
-    </div>
-    {% endfor %}
+  {% if LANGUAGE_CODE == 'en' %}
+  {% for key,value in sentiments.items %}
+  <div class="col-md-2 col-xs-4">
+    <input class="filter-checkbox"  data-filter="value" value="{{value}}" type="checkbox" />{{value}} 
+  </div>
+  {% endfor %}
+  {% elif LANGUAGE_CODE == 'ar' %}
+  {% for key,value in sentiments.items %}
+  <div class="col-md-2 col-xs-4">
+    <input class="filter-checkbox"  data-filter="value" value="{{value}}" type="checkbox" />{{key}} 
+  </div>
+  {% endfor %}
+  {%endif%}
 </div>
 
 

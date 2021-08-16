@@ -13,9 +13,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
-
-
+from django.http import HttpResponseRedirect,HttpResponse
+from django.views.decorators.csrf import csrf_protect
+import json
+from django.db import transaction
 # Create your views here.
 def signup_view(request):
     if request.user.is_authenticated:
@@ -29,7 +30,6 @@ def signup_view(request):
                 return redirect('poetries:login')
         context ={'form':form}
         return render(request, 'accounts\signup.html',context)
-
 def login_view(request):
     if request.user.is_authenticated:
         return redirect('poetries:home')
@@ -37,7 +37,6 @@ def login_view(request):
         if request.method =="POST":
             username = request.POST.get('username')
             password = request.POST.get('password')
-            print(username,password)
             user = authenticate(request, username = username, password = password)
             if user is not None:
                 login(request,user)
@@ -45,9 +44,7 @@ def login_view(request):
                     return redirect(reverse('dashboard:dashboard_posts',  args=('poetry',)))
                 else:
                     return redirect('poetries:home')
-            else:
-                # messages.info(request,'User name or password is incorect !!')
-                print(user)
+           
     context ={}
     return render(request, 'accounts\login.html',context)
 
@@ -91,7 +88,6 @@ def posts_view(request,post_type):
     posts = Post.objects.filter(post_type = post_type)
     profile = Profile.objects.get(user = request.user)
     sentimentss = Sentiment.objects.get_or_create(profile = profile, filterPostsType = post_type)[0]
-    print(sentimentss.happy,sentimentss.sad, sentimentss.normal, sentimentss.action, sentimentss.romance)
     sents = []
     if sentimentss.happy !='':
         sents.append('happy')
@@ -111,13 +107,15 @@ def posts_view(request,post_type):
     
     bg = usercolors.bg_color
     theme = usercolors.theme_color
-    print(bg)
-    print(theme)
+   
 
     sentiments = {'happy':sentimentss.happy, 'sad':sentimentss.sad, 'normal':sentimentss.normal, 'action':sentimentss.action, 'romance':sentimentss.romance}
 
+    sentiments_ar = {'مفرح':sentimentss.happy, 'حزين':sentimentss.sad, 'عادي':sentimentss.normal, 'حماسي':sentimentss.action, 'رومنسي':sentimentss.romance}
+
     context ={'data':posts,
               'sentiments':sentiments, 
+              'sentiments_ar':sentiments_ar,
               'post_type': post_type,
               'userFilter':sentimentss, 
               'bg':bg, 
@@ -157,32 +155,27 @@ def filter_data(request,post_type):
         posts = posts.filter(sentiment_type__in = sentiments).distinct()
     t=render_to_string('poetries\post_list.html',{'data':posts})
     return JsonResponse({'data': t})
-
 def likeTogle(request,pk):
-    print("pk",pk)
     liked = request.GET['liked']
-    print(liked) 
     profile = Profile.objects.get(user = request.user)
     post = Post.objects.get(pk = pk)
     like = Like.objects.filter(post = post, profile = profile)
-    print(like)
     if  like.exists():
         # user likes post
         like.delete()
-        print("ddddddddddddddddddddddddddddddddddddddddddddddddd")
         liked = "Like"
         
     else:
         # user likes post
         like = Like.objects.create(post = post, profile = profile)
         like.save()
-        print('sssssssssssssssssssssssssssssssssssssss')
         liked = "Liked"
         
     likeData = {'liked':liked}   
     return JsonResponse({'likeData':likeData})
+    
 
-
+    return HttpResponse(response.content)
 #CRUD Comment
 def add_comment_view(request, pk):
     post = Post.objects.get(pk = pk)
@@ -191,6 +184,10 @@ def add_comment_view(request, pk):
     if commentValue != "":
         comment = Comment.objects.create(post = post, profile = profile, body = commentValue)
         comment.save()
+        # comments = post.get_comments()
+        # html = ''
+        # for com in comments:
+        transaction.commit()
         t=render_to_string('poetries\one_comment.html',{'comment':comment})
         return JsonResponse({'comment': t})
     else:
@@ -208,7 +205,6 @@ def add_reply_view(request, pk):
         return JsonResponse({'reply': t})
     else:
         return JsonResponse({})
-
 def change_colors(request,theme):
     color = request.GET[theme]
     profile = Profile.objects.get(user = request.user)
@@ -236,7 +232,6 @@ def profile_view(request, pk):
     context = {'profile': profile, 'bg': bg, 'theme':theme}
     return render(request, 'poetries\profile.html', context)
 
-
 def update_profile_view(request, pk):
     profile = Profile.objects.get(pk = pk)
     user = User.objects.get(profile = profile)
@@ -260,7 +255,6 @@ def update_profile_view(request, pk):
             return HttpResponseRedirect(reverse('poetries:profile_view', args=(profile.user.id,)))
     return render(request, 'poetries\profile_update.html', {'form': form, 'bg': bg, 'theme':theme})
 
-
 def writer_profile_view(request,pk):
     super_user = User.objects.filter(is_staff = True)[0]
     super_user_profile = Profile.objects.get(user = super_user)
@@ -272,7 +266,6 @@ def writer_profile_view(request,pk):
     theme = usercolors.theme_color
     context = {'profile': super_user_profile, 'bg': bg, 'theme':theme}
     return render(request, 'poetries\writer_profile.html', context)
-
 
 def update_post_view(request, pk):
     prevPath = request.META.get('HTTP_REFERER')
@@ -292,14 +285,12 @@ def update_post_view(request, pk):
             return HttpResponseRedirect(prev)
     return render(request, 'poetries\edit_post.html', {'form': form,'bg':bg, 'theme':theme,'prevPath':prevPath})
 
-
 def delete_post_view(request, pk):
     prevPath = request.META.get('HTTP_REFERER')
     post = Post.objects.get(pk = pk)
     post_type = post.post_type
     post.delete()
     return HttpResponseRedirect(prevPath)
-
 def update_comment_view(request, pk):
     prevPath = request.META.get('HTTP_REFERER')
     profile = Profile.objects.get(user = request.user)
@@ -317,14 +308,12 @@ def update_comment_view(request, pk):
             form.save()
             return HttpResponseRedirect(prev)
     return render(request, 'poetries\edit_comment.html', {'form': form,'bg':bg, 'theme':theme,'prevPath':prevPath})
-
 def delete_comment_view(request, pk):
     prevPath = request.META.get('HTTP_REFERER')
     comment = Comment.objects.get(pk = pk)
     post_type = comment.post.post_type
     comment.delete()
     return HttpResponseRedirect(prevPath)
-
 def update_reply_view(request, pk):
     prevPath = request.META.get('HTTP_REFERER')
     profile = Profile.objects.get(user = request.user)
@@ -342,7 +331,6 @@ def update_reply_view(request, pk):
             form.save()
             return HttpResponseRedirect(prev)
     return render(request, 'poetries\edit_comment.html', {'form': form,'bg':bg, 'theme':theme, 'prevPath':prevPath})
-
 def delete_reply_view(request, pk):
     prevPath = request.META.get('HTTP_REFERER')
     reply = Reply.objects.get(pk = pk)

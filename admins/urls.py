@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import (dashboard_view,
-                    dashboard_posts_view,
+from .views import (dashboard_posts_view,
                     dashboard_users_view,
                     create_post_view,
                     update_post_view,

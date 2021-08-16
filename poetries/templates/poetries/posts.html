@@ -13,13 +13,21 @@
         <div class="filter">
           <div class="row">
             <div class="col-md-2 col-xs-4">
-             Filter by:
+             {% trans 'Filter by:' %}
             </div>
+            {% if LANGUAGE_CODE == 'en' %}
             {% for key,value in sentiments.items %}
             <div class="col-md-2 col-xs-4">
               <input class="filter-checkbox" data-post_type="{{post_type}}" data-filter="sentiment" value="{{key}}" type="checkbox" {{value}}/>{{key}} 
             </div>
             {% endfor %}
+            {% elif LANGUAGE_CODE == 'ar' %}
+            {% for key,value in sentiments_ar.items %}
+            <div class="col-md-2 col-xs-4">
+              <input class="filter-checkbox" data-post_type="{{post_type}}" data-filter="sentiment" value="{{key}}" type="checkbox" {{value}}/>{{key}} 
+            </div>
+            {% endfor %}
+            {%endif%}
           </div>
         </div>
         <div class="row" id = "post_list">

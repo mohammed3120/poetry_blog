@@ -1,4 +1,20 @@
+
 $(document).ready(function(){
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 	// Sentiment Filter Start
     $(".filter-checkbox").on('click', function(){
         var _filterObj={};
@@ -8,15 +24,18 @@ $(document).ready(function(){
         _filterObj[_filterKey]=Array.from(document.querySelectorAll('input[data-filter='+_filterKey+']:checked')).map(function(el){
             return el.value;
         });
+        _filterObj['csrftoken'] = getCookie('csrftoken');
         $.ajax({
             url:'/filter-data/'+_post_typeKey,
             data:_filterObj,
             dataType:'json',
             beforeSend:function(){
-                console.log("loding .............")
+
             },
             success:function(res){
                 $('#post_list').html(res.data);
+                document.location.reload(); 
+                //$("#post_list").load("#post_list");
 
             }
         });      
@@ -30,36 +49,26 @@ $(document).ready(function(){
         var post_id = like_action_id.split('_')[2];
         var like_action = $('#'+like_action_id);
         _obj['liked'] = like_action.text();
-        console.log(like_action.text());
         var likes_number_id = $('#likes_number'+post_id);
-        // console.log("likes_number"+likes_number);
         var likes_number = likes_number_id.text().split('')[0];
-        console.log(likes_number)
-        // console.log("likes_number_id"+likes_number_id.text());
         var _likes_num = 0;
         if($.trim(like_action.text())=='Like'){
             _likes_num = parseInt(likes_number)+1;
             likes_number_id.text(_likes_num + "\tLikes");
-            console.log(likes_number_id.text());
         }
         else if ($.trim(like_action.text())=='Liked'){
             _likes_num = parseInt(likes_number)- 1;
             likes_number_id.text(_likes_num + "\tLikes");
-            console.log(likes_number_id.text());
         }
         $.ajax({
             url:'/like/'+post_id,
             data:_obj,
             dataType:'json',
             beforeSend:function(){
-                console.log("")
             },
             success:function(res){
-                // console.log("ssssssssssssssssss");
-                // console.log($(this));
                 l = res.likeData['liked']
                 like_action.html(l);
-                // console.log(res.likeData);
             }
         });
     });
@@ -67,33 +76,29 @@ $(document).ready(function(){
     $(".comment-form").on('submit', function(event){
         event.preventDefault();
         var post_id = $(this).attr('id').split('_')[1];
+        localStorage.setItem("post_id", post_id);
         var commet_action = $('#comment'+post_id);
         var acco_comment = $('#acco-comment'+post_id);
-        console.log(acco_comment.html());
-        console.log(commet_action.val());
         var _obj ={'comment':commet_action.val()};
-        _obj['csrfmiddlewaretoken'] = '{{ csrf_token }}';
+        _obj['csrftoken'] = getCookie('csrftoken');
         var comments_number_id = $('#comments_number'+post_id);
         var comments_number = comments_number_id.text().split('')[0];
-        console.log(comments_number)
         var _comments_number = parseInt(comments_number);
-        
         $.ajax({
             url:'/add-comment/'+post_id,
             data:_obj,
             dataType:'json',
             beforeSend:function(){
-                console.log("loding .............")
             },
             success:function(res){
-                console.log("ccccccccccccccccccccc");
-                
                 acco_comment.append(res.comment);
                 _comments_number = _comments_number + 1;
                 comments_number_id.text(_comments_number + "\tcomments");
-                commet_action.val("");
-                acco_comment.load('#acco-comment'+post_id);
+                commet_action.val(""); 
+                sessionStorage.setItem("reloading", "true");
+                document.location.reload(); 
                 
+
             }
         });    
     });
@@ -110,13 +115,12 @@ $(document).ready(function(){
         var _replies_number = parseInt(replies_number);
         
 
-        var _obj ={'reply':reply_action.val(),'csrfmiddlewaretoken':'{{ csrf_token }}'};
+        var _obj ={'reply':reply_action.val(),'csrftoken':getCookie('csrftoken')};
         $.ajax({
             url:'/add-reply/'+comment_id,
             data:_obj,
             dataType:'json',
             beforeSend:function(){
-                console.log("loding .............")
             },
             success:function(res){
                 
@@ -131,6 +135,22 @@ $(document).ready(function(){
     });
 
 });
+window.onload = function() {
+    var post_id = localStorage.getItem("post_id");
+    var reloading = sessionStorage.getItem("reloading");
+    if (reloading) {
+        sessionStorage.removeItem("reloading");
+        var collapse = document.getElementById('collapse-'+post_id);
+        var collapsed = document.getElementById('collapsed_'+post_id);
+        collapsed.classList.add('collapsed');
+        collapse.classList.add("show");
+        collapsed.getAttribute('aria-expanded').value = 'true';
+        localStorage.clear();
+    }
+}
+
+
+
 
 
 

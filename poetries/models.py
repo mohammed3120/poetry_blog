@@ -110,6 +110,8 @@ class Post(models.Model):
     def get_comments(self):
         comments = self.comment_set.all()
         return comments
+    def get_comments_count(self):
+        return self.get_comments().count()
     def get_likes(self):
         likes = self.like_set.all()
         return likes 
@@ -136,6 +138,12 @@ class Comment(models.Model):
     def get_replies(self):
         replies = self.reply_set.all()
         return replies
+    
+    def get_replies_count(self):
+        return self.get_replies().count()
+
+    def get_username(self):
+        return self.profile.user.username
     
     
 

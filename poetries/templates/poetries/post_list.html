@@ -47,7 +47,7 @@
                   <div class="panel-heading" roles="tab" id="heading-{{post.id}}">
                     <h4 class="panel-title">
                       <a ><i id="like_action_{{post.id}}" class="like_action   fa fa-thumbs-up fa-2x"> {% include 'poetries/like_action.html' %}</i></a>
-                     <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{post.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> {% trans "Comment" %}</i></a>
+                     <a class="collapsed" id="collapsed_{{post.id}}" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{post.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}" href="#"><i class="comment_action fa fa-commenting-o fa-2x"> {% trans "Comment" %}</i></a>
                      </a>
                     </h4>
                   </div>

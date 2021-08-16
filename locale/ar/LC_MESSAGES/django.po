@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-16 16:53+0300\n"
+"POT-Creation-Date: 2021-08-16 22:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Edit"
 msgstr "تعديل"
 
-#: .\admins\templates\admins\dashboard_create.html:17
+#: .\admins\templates\admins\dashboard_create.html:19
 #: .\admins\templates\admins\dashboard_profile_edit.html:21
 #: .\poetries\templates\poetries\edit_comment.html:594
 #: .\poetries\templates\poetries\edit_post.html:595
@@ -69,28 +69,28 @@ msgstr "كتابة"
 msgid "Post"
 msgstr "منشور"
 
-#: .\admins\templates\admins\dashboard_posts.html:62
+#: .\admins\templates\admins\dashboard_posts.html:70
 #: .\poetries\templates\poetries\edit_post.html:607
 msgid "Title"
 msgstr "العنوان"
 
-#: .\admins\templates\admins\dashboard_posts.html:63
+#: .\admins\templates\admins\dashboard_posts.html:71
 msgid "Sentiment"
 msgstr "الشعور"
 
-#: .\admins\templates\admins\dashboard_posts.html:64
+#: .\admins\templates\admins\dashboard_posts.html:72
 msgid "Created date"
 msgstr "تاريخ الإنشاء"
 
-#: .\admins\templates\admins\dashboard_posts.html:65
+#: .\admins\templates\admins\dashboard_posts.html:73
 msgid "Likes number"
 msgstr "عدد الإعجابات"
 
-#: .\admins\templates\admins\dashboard_posts.html:66
+#: .\admins\templates\admins\dashboard_posts.html:74
 msgid "Comments number"
 msgstr "عدد التعليقات"
 
-#: .\admins\templates\admins\dashboard_posts.html:68
+#: .\admins\templates\admins\dashboard_posts.html:76
 #: .\admins\templates\admins\dashboard_users.html:58
 msgid "Delete all"
 msgstr "حذف الكل"

@@ -37,7 +37,7 @@
               {{post.text}}
             </p>
             <div class="post_statstics">
-              <span id = "likes_number{{post.id}}" class="likes_number">{{ post.get_likes.count}} {% trans "Likes" %} </span><span id ="comments_number{{post.id}}" class="comments_number">{{ post.get_comments.count}} {% trans "comments" %}</span>
+              <span id = "likes_number{{post.id}}" class="likes_number">{{ post.get_likes.count}} {% trans "Likes" %} </span><span id ="comments_number{{post.id}}" class="comments_number">{{ post.get_comments_count}} {% trans "comments" %}</span>
               
             </div>
             <div class="interactive">

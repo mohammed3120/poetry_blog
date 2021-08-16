@@ -157,19 +157,26 @@ def filter_data(request,post_type):
     return JsonResponse({'data': t})
 def likeTogle(request,pk):
     liked = request.GET['liked']
+    lang = request.GET['lang']
     profile = Profile.objects.get(user = request.user)
     post = Post.objects.get(pk = pk)
     like = Like.objects.filter(post = post, profile = profile)
     if  like.exists():
         # user likes post
         like.delete()
-        liked = "Like"
+        if lang =='ar':
+            liked = "إعجاب"
+        else:
+            liked = "Like"
         
     else:
         # user likes post
         like = Like.objects.create(post = post, profile = profile)
         like.save()
-        liked = "Liked"
+        if lang =='ar':
+            liked = "تم الإعجاب"
+        else:
+            liked = "Liked"
         
     likeData = {'liked':liked}   
     return JsonResponse({'likeData':likeData})

@@ -52,13 +52,26 @@ $(document).ready(function(){
         var likes_number_id = $('#likes_number'+post_id);
         var likes_number = likes_number_id.text().split('')[0];
         var _likes_num = 0;
-        if($.trim(like_action.text())=='Like'){
+
+        if($.trim(like_action.text())=='Like' ){
             _likes_num = parseInt(likes_number)+1;
             likes_number_id.text(_likes_num + "\tLikes");
+            _obj['lang'] = 'en';
+        }
+        else if($.trim(like_action.text())== "إعجاب"){
+            _likes_num = parseInt(likes_number)+1;
+            likes_number_id.text(_likes_num + "\tالإعجابات"); 
+            _obj['lang'] = 'ar';
         }
         else if ($.trim(like_action.text())=='Liked'){
             _likes_num = parseInt(likes_number)- 1;
             likes_number_id.text(_likes_num + "\tLikes");
+            _obj['lang'] = 'en';
+        }
+        else if ($.trim(like_action.text())=="تم الإعجاب"){
+            _likes_num = parseInt(likes_number)- 1;
+            likes_number_id.text(_likes_num + "\tالإعجابات");
+            _obj['lang'] = 'ar';
         }
         $.ajax({
             url:'/like/'+post_id,

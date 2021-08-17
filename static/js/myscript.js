@@ -74,13 +74,3 @@ $(document).ready(function (){
 
    
 });
-
-
-$(window).on('load', function (){
-    $("body").css("overflow", "auto");
-    $(".loading_page .sk-chase").fadeOut(2000,function (){
-        $(this).parent().fadeOut(1000,function (){
-            $(this).remove();
-        });
-    });
-});

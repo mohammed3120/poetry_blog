@@ -110,8 +110,13 @@ def posts_view(request,post_type):
    
 
     sentiments = {'happy':sentimentss.happy, 'sad':sentimentss.sad, 'normal':sentimentss.normal, 'action':sentimentss.action, 'romance':sentimentss.romance}
-
-    sentiments_ar = {'مفرح':sentimentss.happy, 'حزين':sentimentss.sad, 'عادي':sentimentss.normal, 'حماسي':sentimentss.action, 'رومنسي':sentimentss.romance}
+    
+    sentiments_ar = {'مفرح':['happy',sentimentss.happy],
+                     'حزين':['sad',sentimentss.sad], 
+                     'عادي':['normal',sentimentss.normal], 
+                     'حماسي':['action',sentimentss.action], 
+                     'رومنسي':['romance',sentimentss.romance]
+                     }
 
     context ={'data':posts,
               'sentiments':sentiments, 

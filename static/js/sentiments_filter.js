@@ -18,7 +18,6 @@ $(document).ready(function(){
 	// Sentiment Filter Start
     $(".filter-checkbox").on('click', function(){
         var _filterObj={};
-        var _filterVal=$(this).val();
         var _filterKey=$(this).data('filter');
         var _post_typeKey=$(this).data('post_type');
         _filterObj[_filterKey]=Array.from(document.querySelectorAll('input[data-filter='+_filterKey+']:checked')).map(function(el){
@@ -35,8 +34,6 @@ $(document).ready(function(){
             success:function(res){
                 $('#post_list').html(res.data);
                 document.location.reload(); 
-                //$("#post_list").load("#post_list");
-
             }
         });      
     });
@@ -139,6 +136,8 @@ $(document).ready(function(){
         var comment_input = $('#comment'+post_id);
         var comment_body = $(`#comment_${post_id}_body_${comment_id}`)
         comment_input.val(comment_body.text());
+        window.location=`#comment${post_id}`;
+        comment_input.focus();
         localStorage.setItem("comment_id", comment_id);
 
     });
@@ -275,7 +274,17 @@ window.onload = function() {
     }
     
 }
+var wrap = $("#wrap");
 
+wrap.on("scroll", function(e) {
+    
+  if (this.scrollTop > 147) {
+    wrap.addClass("fix-search");
+  } else {
+    wrap.removeClass("fix-search");
+  }
+  
+});
 
 
 

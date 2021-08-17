@@ -24,7 +24,7 @@
             {% elif LANGUAGE_CODE == 'ar' %}
             {% for key,value in sentiments_ar.items %}
             <div class="col-md-2 col-xs-4">
-              <input class="filter-checkbox" data-post_type="{{post_type}}" data-filter="sentiment" value="{{key}}" type="checkbox" {{value}}/>{{key}} 
+              <input class="filter-checkbox" data-post_type="{{post_type}}" data-filter="sentiment" value="{{value.0}}" type="checkbox" {{value.1}}/>{{key}} 
             </div>
             {% endfor %}
             {%endif%}
@@ -42,6 +42,4 @@
 
 {% block scripts %}
 <script src="{% static 'js/sentiments_filter.js' %}"></script>
-<!-- <script src="{% static 'js/likeToggle.js' %}"></script> -->
-
 {% endblock scripts %}

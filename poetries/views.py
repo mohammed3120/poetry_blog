@@ -191,9 +191,6 @@ def add_comment_view(request, pk):
     if commentValue != "":
         comment = Comment.objects.create(post = post, profile = profile, body = commentValue)
         comment.save()
-        # comments = post.get_comments()
-        # html = ''
-        # for com in comments:
         transaction.commit()
         t=render_to_string('poetries\one_comment.html',{'comment':comment})
         return JsonResponse({'comment': t})
@@ -298,46 +295,34 @@ def delete_post_view(request, pk):
     post_type = post.post_type
     post.delete()
     return HttpResponseRedirect(prevPath)
+
 def update_comment_view(request, pk):
-    prevPath = request.META.get('HTTP_REFERER')
-    profile = Profile.objects.get(user = request.user)
-    usercolors = Color.objects.get_or_create(profile = profile)[0]
-    
-    bg = usercolors.bg_color
-    theme = usercolors.theme_color
     comment = Comment.objects.get(pk = pk)
-    form = CommentForm(instance = comment)
-    if request.method == 'POST':
-        form = CommentForm(request.POST, instance = comment)
-        prev = request.POST['prevPath']
-        # check whether it's valid:
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(prev)
-    return render(request, 'poetries\edit_comment.html', {'form': form,'bg':bg, 'theme':theme,'prevPath':prevPath})
+    commentValue =  request.GET['comment']
+    if commentValue != "":
+        comment.body = commentValue
+        comment.save()
+        transaction.commit()
+        t=render_to_string('poetries\one_comment.html',{'comment':comment})
+        return JsonResponse({'comment': t})
+    else:
+        return JsonResponse({})
+
 def delete_comment_view(request, pk):
-    prevPath = request.META.get('HTTP_REFERER')
     comment = Comment.objects.get(pk = pk)
-    post_type = comment.post.post_type
     comment.delete()
-    return HttpResponseRedirect(prevPath)
-def update_reply_view(request, pk):
-    prevPath = request.META.get('HTTP_REFERER')
-    profile = Profile.objects.get(user = request.user)
-    usercolors = Color.objects.get_or_create(profile = profile)[0]
+    return JsonResponse({})
     
-    bg = usercolors.bg_color
-    theme = usercolors.theme_color
+def update_reply_view(request, pk):
     reply = Reply.objects.get(pk = pk)
-    form = ReplyForm(instance = reply)
-    if request.method == 'POST':
-        form = ReplyForm(request.POST, instance = reply)
-        prev = request.POST['prevPath']
-        # check whether it's valid:
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(prev)
-    return render(request, 'poetries\edit_comment.html', {'form': form,'bg':bg, 'theme':theme, 'prevPath':prevPath})
+    replyValue =  request.GET['reply']
+    if replyValue != "":
+        reply.body = replyValue
+        reply.save()
+        transaction.commit()
+        return JsonResponse({'reply':replyValue})
+    else:
+        return JsonResponse({})
 def delete_reply_view(request, pk):
     prevPath = request.META.get('HTTP_REFERER')
     reply = Reply.objects.get(pk = pk)

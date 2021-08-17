@@ -160,6 +160,13 @@ class Reply(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.profile)
+    
+    def get_comment_id(self):
+        return self.comment.id
+
+    def get_username(self):
+        return self.profile.user.username
+    
 
 
 class Like(models.Model):

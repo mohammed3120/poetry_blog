@@ -1,12 +1,12 @@
  {% load i18n %}
 <div class="reply">
-  <span class="user_name">{{reply.profile.user.username}}</span>:
-  <p class="reply_body">{{reply.body}}</p>
+  <span class="user_name">{{reply.get_username}}</span>:
+  <p class="reply_body" id="replybody_{{reply.id}}">{{reply.body}}</p>
   <div class="replytdivaa1">
       <p>.</p>
       <p>.</p>
       <p>.</p>
-      <a class="editReply" href="{% url 'poetries:update_reply'  reply.id %}" id="editReply{{reply.id}}" >{% trans "Edit" %}</a>
+      <a class="editReply" href="#p_{{post.id}}_c_{{reply.get_comment_id}}"   id="edit_{{reply.get_comment_id}}_reply_{{reply.id}}" >{% trans "Edit" %}</a>
       <a class="deleteReply" href="{% url 'poetries:delete_reply'  reply.id %}"  id="deleteReply{{reply.id}}" >{% trans "Delete" %}</a>
     </div>
 </div>  

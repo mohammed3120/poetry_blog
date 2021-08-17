@@ -1,16 +1,16 @@
  {% load i18n %}
-<div class="panel-group accordion_comment" id="accordion-comment" roles="tablist" aria-multiselectable="true">
+<div class="panel-group accordion_comment" id="accordion-comment_{{comment.id}}" roles="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
       <div class="panel-heading panel-heading-reply" roles="tab" id="comment-{{comment.id}}-post-{{post.id}}"> 
           <div class="comment">
             <span class="user_name">{{comment.profile.user.username}} </span>:
-            <p class="comment_body">{{comment.body}}</p>
+            <p class="comment_body" id="comment_{{post.id}}_body_{{comment.id}}">{{comment.body}}</p>
             <div class="commentdivaa1">
               <p>.</p>
               <p>.</p>
               <p>.</p>
-              <a class="editComment" href="{% url 'poetries:update_comment'  comment.id %}" id="editComment{{post.id}}" >{% trans "Edit" %}</a>
-              <a class="deleteComment" href="{% url 'poetries:delete_comment'  comment.id %}"  id="deleteComment{{comment.id}}" >{% trans "Delete" %}</a>
+              <a class="editComment" href="#p_{{post.id}}" id="edit_{{post.id}}_Comment_{{comment.id}}" >{% trans "Edit" %}</a>
+              <a class="deleteComment" id="delete_{{post.id}}_Comment_{{comment.id}}">{% trans "Delete" %}</a>
             </div>
           </div>
           
@@ -20,24 +20,24 @@
               <div class="panel-heading panel-heading-reply" roles="tab" id="post-{{post.id}}-comment-{{comment.id}}-replies">
                 
                 <h4 class="panel-title">
-                  <a class="collapsed" data-toggle="collapse" data-parent="#accordion-{{post.id}}-comment-{{comment.id}}-replies" href="#collapse-{{post.id}}-replies-{{comment.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><span id="post_{{post.id}}_comment_{{comment.id}}_replies_number" class="comment_replies_number">{{comment.get_replies.count}}&nbsp;{% trans "replies" %} &nbsp;<i class="reply_action fa fa-reply">{% trans "reply" %}</i></span>
+                  <a class="collapsed" id="commentColapsed_{{comment.id}}" data-toggle="collapse" data-parent="#accordion-{{post.id}}-comment-{{comment.id}}-replies" href="#replies-{{comment.id}}" aria-expanded="true" aria-controls="collapse-{{post.id}}-{{comment.id}}" href="#"><span id="comment_{{comment.id}}_replies_number" class="comment_replies_number">{{comment.get_replies.count}}&nbsp;{% trans "replies" %} &nbsp;<i class="reply_action fa fa-reply">{% trans "reply" %}</i></span>
                   </a>
                 </h4>
               </div>
-              <div id="collapse-{{post.id}}-replies-{{comment.id}}" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="post-{{post.id}}-comment-{{comment.id}}-replies">
+              <div id="replies-{{comment.id}}" class="panel-collapse collapse" roles="tabpanel" aria-labelledby="post-{{post.id}}-comment-{{comment.id}}-replies">
                 <div class="panel-body">
-                  <div id ='post_{{post.id}}_comment_{{comment.id}}_acco_reply'>
+                  <div id ='comment_{{comment.id}}_acco_reply'>
                     {% for reply in comment.get_replies %}
                     <div class="reply">
                       <span class="user_name">{{reply.profile.user.username}}</span>:
-                      <p class="reply_body">{{reply.body}}</p>
+                      <p class="reply_body" id="replybody_{{reply.id}}">{{reply.body}}</p>
                       {% if request.user.username == reply.profile.user.username or request.user.is_staff %}
                       <div class="replytdivaa1">
                           <p>.</p>
                           <p>.</p>
                           <p>.</p>
                           {% if request.user.username == reply.profile.user.username %}
-                          <a class="editReply" href="{% url 'poetries:update_reply'  reply.id %}" id="editReply{{reply.id}}" >{% trans "Edit" %}</a>
+                          <a class="editReply" href="#p_{{post.id}}_c_{{comment.id}}"   id="edit_{{comment.id}}_reply_{{reply.id}}" >{% trans "Edit" %}</a>
                           {% endif %}
                           <a class="deleteReply" href="{% url 'poetries:delete_reply'  reply.id %}"  id="deleteReply{{reply.id}}" >{% trans "Delete" %}</a>
                         </div>
@@ -50,28 +50,29 @@
                   {% if comment.get_replies.count == 0 %}
                   {% if reply is not None %}
                   <div class="reply">
-                    <span class="user_name">{{reply.profile.user.username}}</span>:
-                    <p class="reply_body">{{reply.body}}</p>
-                    {% if request.user.username == reply.profile.user.username or request.user.is_staff %}
+                    <span class="user_name">{{reply.get_username}}</span>:
+                    <p class="reply_body" id="replybody_{{reply.id}}">{{reply.body}}</p>
+                    {% if request.user.username == reply.get_username or request.user.is_staff %}
                     <div class="replytdivaa1">
                         <p>.</p>
                         <p>.</p>
                         <p>.</p>
-                        {% if request.user.username == reply.profile.user.username %}
-                        <a class="editReply" href="{% url 'poetries:update_reply'  reply.id %}" id="editReply{{reply.id}}" >{% trans "Edit" %}</a>
+                        {% if request.user.username == reply.get_username %}
+                        <a class="editReply" href="#p_{{post.id}}_c_{{comment.id}}"   id="edit_{{comment.id}}_reply_{{reply.id}}" >{% trans "Edit" %}</a>
                         {% endif %}
                         <a class="deleteReply" href="{% url 'poetries:delete_reply'  reply.id %}"  id="deleteReply{{reply.id}}" >{% trans "Delete" %}</a>
                       </div>
                     {% endif %}
                   </div>
                   {% else %}
-                  <div id ='post_{{post.id}}_comment_{{comment.id}}_acco_reply'>
+                  <div id ='comment_{{comment.id}}_acco_reply'>
                   </div>
                   {% endif %}
                   {% endif %}
-                  <form  method="POST" class="form-inline reply-form" id="p_{{post.id}}_c_{{comment.id}}">
+                  <form  method="POST" class="form-inline reply-form" id="p_{{post.id}}_p_{{post.id}}_c_{{comment.id}}">
                     {% csrf_token %}
-                    <input id ="post_{{post.id}}_comment_{{comment.id}}" class="form-control" type="text" name="reply" placeholder="{% trans 'Write reply here..' %}"><button type ="submit" class="btn btn-danger"></i>{% trans "reply" %}</button>
+                    <input id ="comment_{{comment.id}}" class="form-control" type="text" name="reply" placeholder="{% trans 'Write reply here..' %}">
+                    <button type ="submit" class="btn btn-danger">{% trans "reply" %}</button>
                   </form>
                                                  
                 </div>

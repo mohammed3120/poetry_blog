@@ -155,11 +155,13 @@ def filter_data(request,post_type):
     else:
         sentimentss.romance = ''
     sentimentss.save()
+   
     posts = Post.objects.filter(post_type = post_type)
     if len(sentiments)>0:
         posts = posts.filter(sentiment_type__in = sentiments).distinct()
     t=render_to_string('poetries\post_list.html',{'data':posts})
     return JsonResponse({'data': t})
+
 def likeTogle(request,pk):
     liked = request.GET['liked']
     lang = request.GET['lang']

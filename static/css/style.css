@@ -1,4 +1,6 @@
-html { scroll-behavior: smooth; }
+body{
+  direction: ltr;
+}
 /*start navbar section*/
 .main-nav{
   padding-top: 0cm;
@@ -520,6 +522,7 @@ html { scroll-behavior: smooth; }
   color: #fff;
   font-size: 18px;
   margin-top: 64px;
+  padding-top: 30px;
 }
 .content .filter div{
   margin-bottom: 15px;

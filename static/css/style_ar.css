@@ -1,5 +1,4 @@
 body{
-  overflow: hidden;
   direction: rtl;
 }
 
@@ -515,6 +514,7 @@ body{
   color: #fff;
   font-size: 18px;
   margin-top: 64px;
+  padding-top: 30px;
 }
 .content .filter div{
   margin-bottom: 15px;

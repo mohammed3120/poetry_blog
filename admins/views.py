@@ -84,12 +84,14 @@ def delete_all_posts_view(request, post_type):
 @staff_member_required(redirect_field_name='next', login_url='poetries:login')
 def dashboard_filter_data_view(request,post_type):
     sentiments = request.GET.getlist('sentiment[]')
+    print(sentiments)
     title = request.GET['title']
     posts = Post.objects.filter(post_type = post_type)
     if len(sentiments)>0:
         posts = posts.filter(sentiment_type__in = sentiments).distinct()
     if title != "":
         posts = posts.filter(title__contains=title)
+    
     t=render_to_string('admins\dashboard_post_list.html',{'data':posts})
     return JsonResponse({'data': t})
 

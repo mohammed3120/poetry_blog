@@ -49,13 +49,13 @@
   {% if LANGUAGE_CODE == 'en' %}
   {% for key,value in sentiments.items %}
   <div class="col-md-2 col-xs-4">
-    <input class="filter-checkbox"  data-filter="value" value="{{value}}" type="checkbox" />{{value}} 
+    <input class="filter-checkbox"  data-filter="sentiment" value="{{value}}" type="checkbox" />{{value}} 
   </div>
   {% endfor %}
   {% elif LANGUAGE_CODE == 'ar' %}
   {% for key,value in sentiments.items %}
   <div class="col-md-2 col-xs-4">
-    <input class="filter-checkbox"  data-filter="value" value="{{value}}" type="checkbox" />{{key}} 
+    <input class="filter-checkbox"  data-filter="sentiment" value="{{value}}" type="checkbox" />{{key}} 
   </div>
   {% endfor %}
   {%endif%}
